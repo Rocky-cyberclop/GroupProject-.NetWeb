@@ -1,0 +1,12 @@
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\bin\Debug\DAL.dll.config
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\bin\Debug\DAL.dll
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\bin\Debug\DAL.pdb
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\bin\Debug\EntityFramework.dll
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\bin\Debug\EntityFramework.xml
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\obj\Debug\DAL.dll
+D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\obj\Debug\DAL.pdb

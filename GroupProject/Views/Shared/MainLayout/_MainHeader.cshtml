@@ -1,0 +1,22 @@
+﻿<header class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="header__logo w-50 mx-5">
+                    <a href="/Home/Index"><img src="~/Assets/Main/img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-6 mt-4">
+                <div class="hero__search__form">
+                    @RenderPage("Components/_SearchComponent.cshtml")
+                </div>
+            </div>
+            <div class="col-3 mt-3">
+                <div class="header__cart text-center">
+                    @RenderPage("Components/_NavComponent.cshtml")
+                    <div class="header__cart__price">Total: <span>$00.00</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

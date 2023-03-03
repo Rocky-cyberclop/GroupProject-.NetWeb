@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top 1 rau củ quả Cần Thơ</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Assets/Main/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Main/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Main/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Main/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Main/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Main/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Main/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Main/css/style.css" type="text/css">
+    @RenderSection("Styles",false)
+</head>
+<body>
+    @RenderPage("_MainHeader.cshtml")
+    <main>
+        @RenderBody()
+    </main>
+    @RenderPage("_MainFooter.cshtml")
+    @RenderSection("Scripts", false)
+
+</body>
+</html>

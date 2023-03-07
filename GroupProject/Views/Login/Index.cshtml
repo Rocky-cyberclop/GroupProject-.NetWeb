@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LoginLayout/_LoginLayout.cshtml";
+}
+
+@section Styles{
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+
+    <link rel="stylesheet" href="~/Assets/Main/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="~/Assets/Main/css/stylelogin.css" type="text/css">
+}
+
+<div class="container" id="main">
+    <div class="sign-up">
+        <form action="#">
+            <h1>Create Account</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>or use your telephone number for registration</p>
+            <input type="phone" name="Phone" placeholder="Phone Number" required="">
+            <input type="text" name="Name" placeholder="Name" required="">
+            <input type="date" name="Birthday" value="" />
+            <input type="address" name="Address" placeholder="Address" required="">
+            <input type="password" name="Password" placeholder="Password" required="">
+            <input type="password" name="ConfirmPassword" placeholder="Confirm password" required="">
+            <div class="form-check">
+                <input class="form-check-input l-1" type="checkbox" value="" id="flexCheckDefault" />
+                <label class="form-check-label" for="flexCheckDefault">I agree all statements in  <a href="#" class="term">Terms</a></label>
+            </div>
+            <button>Sign Up</button>
+        </form>
+    </div>
+    <div class="sign-in">
+        <form action="#">
+            <h1>Sign in</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>or use your account</p>
+            <input type="text" name="Phone" placeholder="Phone Number" required="">
+            <input type="password" name="Password" placeholder="Password" required="">
+            <a href="#">Forget your Password?</a>
+            <button>Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-left">
+                <h1>Wellcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-right">
+                <h1>Hello, Friend</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const main = document.getElementById('main');
+
+        signUpButton.addEventListener('click', () => {
+            main.classList.add("right-panel-active");
+        });
+        signInButton.addEventListener('click', () => {
+            main.classList.remove("right-panel-active");
+        });
+    </script>
+}

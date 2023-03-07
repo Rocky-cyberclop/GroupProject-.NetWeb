@@ -4,14 +4,18 @@
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>_LoginLayout</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    
+    @RenderSection("Styles", false)
 </head>
 <body>
-    <div> 
-    </div>
+    @RenderPage("_LoginHeader.cshtml")
+    @RenderBody()
+    
+    @RenderSection("Scripts", false)
 </body>
 </html>

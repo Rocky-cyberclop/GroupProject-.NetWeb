@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/Assets/Main/css/cart.css">
+}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section cart-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text text-body-tertiary ">
+                    <h2>Shopping Cart</h2>
+                    <div class="breadcrumb__option">
+                        <a href="Home">Home</a>
+                        <span>Shopping Cart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shoping Cart Section Begin -->
+<section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="shoping__product">Products</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="shoping__cart__item">
+                                    <img src="~/Assets/Main/img/cart/cart-1.jpg" alt="">
+                                    <h5>Fresh Garden Vegetable</h5>
+                                    <div class="item-note">
+                                        <span>*Note:.....</span>
+                                    </div>
+                                </td>
+                                <td class="shoping__cart__price">
+                                    $55.00
+                                </td>
+                                <td class="shoping__cart__quantity">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <input type="text" value="2">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="shoping__cart__total">
+                                    $110.00
+                                </td>
+                                <td class="shoping__cart__item__close">
+                                    <span class="icon_close"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="shoping__cart__item">
+                                    <img src="~/Assets/Main/img/cart/cart-2.jpg" alt="">
+                                    <h5>Fresh Apples</h5>
+                                    <div class="item-note">
+                                        <span></span>
+                                    </div>
+                                </td>
+                                <td class="shoping__cart__price">
+                                    $19.00
+                                </td>
+                                <td class="shoping__cart__quantity">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <input type="text" value="1">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="shoping__cart__total">
+                                    $19.00
+                                </td>
+                                <td class="shoping__cart__item__close">
+                                    <span class="icon_close"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="shoping__cart__item">
+                                    <img src="~/Assets/Main/img/cart/cart-3.jpg" alt="">
+                                    <h5>Organic Guava</h5>
+                                    <div class="item-note">
+                                        <span></span>
+                                    </div>
+                                </td>
+                                <td class="shoping__cart__price">
+                                    $26.00
+                                </td>
+                                <td class="shoping__cart__quantity">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <input type="text" value="1">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="shoping__cart__total">
+                                    $26.00
+                                </td>
+                                <td class="shoping__cart__item__close">
+                                    <span class="icon_close"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-6">
+
+            </div>
+            <div class="col-lg-6">
+                <div class="shoping__checkout">
+                    <h5 style="font-size: 30px; color: #5D13E7;">Cart Total</h5>
+                    <ul>
+                        <li>Subtotal <span>$454.98</span></li>
+                        <li>
+                            Shipping charges
+                            <a href="#" title="Calculation by price" style="color: black;"><i class="fa fa-question-circle"></i> <span>$4.00</span> </a>
+                            <!--gắn href trang thông tin vận chuyển-->
+                        </li>
+
+                        <li>Total <span>$454.98</span></li>
+                    </ul>
+                    <div class="shopping-submit">
+                        <a href="#" class="primary-btn btn" style="background-color: #3cdb8b;">PROCEED TO CHECKOUT</a>
+                    </div>
+                    <div class="shoping__delete mt-2">
+                        <a href="#" class="primary-btn btn" style="background-color: darkgrey;">DELETE THE ENTIRE CART</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Shoping Cart Section End -->
+
+@section Scripts{
+    <script src="~/Assets/Main/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Main/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Main/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Main/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Main/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Main/js/mixitup.min.js"></script>
+    <script src="~/Assets/Main/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Main/js/main.js"></script>
+}

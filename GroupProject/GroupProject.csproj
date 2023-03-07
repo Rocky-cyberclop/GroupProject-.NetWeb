@@ -167,7 +167,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\StatisticController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1857,6 +1859,7 @@
     <Content Include="Assets\Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Assets\Admin\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Assets\Main\css\bootstrap.min.css" />
+    <Content Include="Assets\Main\css\cart.css" />
     <Content Include="Assets\Main\css\elegant-icons.css" />
     <Content Include="Assets\Main\css\font-awesome.min.css" />
     <Content Include="Assets\Main\css\jquery-ui.min.css" />
@@ -1864,9 +1867,22 @@
     <Content Include="Assets\Main\css\owl.carousel.min.css" />
     <Content Include="Assets\Main\css\slicknav.min.css" />
     <Content Include="Assets\Main\css\style.css" />
+    <Content Include="Assets\Main\css\stylelogin.css" />
     <Content Include="Assets\Main\fonts\ElegantIcons.svg" />
     <Content Include="Assets\Main\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Main\img\cart\bannercart.jpg" />
+    <Content Include="Assets\Main\img\cart\cart-1.jpg" />
+    <Content Include="Assets\Main\img\cart\cart-2.jpg" />
+    <Content Include="Assets\Main\img\cart\cart-3.jpg" />
     <Content Include="Assets\Main\img\logo.png" />
+    <Content Include="Assets\Main\js\bootstrap.min.js" />
+    <Content Include="Assets\Main\js\jquery-3.3.1.min.js" />
+    <Content Include="Assets\Main\js\jquery-ui.min.js" />
+    <Content Include="Assets\Main\js\jquery.nice-select.min.js" />
+    <Content Include="Assets\Main\js\jquery.slicknav.js" />
+    <Content Include="Assets\Main\js\main.js" />
+    <Content Include="Assets\Main\js\mixitup.min.js" />
+    <Content Include="Assets\Main\js\owl.carousel.min.js" />
     <Content Include="Assets\Products\Image\C01_01.jpg" />
     <Content Include="Assets\Products\Image\C01_02.jpg" />
     <Content Include="Assets\Products\Image\C01_03.jpg" />
@@ -2317,16 +2333,16 @@
     <Content Include="Views\Shared\MainLayout\Components\_SearchComponent.cshtml" />
     <Content Include="Views\Shared\LoginLayout\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\LoginLayout\_LoginHeader.cshtml" />
-    <Content Include="Views\Shared\LoginLayout\_LoginFooter.cshtml" />
     <Content Include="Views\Shared\MainLayout\Components\_NavComponent.cshtml" />
     <Content Include="Views\Home\GetStaff.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\LoginLayout\Components\" />
-    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

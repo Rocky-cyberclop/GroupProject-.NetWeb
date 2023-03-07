@@ -25,9 +25,12 @@
 </head>
 <body>
     @RenderPage("_MainHeader.cshtml")
-    <main>
+
+    <div id="main">
         @RenderBody()
-    </main>
+
+    </div>
+
     @RenderPage("_MainFooter.cshtml")
     @RenderSection("Scripts", false)
 

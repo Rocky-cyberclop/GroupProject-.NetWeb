@@ -24,6 +24,9 @@
     <!-- Custom styles for this template-->
     <link href="~/Assets/Admin/css/sb-admin-2.min.css" rel="stylesheet">
     @RenderSection("Styles", false)
+    <!-- Render Jquery-->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 
 </head>
 
@@ -35,7 +38,6 @@
         <!-- Sidebar -->
         @RenderPage("Components/_Sidebar.cshtml")
         <!-- End of Sidebar -->
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -45,14 +47,14 @@
                 <!-- Topbar -->
                 @RenderPage("Components/_Topbar.cshtml")
                 <!-- End of Topbar -->
-
                 <!-- Begin Page Content -->
-                @RenderBody()
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-
             <!-- Footer -->
             @RenderPage("Components/_Footer.cshtml")
             <!-- End of Footer -->
@@ -62,7 +64,6 @@
 
     </div>
     <!-- End of Page Wrapper -->
-
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>

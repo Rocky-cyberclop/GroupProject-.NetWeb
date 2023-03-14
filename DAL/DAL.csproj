@@ -54,10 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrameWork\ChiTietHoaDon.cs">
-      <DependentUpon>TenDatabase.tt</DependentUpon>
+      <DependentUpon>HaoDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\GioHang.cs">
-      <DependentUpon>TenDatabase.tt</DependentUpon>
+      <DependentUpon>HaoDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HaoDatabase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -75,40 +75,25 @@
       <DependentUpon>HaoDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HinhAnh.cs">
-      <DependentUpon>TenDatabase.tt</DependentUpon>
+      <DependentUpon>HaoDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HoaDon.cs">
-      <DependentUpon>TenDatabase.tt</DependentUpon>
+      <DependentUpon>HaoDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\KhachHang.cs">
-      <DependentUpon>TenDatabase.tt</DependentUpon>
+      <DependentUpon>HaoDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\KhuyenMai.cs">
-      <DependentUpon>TenDatabase.tt</DependentUpon>
+      <DependentUpon>HaoDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\Loai.cs">
-      <DependentUpon>TenDatabase.tt</DependentUpon>
+      <DependentUpon>HaoDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\NhanVien.cs">
-      <DependentUpon>TenDatabase.tt</DependentUpon>
+      <DependentUpon>HaoDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\SanPham.cs">
-      <DependentUpon>TenDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FrameWork\TenDatabase.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TenDatabase.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FrameWork\TenDatabase.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TenDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FrameWork\TenDatabase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TenDatabase.edmx</DependentUpon>
+      <DependentUpon>HaoDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -120,13 +105,6 @@
     </EntityDeploy>
     <None Include="FrameWork\HaoDatabase.edmx.diagram">
       <DependentUpon>HaoDatabase.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="FrameWork\TenDatabase.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TenDatabase.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="FrameWork\TenDatabase.edmx.diagram">
-      <DependentUpon>TenDatabase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -143,16 +121,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HaoDatabase.edmx</DependentUpon>
       <LastGenOutput>HaoDatabase.cs</LastGenOutput>
-    </Content>
-    <Content Include="FrameWork\TenDatabase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TenDatabase.edmx</DependentUpon>
-      <LastGenOutput>TenDatabase.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="FrameWork\TenDatabase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TenDatabase.edmx</DependentUpon>
-      <LastGenOutput>TenDatabase.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

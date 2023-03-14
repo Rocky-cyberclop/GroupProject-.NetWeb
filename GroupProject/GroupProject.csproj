@@ -166,6 +166,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\StatisticController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2305,6 +2306,11 @@
     <Content Include="Areas\Admin\Views\Statistic\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Components\_Footer.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Components\_LogoutModal.cshtml" />
+    <Content Include="Areas\Admin\Views\Management\Staffs.cshtml" />
+    <Content Include="Areas\Admin\Views\Management\Products.cshtml" />
+    <Content Include="Areas\Admin\Views\Management\AddStaff.cshtml" />
+    <Content Include="Areas\Admin\Views\Management\CreateProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Management\EditStaff.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

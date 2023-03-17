@@ -1,0 +1,13 @@
+a{
+    color: black;
+}
+a:hover{
+    color: rgb(34, 24, 111);
+}
+.btn-success{
+    background-color: #7fad39;
+    font-family:"Cairo", sans-serif;
+}
+.list-group{
+    font-family: sans-serif;
+}

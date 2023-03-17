@@ -4,5 +4,435 @@
     Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
 }
 
-<h2>Index</h2>
+@section Styles{
+    <link rel="stylesheet" href="~/Assets/Main/css/index.css">
 
+}
+
+<div class="slideshow-container">
+    <div class="mySlides1">
+        <img src="~/Assets/Main/img/slider/slider1.png" style="width:100%">
+    </div>
+
+    <div class="mySlides1">
+        <img src="~/Assets/Main/img/slider/slider2.png" style="width:100%">
+    </div>
+
+    <div class="mySlides1">
+        <img src="~/Assets/Main/img/slider/slider3.png" style="width:100%">
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+</div>
+
+
+    </div>
+
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="/Assets/Main/img/categories/cate_1.png">
+                        <h5><a href="#">All Product</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="/Assets/Main/img/categories/cate_2.png">
+                        <h5><a href="#">RAU</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="/Assets/Main/img/categories/cate_3.png">
+                        <h5><a href="#">CỦ</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="/Assets/Main/img/categories/cate_4.png">
+                        <h5><a href="#">TRÁI CÂY</a></h5>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+<!-- Featured Section Begin -->
+<section class="featured spad" id="shopnow">
+    <div class="container">
+        <div class="row featured-row">
+            <div class="col-lg-12 pt-4">
+                <div class="section-title">
+                    <h2>SẢN PHẨM NỔI BẬT</h2>
+                </div>
+                <div class="featured__controls">
+                    <ul>
+                        <li class="active" data-filter="*">All</li>
+                        <li data-filter=".vegetables">RAU</li>
+                        <li data-filter=".greens">CỦ</li>
+                        <li data-filter=".fruit">TRÁI CÂY</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row featured__filter">
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
+                <div class="featured__item border ">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-1.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-1.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class=" pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
+                <div class="featured__item border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-2.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-2.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Chuối (Bananas)</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
+                <div class="featured__item border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-3.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-3.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Trái Ổi</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
+                <div class="featured__item border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-4.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-4.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix greens">
+                <div class="featured__item  border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-5.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-5.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
+                <div class="featured__item border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-6.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-6.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
+                <div class="featured__item border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-7.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-2.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6>
+                            <a href="#">
+                                Water Melon
+
+                            </a>
+                        </h6>
+                        <h5>$30.00</h5>
+
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
+                <div class="featured__item border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-8.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-8.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Apples</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
+                <div class="featured__item  border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-9.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-2.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
+                <div class="featured__item border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-13.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-13.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
+                <div class="featured__item border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-14.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-14.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
+                <div class="featured__item border">
+                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-15.jpg"
+                         style="background-image: url(&quot;/Assets/Main/img/product/product-15.jpg&quot;);">
+                        <ul class="featured__item__pic__hover">
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h5>$30.00</h5>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
+                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                        </small>
+                        <small class="pt-3 w-50 text-center py-2">
+                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Featured Section End -->
+<!-- Feature Intro Start -->
+<div class="container-fluid  bg-icon my-5 py-6">
+    <div class="container">
+        <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+             style="max-width: 500px;">
+            <h1 class="display-5 mb-3">Những lí do nên chọn chúng tôi</h1>
+            <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+        </div>
+        <div class="intro_main">
+            <div class="row g-4 ">
+                <div class="col-lg-4 col-md-6 wow fadeInUp " data-wow-delay="0.1s">
+                    <div class="intro_item bg-white text-center h-100 p-4 p-xl-5 ">
+                        <img class="img-fluid mb-4" src="~/Assets/Main/img/intro/icon-1.png" alt="">
+                        <h4 class="mb-3">Sản phẩm tươi ngon và chất lượng</h4>
+                        <p class="mb-4">
+                            Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed
+                            vero dolor duo.
+                        </p>
+                        <a class="btn__intro btn-outline-primary border-2 py-2 px-4 rounded-pill"
+                           href="./introduce.html">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="intro_item bg-white text-center h-100 p-4 p-xl-5  ">
+                        <img class="img-fluid mb-4" src="~/Assets/Main/img/intro/icon-2.png" alt="">
+                        <h4 class="mb-3">Nguồn gốc rõ ràng và tin cậy</h4>
+                        <p class="mb-4">
+                            Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed
+                            vero dolor duo.
+                        </p>
+                        <a class="btn__intro btn-outline-primary border-2 py-2 px-4 rounded-pill"
+                           href="./introduce.html">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class=" intro_item bg-white text-center h-100 p-4 p-xl-5 ">
+                        <img class="img-fluid mb-4" src="~/Assets/Main/img/intro/icon-3.png" alt="">
+                        <h4 class="mb-3">An toàn và không hóa chất</h4>
+                        <p class="mb-4">
+                            Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed
+                            vero dolor duo.
+                        </p>
+                        <a class="btn__intro btn-outline-primary border-2 py-2 px-4 rounded-pill"
+                           href="./introduce.html">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feature Intro End -->
+
+@section Scripts{
+    <script src="~/Assets/Main/js/index.js"></script>
+    <script src="~/Assets/Main/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Main/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Main/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Main/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Main/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Main/js/mixitup.min.js"></script>
+    <script src="~/Assets/Main/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Main/js/main.js"></script>
+}

@@ -1,0 +1,309 @@
+* {
+  box-sizing: border-box
+}
+
+.mySlides1,
+.mySlides2 {
+  display: none
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+
+  background-color: #B5F1CC;
+
+  position: relative;
+  margin: auto;
+}
+
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover,
+.next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
+  min-width: 90%;
+}
+.hero__text{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.hero__text h2 {
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: rgba(7, 7, 7, 0.16);
+  padding: 5px;
+}
+
+/*categories*/
+
+.categories__item {
+  height: 160px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.categories {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.categories__item h5{
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 80%;
+  padding: 0 20px;
+  bottom: 20px;
+  text-align: center;
+  opacity: 1;
+  margin: auto;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  
+}
+
+.categories__item h5 a{
+  font-size: 18px;
+    color: #f5f5f5;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 12px 0 10px;
+    background: #403e3e41;
+    display: block;
+    border-radius: 50px;
+}
+.categories__item h5 a:hover{
+  background-color: #ffffff;
+  color: black;
+
+}
+
+/*featured*/
+
+.pt-4{
+  background-color:#017653;
+
+
+}
+
+.featured__item {
+  
+  padding: 10px;
+ 
+}
+
+
+.featured {
+  padding-bottom: 10px;
+  border-radius: 20px;
+  color: #f5f5f5;
+}
+
+.featured__controls {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 30px;
+
+
+}
+.featured__filter{
+  margin-top: 30px;
+  
+}
+.featured-row{
+  padding: 0;
+}
+.featured__item__text h5 {
+  color: red;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.featured__controls ul li{
+  color: #f5f5f5;
+}
+
+.featured__controls ul li.active {
+  font-weight: bold;
+}
+
+.featured__controls ul li:after{
+  background-color:#5be699 ;
+}
+/* section */
+.section-title{
+  margin-bottom: 30px;
+}
+.section-title h2{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f5f5f5;
+}
+
+.section-title h2:after {
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  right: 0;
+  height: 4px;
+  width: 200px;
+  background: #5be699;
+  content: "";
+  margin: 0 auto;
+}
+
+
+.bg-white text-center h-100 p-4 p-xl-5 border-right{
+  background-color: #cbebce;
+}
+
+.intro_item{
+  border-radius: 50px;
+  border: #11b941 solid 1px;
+}
+.btn-outline-primary {
+  color: #3CB815;
+  border-color: #3CB815;
+}
+.btn-outline-primary:hover{
+  background-color:#3CB815 ;
+  border-color: #3CB815;
+}
+.btn-outline-primary:active{
+  background-color: #3CB815;
+}
+
+
+.btn__intro {
+  font-weight: 500;
+  transition: .5s;
+  
+}
+
+.btn.btn-primary,
+.btn.btn-secondary,
+.btn.btn-outline-primary:hover,
+.btn.btn-outline-secondary:hover {
+  color: #FFFFFF;
+}
+
+.btn-square {
+  width: 38px;
+  height: 38px;
+}
+
+.btn-sm-square {
+  width: 32px;
+  height: 32px;
+}
+
+.btn-lg-square {
+  width: 48px;
+  height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+}
+
+/*icon*/
+
+
+.featured__item__pic__hover li a {
+	font-size: 20px;
+	color: #1c1c1c;
+  background-color: #e0dedee2;
+
+}
+.featured__item__pic__hover li:hover a i {
+	color: #ffffff;
+	transform: rotate(0deg);
+ 
+  border: 2px;
+}
+
+.featured__item__pic__hover li:hover a {
+	background: #E90064;
+	border-color: #E90064;
+}
+
+
+
+.d-flex a i {
+  font-size: 20px;
+  color: #2f8c43;
+  padding-right: 6px;
+}
+
+.d-flex a:hover{
+  color: #E90064;
+}
+.d-flex .text-center:hover a{
+  color: #3CB815;
+}
+.text__body {
+  color: black;
+  font-size: 19px;
+  font-family:Arial, Helvetica, sans-serif;
+
+}
+
+/*   css bổ sung cho header     */
+.header__menu ul li.active a {
+	color: #2f8c43;
+}
+
+.header__menu ul li:hover>a {
+	color: #2f8c43;
+}
+.header__menu {
+  padding-top: 0;
+ padding-bottom: 20px;
+ font-size: 20px; 
+ font-family :Arial, Helvetica, sans-serif;
+ width: max-content;
+}
+.slicknav_menu{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:100;
+}
+
+/*  */

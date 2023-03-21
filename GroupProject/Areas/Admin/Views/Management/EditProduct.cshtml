@@ -1,29 +1,21 @@
 ﻿@model DAL.FrameWork.SanPham
 
 @{
-    ViewBag.Title = "CreateProduct";
+    ViewBag.Title = "EditProduct";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    @*var i=0;*@
 }
 
-<h2>CreateProduct</h2>
+<h2>Chi tiết sản phẩm</h2>
 
 
-@using (Html.BeginForm("CreateProduct", "Management", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>SanPham</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-group" })
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Chọn loại</label>
-            <div class="col-md-10">
-                @Html.DropDownList("type", ViewBag.lsType as SelectList, "Loại", new { @class="form-control" } )
-            </div>
-        </div>
-
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Ten, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -72,23 +64,31 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             <label class="control-label col-md-2">Hình ảnh</label>
-            <div class="col-md-10 row">
-                <div class="col-5">
-                    <label for="ava">Chọn hình đại diện</label>
-                    <input type="file" name="ava" id="ava" />
-                </div>
-                <div class="col-5">
-                    <label for="remain">Kéo các hình phụ vào đây</label>
-                    <input type="file" name="remain" id="remain" multiple="multiple"/>
-                </div>
+            <div class="col-md-10">
+                @if (Model.HinhAnhs.Count > 0)
+                {
+                    foreach (var item in Model.HinhAnhs)
+                    {
+                        var src = "/Assets/Products/Images/" + item.Hinh;
+                        <div class="mb-2">
+                            <img src="@src" width="400px" />
+                            <button class="justify-content-center btn btn-primary">Xóa</button>
+                        </div>
+                    }
+                }
             </div>
         </div>
 
         <div class="form-group">
+            <label class="control-label col-md-12">Thêm hình kéo vào đây</label>
+            <input class="col-md-6" type="file" name="image" multiple="multiple" />
+        </div>*@
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
     </div>

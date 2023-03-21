@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="RAUCUQUAModelStoreContainer" CdmEntityContainer="HaoDatabase">
+    <EntitySetMapping Name="HinhAnhs">
+      <EntityTypeMapping TypeName="RAUCUQUAModel.HinhAnh">
+        <MappingFragment StoreEntitySet="HinhAnh">
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="HoaDons">
       <EntityTypeMapping TypeName="RAUCUQUAModel.HoaDon">
         <MappingFragment StoreEntitySet="HoaDon">
@@ -39,11 +47,12 @@
         <MappingFragment StoreEntitySet="NhanVien">
           <ScalarProperty Name="MaNV" ColumnName="MaNV" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
           <ScalarProperty Name="Quyen" ColumnName="Quyen" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="Nghi" ColumnName="Nghi" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -57,7 +66,7 @@
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="Gia" ColumnName="Gia" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="KhongBan" ColumnName="KhongBan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -79,14 +88,6 @@
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HinhAnhs">
-      <EntityTypeMapping TypeName="RAUCUQUAModel.HinhAnh">
-        <MappingFragment StoreEntitySet="HinhAnh">
-          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
-          <ScalarProperty Name="Hinh" ColumnName="Hinh" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -8,7 +8,8 @@
 <h2>Products</h2>
 
 <p>
-    <a class="btn btn-primary" href="@Url.Action("CreateProduct", "Management")"></a>
+    <a class="btn btn-primary" href="@Url.Action("CreateProduct", "Management")">Thêm sản phẩm</a>
+    <a class="btn btn-primary" href="@Url.Action("AddType", "Management")">Thêm loại</a>
 </p>
 <table class="table">
     <tr>
@@ -36,35 +37,71 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaSP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.XuatXu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DonVi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoLuong)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.MaSP  }) |
-            @Html.ActionLink("Details", "Details", new { id = item.MaSP }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.XuatXu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonVi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "EditProduct", new { id = item.MaSP }) |
+                <a href="#" class="" data-toggle="modal" data-target="#delete-modal"
+                   onclick="DeleteShowConfirm('@item.MaSP','@item.Ten')">Xóa</a>
+            </td>
+        </tr>
+    }
 
 </table>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="delete-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body delete-name">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("DeleteProduct", "Management"))
+                {
+                    @Html.AntiForgeryToken()
+                    <input name="id" class="delete-id" type="hidden" />
+                    <input type="submit" value="Không bán" class="btn btn-primary delete-now" />
+                }
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        var DeleteShowConfirm = function (id, name) {
+            $("#delete-modal").modal('show')
+            $(".delete-name > p").text("Bạn có chắc không muốn bán " + name + " nữa?")
+            $(".delete-id").val(id)
+        }
+    </script>
+}

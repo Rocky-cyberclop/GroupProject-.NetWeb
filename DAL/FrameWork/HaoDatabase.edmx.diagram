@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9923524218174ce6b6a72b982232de0a" Name="Diagram1">
-        <EntityTypeShape EntityType="RAUCUQUAModel.HoaDon" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="RAUCUQUAModel.KhachHang" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RAUCUQUAModel.Loai" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RAUCUQUAModel.NhanVien" Width="1.5" PointX="1.5" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RAUCUQUAModel.SanPham" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RAUCUQUAModel.ChiTietHoaDon" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RAUCUQUAModel.GioHang" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RAUCUQUAModel.HinhAnh" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RAUCUQUAModel.KhuyenMai" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
-        <AssociationConnector Association="RAUCUQUAModel.FK__ChiTietHoa__MaHD__21B6055D" ManuallyRouted="false" />
-        <AssociationConnector Association="RAUCUQUAModel.FK__HoaDon__MaKH__1ED998B2" ManuallyRouted="false" />
-        <AssociationConnector Association="RAUCUQUAModel.FK__HoaDon__MaNV__1FCDBCEB" ManuallyRouted="false" />
-        <AssociationConnector Association="RAUCUQUAModel.FK__GioHang__MaKH__1B0907CE" ManuallyRouted="false" />
-        <AssociationConnector Association="RAUCUQUAModel.FK__ChiTietHoa__MaSP__22AA2996" ManuallyRouted="false" />
-        <AssociationConnector Association="RAUCUQUAModel.FK__GioHang__MaSP__1BFD2C07" ManuallyRouted="false" />
+      <Diagram DiagramId="093e00dca24e4eb58524e0e635a68191" Name="Diagram1">
+        <EntityTypeShape EntityType="RAUCUQUAModel.HinhAnh" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel.HoaDon" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel.KhachHang" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel.Loai" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel.NhanVien" Width="1.5" PointX="1.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel.SanPham" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel.ChiTietHoaDon" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel.GioHang" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel.KhuyenMai" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
         <AssociationConnector Association="RAUCUQUAModel.FK__HinhAnh__MaSP__173876EA" ManuallyRouted="false" />
-        <AssociationConnector Association="RAUCUQUAModel.FK__KhuyenMai__MaSP__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel.FK__ChiTietHoa__MaHD__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel.FK__HoaDon__MaKH__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel.FK__HoaDon__MaNV__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel.FK__GioHang__MaKH__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel.FK__ChiTietHoa__MaSP__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel.FK__GioHang__MaSP__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel.FK__KhuyenMai__MaSP__1A14E395" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

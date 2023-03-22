@@ -1,5 +1,15 @@
 ﻿<ul>
-    <li><a href="@Url.Action("Index","Login")" title="Login"><i class="fa fa-user"></i></a></li>
+    @{
+        if (Session["UserSession"] != null)
+        {
+            <li><a href="@Url.Action("Index","Profile")" title="Profile"><i class="fa fa-user"></i></a></li>
+            <li><a href="@Url.Action("Logout","Login")" title="Logout"><i class="fa fa-power-off"></i></a></li>
+        }
+        else
+        {
+            <li><a href="@Url.Action("Index","Login")" title="Login"><i class="fa fa-user"></i></a></li>
+        }
+    }
     <li><a href="#" title="My favorite"><i class="fa fa-heart"></i><span>0</span></a></li>
     <li><a href="@Url.Action("Index","Cart")" title="My cart"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
 </ul>

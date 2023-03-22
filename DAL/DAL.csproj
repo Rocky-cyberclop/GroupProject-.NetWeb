@@ -54,10 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrameWork\ChiTietHoaDon.cs">
-      <DependentUpon>HaoDatabase.tt</DependentUpon>
+      <DependentUpon>NhatDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\GioHang.cs">
-      <DependentUpon>HaoDatabase.tt</DependentUpon>
+      <DependentUpon>NhatDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HaoDatabase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -75,25 +75,40 @@
       <DependentUpon>HaoDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HinhAnh.cs">
-      <DependentUpon>HaoDatabase.tt</DependentUpon>
+      <DependentUpon>NhatDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HoaDon.cs">
-      <DependentUpon>HaoDatabase.tt</DependentUpon>
+      <DependentUpon>NhatDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\KhachHang.cs">
-      <DependentUpon>HaoDatabase.tt</DependentUpon>
+      <DependentUpon>NhatDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\KhuyenMai.cs">
-      <DependentUpon>HaoDatabase.tt</DependentUpon>
+      <DependentUpon>NhatDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\Loai.cs">
-      <DependentUpon>HaoDatabase.tt</DependentUpon>
+      <DependentUpon>NhatDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\NhanVien.cs">
-      <DependentUpon>HaoDatabase.tt</DependentUpon>
+      <DependentUpon>NhatDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrameWork\NhatDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NhatDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrameWork\NhatDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NhatDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrameWork\NhatDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NhatDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\SanPham.cs">
-      <DependentUpon>HaoDatabase.tt</DependentUpon>
+      <DependentUpon>NhatDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -105,6 +120,13 @@
     </EntityDeploy>
     <None Include="FrameWork\HaoDatabase.edmx.diagram">
       <DependentUpon>HaoDatabase.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="FrameWork\NhatDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NhatDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FrameWork\NhatDatabase.edmx.diagram">
+      <DependentUpon>NhatDatabase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -121,6 +143,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HaoDatabase.edmx</DependentUpon>
       <LastGenOutput>HaoDatabase.cs</LastGenOutput>
+    </Content>
+    <Content Include="FrameWork\NhatDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NhatDatabase.edmx</DependentUpon>
+      <LastGenOutput>NhatDatabase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FrameWork\NhatDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NhatDatabase.edmx</DependentUpon>
+      <LastGenOutput>NhatDatabase.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

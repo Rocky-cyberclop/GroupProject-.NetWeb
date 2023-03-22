@@ -9,7 +9,7 @@ namespace GroupProject.Areas.Admin.Controllers
 {
     public class ManagementController : Controller
     {
-        HaoDatabase db = new HaoDatabase();
+        NhatDatabase db = new NhatDatabase();
         // GET: Admin/Managament
         public ActionResult Index()
         {

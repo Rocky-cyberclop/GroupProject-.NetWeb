@@ -9,8 +9,16 @@ namespace GroupProject.Controllers
 {
     public class HomeController : Controller
     {
+        NhatDatabase db = new NhatDatabase();
         public ActionResult Index()
         {
+            //var sp = db.SanPhams.First();
+            //ViewBag.TenSP = sp.Ten;
+            //ViewBag.GiaSP = sp.Gia;
+            //ViewBag.HA = db.HinhAnhs.Where(e => e.MaSP == sp.MaSP).First().Hinh;
+            var sp = db.SanPhams;
+            ViewBag.SP = sp;
+
             return View();
         }
 
@@ -18,7 +26,7 @@ namespace GroupProject.Controllers
         [HttpGet]
         public ActionResult GetStaff()
         {
-            HaoDatabase db = new HaoDatabase(); //Dùng đúng Entity trên máy
+            NhatDatabase db = new NhatDatabase(); //Dùng đúng Entity trên máy
             var listStaff = from ts in db.NhanViens select ts; //Truy vấn tất cả dữ liệu trong bảng
             return View(listStaff); //Hiển thị
         }

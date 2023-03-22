@@ -10,3 +10,15 @@ D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\obj\Debug\DAL.csproj.CoreCo
 D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\obj\Debug\DAL.dll
 D:\For store\dotNetWeb\GroupProject\GroupProject\DAL\obj\Debug\DAL.pdb
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\bin\Debug\DAL.dll.config
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\bin\Debug\DAL.dll
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\bin\Debug\DAL.pdb
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\bin\Debug\EntityFramework.dll
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\bin\Debug\EntityFramework.xml
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\obj\Debug\DAL.dll
+D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\obj\Debug\DAL.pdb

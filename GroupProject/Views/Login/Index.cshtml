@@ -1,4 +1,4 @@
-﻿
+﻿@model DAL.FrameWork.KhachHang
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/LoginLayout/_LoginLayout.cshtml";
@@ -17,7 +17,9 @@
 
 <div class="container" id="main">
     <div class="sign-up">
-        <form action="#">
+        @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
             <h1>Create Account</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -25,21 +27,35 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <p>or use your telephone number for registration</p>
-            <input type="phone" name="Phone" placeholder="Phone Number" required="">
-            <input type="text" name="Name" placeholder="Name" required="">
-            <input type="date" name="Birthday" value="" />
-            <input type="address" name="Address" placeholder="Address" required="">
-            <input type="password" name="Password" placeholder="Password" required="">
-            <input type="password" name="ConfirmPassword" placeholder="Confirm password" required="">
+            <input type="text" name="DienThoai" value="@ViewBag.PhoneReg" placeholder="Phone Number">
+            <div class="text-danger">@Html.ValidationMessageFor(m => m.DienThoai)</div>
+            <input type="text" name="Ten" value="@ViewBag.Name" placeholder="Name">
+            <input type="date" name="NgaySinh" value="@ViewBag.Birthday" />
+            <input type="text" name="DiaChi" value="@ViewBag.Address" placeholder="Address">
+            <input type="password" name="Password" placeholder="Password">
+            <div class="text-danger">
+                @Html.ValidationMessage("PasswordReg")
+            </div>
+            <input type="password" name="MatKhau" placeholder="Confirm password">
+            <div class="text-danger">@Html.ValidationMessageFor(m => m.MatKhau)</div>
+            <div class="text-danger">
+                @Html.ValidationMessage("ConfirmPassword")
+            </div>
             <div class="form-check">
-                <input class="form-check-input l-1" type="checkbox" value="" id="flexCheckDefault" />
+                <input class="form-check-input l-1" type="checkbox" name="checkTerms" id="flexCheckDefault" />
                 <label class="form-check-label" for="flexCheckDefault">I agree all statements in  <a href="#" class="term">Terms</a></label>
             </div>
-            <button>Sign Up</button>
-        </form>
+            <div class="text-danger">
+                @Html.ValidationMessage("Terms")
+            </div>
+
+            <button type="submit">Sign Up</button>
+        }
     </div>
     <div class="sign-in">
-        <form action="#">
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
             <h1>Sign in</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -47,11 +63,13 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <p>or use your account</p>
-            <input type="text" name="Phone" placeholder="Phone Number" required="">
-            <input type="password" name="Password" placeholder="Password" required="">
+            <input type="text" name="Phone" value="@ViewBag.Phone" placeholder="Phone Number">
+            <div class="text-danger">@Html.ValidationMessage("Phone")</div>
+            <input type="password" name="Password" placeholder="Password">
+            <div class="text-danger">@Html.ValidationMessage("ErrorPassword")</div>
             <a href="#">Forget your Password?</a>
-            <button>Sign In</button>
-        </form>
+            <button type="submit">Sign In</button>
+        }
     </div>
     <div class="overlay-container">
         <div class="overlay">

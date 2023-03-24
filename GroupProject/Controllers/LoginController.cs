@@ -9,6 +9,7 @@ namespace GroupProject.Controllers
 {
     public class LoginController : Controller
     {
+        /*HaoDatabase db = new HaoDatabase();*/
         NhatDatabase db = new NhatDatabase();
         // GET: Login
         public ActionResult Index()
@@ -31,7 +32,7 @@ namespace GroupProject.Controllers
                 return View("Index");
             }
 
-            var staff = db.NhanViens.SingleOrDefault(s => s.DienThoai == Phone && s.MatKhau == Password);
+            var staff = db.NhanViens.SingleOrDefault(s => s.MaNV == Phone && s.MatKhau == Password);
             var user = db.KhachHangs.SingleOrDefault(s => s.DienThoai == Phone && s.MatKhau == Password);
             if (staff != null)
             {

@@ -16,5 +16,15 @@ namespace GroupProject.Controllers
             this.Ten = Ten;
             this.Quyen = Quyen;
         }
+
+        public string GetRight()
+        {
+            return this.Quyen;
+        }
+
+        public string GetID()
+        {
+            return this.UserName;
+        }
     }
 }

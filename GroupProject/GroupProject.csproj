@@ -2349,6 +2349,8 @@
     <Content Include="Areas\Admin\Views\Management\EditStaff.cshtml" />
     <Content Include="Areas\Admin\Views\Management\AddType.cshtml" />
     <Content Include="Areas\Admin\Views\Management\EditProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Management\Bills.cshtml" />
+    <Content Include="Areas\Admin\Views\Management\DetailsBill.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

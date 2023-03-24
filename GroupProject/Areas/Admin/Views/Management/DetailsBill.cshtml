@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DAL.FrameWork.ChiTietHoaDon>
+
+@{
+    ViewBag.Title = "DetailsBill";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetailsBill</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhuyenMai)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhuyenMai)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Nhận đơn", "AcceptBill", new { id = Model.First().MaHD })

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DAL.FrameWork.HoaDon>
+
+@{
+    ViewBag.Title = "Bills";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bills</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaNV)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaHD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongTien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaNV)
+        </td>
+        <td>
+            @Html.ActionLink("Chi tiết", "DetailsBill", new { id = item.MaHD }) |
+        </td>
+    </tr>
+}
+
+</table>

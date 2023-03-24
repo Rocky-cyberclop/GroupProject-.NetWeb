@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DAL.FrameWork;
+using GroupProject.Controllers;
 
 namespace GroupProject.Areas.Admin.Controllers
 {
     public class ManagementController : Controller
     {
-        NhatDatabase db = new NhatDatabase();
+        HaoDatabase db = new HaoDatabase();
         // GET: Admin/Managament
         public ActionResult Index()
         {
@@ -182,5 +183,34 @@ namespace GroupProject.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Products");
         }
+
+        //Bills Management
+        [HttpGet, ActionName("Bills")]
+        public ActionResult Bills()
+        {
+            var bills = db.HoaDons.Where(bs => bs.MaNV == null);
+            return View(bills);
+        }
+
+        [HttpGet, ActionName("DetailsBill")]
+        public ActionResult DetailsBill(string id)
+        {
+            var billDetails = db.ChiTietHoaDons.Where(bds => bds.MaHD == id);
+            return View(billDetails);
+        }
+
+        [HttpGet, ActionName("AcceptBill")]
+        public ActionResult AcceptBill(string id)
+        {
+            StaffSession staff = SessionHelper.GetStaffSession();
+            var maNV = staff.GetID();
+            var bill = db.HoaDons.Where(bs => bs.MaHD == id).FirstOrDefault();
+            bill.MaNV = maNV;
+            bill.TrangThai = "SUCCESS";
+            db.SaveChanges();
+            return RedirectToAction("Bills");
+        }
+
+
     }
 }

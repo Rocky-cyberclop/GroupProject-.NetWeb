@@ -24,7 +24,7 @@ namespace DAL.FrameWork
         public string MaKH { get; set; }
         public System.DateTime NgayDat { get; set; }
         public string TrangThai { get; set; }
-        public Nullable<long> TongTien { get; set; }
+        public long TongTien { get; set; }
         public string MaNV { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

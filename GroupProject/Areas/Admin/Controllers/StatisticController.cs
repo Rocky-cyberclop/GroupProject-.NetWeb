@@ -35,7 +35,7 @@ namespace GroupProject.Areas.Admin.Controllers
                 {
                     foreach (var bill in bills)
                     {
-                        sum += bill.TongTien;
+                        //sum += bill.TongTien;
                     }
                 }
                 label[i] = startDate.AddDays(i).ToString();

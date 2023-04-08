@@ -54,10 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrameWork\ChiTietHoaDon.cs">
-      <DependentUpon>NhatDatabase.tt</DependentUpon>
+      <DependentUpon>NganDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\GioHang.cs">
-      <DependentUpon>NhatDatabase.tt</DependentUpon>
+      <DependentUpon>NganDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HaoDatabase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -75,22 +75,37 @@
       <DependentUpon>HaoDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HinhAnh.cs">
-      <DependentUpon>NhatDatabase.tt</DependentUpon>
+      <DependentUpon>NganDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HoaDon.cs">
-      <DependentUpon>NhatDatabase.tt</DependentUpon>
+      <DependentUpon>NganDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\KhachHang.cs">
-      <DependentUpon>NhatDatabase.tt</DependentUpon>
+      <DependentUpon>NganDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\KhuyenMai.cs">
-      <DependentUpon>NhatDatabase.tt</DependentUpon>
+      <DependentUpon>NganDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\Loai.cs">
-      <DependentUpon>NhatDatabase.tt</DependentUpon>
+      <DependentUpon>NganDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrameWork\NganDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NganDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrameWork\NganDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NganDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrameWork\NganDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NganDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\NhanVien.cs">
-      <DependentUpon>NhatDatabase.tt</DependentUpon>
+      <DependentUpon>NganDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\NhatDatabase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -108,7 +123,10 @@
       <DependentUpon>NhatDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\SanPham.cs">
-      <DependentUpon>NhatDatabase.tt</DependentUpon>
+      <DependentUpon>NganDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrameWork\sysdiagram.cs">
+      <DependentUpon>NganDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -125,6 +143,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NhatDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="FrameWork\NganDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NganDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FrameWork\NganDatabase.edmx.diagram">
+      <DependentUpon>NganDatabase.edmx</DependentUpon>
+    </None>
     <None Include="FrameWork\NhatDatabase.edmx.diagram">
       <DependentUpon>NhatDatabase.edmx</DependentUpon>
     </None>
@@ -143,6 +168,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HaoDatabase.edmx</DependentUpon>
       <LastGenOutput>HaoDatabase.cs</LastGenOutput>
+    </Content>
+    <Content Include="FrameWork\NganDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NganDatabase.edmx</DependentUpon>
+      <LastGenOutput>NganDatabase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FrameWork\NganDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NganDatabase.edmx</DependentUpon>
+      <LastGenOutput>NganDatabase.cs</LastGenOutput>
     </Content>
     <Content Include="FrameWork\NhatDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

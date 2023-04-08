@@ -22,3 +22,15 @@ D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\obj\Debug\DAL.csproj.CoreCompile
 D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\obj\Debug\DAL.dll
 D:\Documents\HKII 22-23\WebNET\GroupProject\DAL\obj\Debug\DAL.pdb
+E:\HK2\Web NET\HauTran\DAL\bin\Debug\DAL.dll.config
+E:\HK2\Web NET\HauTran\DAL\bin\Debug\DAL.dll
+E:\HK2\Web NET\HauTran\DAL\bin\Debug\DAL.pdb
+E:\HK2\Web NET\HauTran\DAL\bin\Debug\EntityFramework.dll
+E:\HK2\Web NET\HauTran\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\HK2\Web NET\HauTran\DAL\bin\Debug\EntityFramework.xml
+E:\HK2\Web NET\HauTran\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\HK2\Web NET\HauTran\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\HK2\Web NET\HauTran\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\HK2\Web NET\HauTran\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\HK2\Web NET\HauTran\DAL\obj\Debug\DAL.dll
+E:\HK2\Web NET\HauTran\DAL\obj\Debug\DAL.pdb

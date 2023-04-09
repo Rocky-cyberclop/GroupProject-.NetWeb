@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9e9c070faf9f4ecea6afbf1c44bf4079" Name="Diagram1">
+        <EntityTypeShape EntityType="RAUCUQUAModel3.HinhAnh" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel3.HoaDon" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel3.KhachHang" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel3.Loai" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel3.NhanVien" Width="1.5" PointX="1.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel3.SanPham" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel3.sysdiagram" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel3.ChiTietHoaDon" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel3.GioHang" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel3.KhuyenMai" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <AssociationConnector Association="RAUCUQUAModel3.FK__HinhAnh__MaSP__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel3.FK__ChiTietHoa__MaHD__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel3.FK__HoaDon__MaKH__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel3.FK__HoaDon__MaNV__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel3.FK__GioHang__MaKH__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel3.FK__ChiTietHoa__MaSP__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel3.FK__GioHang__MaSP__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="RAUCUQUAModel3.FK__KhuyenMai__MaSP__1A14E395" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

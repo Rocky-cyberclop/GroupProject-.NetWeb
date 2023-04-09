@@ -18,7 +18,7 @@ namespace GroupProject.Areas.Admin
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new[] { "GroupProject.Areas.Admin.Controllers" }
+                new[] { "GroupProject.Areas.Admin.Controllers"}
             );
         }
     }

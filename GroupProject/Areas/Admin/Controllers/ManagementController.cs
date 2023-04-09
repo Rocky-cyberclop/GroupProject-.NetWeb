@@ -211,6 +211,5 @@ namespace GroupProject.Areas.Admin.Controllers
             return RedirectToAction("Bills");
         }
 
-
     }
 }

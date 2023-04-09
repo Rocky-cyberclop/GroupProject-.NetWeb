@@ -9,8 +9,9 @@ namespace GroupProject.Controllers
 {
     public class LoginController : Controller
     {
-        /*HaoDatabase db = new HaoDatabase();*/
-        NhatDatabase db = new NhatDatabase();
+        HaoDatabase db = new HaoDatabase();
+        // TrangDatabase db = new TrangDatabase();
+        /*ThanhDatabase db = new ThanhDatabase();*/
         // GET: Login
         public ActionResult Index()
         {
@@ -106,6 +107,7 @@ namespace GroupProject.Controllers
         public ActionResult Logout()
         {
             Session.Remove("UserSession");
+            Session.Remove("StaffSession");
             return View("Index");
         }
     }

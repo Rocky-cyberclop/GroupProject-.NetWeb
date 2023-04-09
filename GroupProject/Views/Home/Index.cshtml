@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<DAL.FrameWork.SanPham>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
@@ -8,6 +9,8 @@
     <link rel="stylesheet" href="~/Assets/Main/css/index.css">
 
 }
+
+
 
 <div class="slideshow-container">
     <div class="mySlides1">
@@ -27,28 +30,29 @@
 </div>
 
 <!-- Categories Section Begin -->
-<section class="categories">
+<section class="categories" id="cate">
     <div class="container">
         <div class="row">
-            <div class="categories__slider owl-carousel">
+            <div class="categories__slider owl-carousel featured__controls">
+
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="/Assets/Main/img/categories/cate_1.png">
-                        <h5><a href="#">All Product</a></h5>
+                        <h5><a href="#shopnow" onclick="ShowAll()">All Product</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="/Assets/Main/img/categories/cate_2.png">
-                        <h5><a href="#">RAU</a></h5>
+                        <h5><a href="#shopnow" onclick="ShowAll('r')">RAU</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="/Assets/Main/img/categories/cate_3.png">
-                        <h5><a href="#">CỦ</a></h5>
+                        <h5><a href="#shopnow" onclick="ShowAll('c')">CỦ</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="/Assets/Main/img/categories/cate_4.png">
-                        <h5><a href="#">TRÁI CÂY</a></h5>
+                        <h5><a href="#shopnow" onclick="ShowAll('q')">QUẢ</a></h5>
                     </div>
                 </div>
 
@@ -69,308 +73,46 @@
                 <div class="featured__controls">
                     <ul>
                         <li class="active" data-filter="*">All</li>
-                        <li data-filter=".vegetables">RAU</li>
-                        <li data-filter=".greens">CỦ</li>
-                        <li data-filter=".fruit">TRÁI CÂY</li>
+                        <li data-filter=".R" class="cate">RAU</li>
+                        <li data-filter=".C" class="cate">CỦ</li>
+                        <li data-filter=".Q" class="cate">QUẢ</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="row featured__filter">
+        <div class="row featured__filter content">
 
-           
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 mix @item.MaSP.Substring(0, 1)">
+                    <div class="featured__item border ">
+                        @{
+                            var bg = "/Assets/Products/Images/" + item.HinhAnhs.FirstOrDefault().Hinh;
+                            <div class="featured__item__pic set-bg" data-setbg="@bg" style="background-image: url(@bg)">
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
 
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
-                <div class="featured__item border ">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Products/Images/@ViewBag.HA"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-1.jpg&quot;);">
-                        
-
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-
-                        </ul>
+                                </ul>
+                            </div>
+                        }
+                        <div class="featured__item__text">
+                            <h6><a href="#">@item.Ten</a></h6>
+                            <h5>@item.Gia.ToString("#,##0")&#8363;</h5>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class=" pt-3 w-50 text-center border-end py-2 border-right">
+                                <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                            </small>
+                            <small class="pt-3 pt-3 w-50 text-center py-2">
+                                <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                            </small>
+                        </div>
                     </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">@ViewBag.TenSP</a></h6>
-                        <h5>@ViewBag.GiaSP</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class=" pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
+
                 </div>
-            </div>
+            }
 
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
-                <div class="featured__item border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-2.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-2.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Chuối (Bananas)</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
-                <div class="featured__item border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-3.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-3.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Trái Ổi</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
-                <div class="featured__item border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-4.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-4.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mix greens">
-                <div class="featured__item  border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-5.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-5.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
-                <div class="featured__item border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-6.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-6.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
-                <div class="featured__item border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-7.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-2.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6>
-                            <a href="#">
-                                Water Melon
-
-                            </a>
-                        </h6>
-                        <h5>$30.00</h5>
-
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fruit">
-                <div class="featured__item border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-8.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-8.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Apples</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
-                <div class="featured__item  border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-9.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-2.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
-                <div class="featured__item border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-13.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-13.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
-                <div class="featured__item border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-14.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-14.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
-                <div class="featured__item border">
-                    <div class="featured__item__pic set-bg" data-setbg="/Assets/Main/img/products/product-15.jpg"
-                         style="background-image: url(&quot;/Assets/Main/img/product/product-15.jpg&quot;);">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                    <div class="d-flex border-top">
-                        <small class="pt-3 w-50 text-center border-end py-2 border-right">
-                            <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                        </small>
-                        <small class="pt-3 w-50 text-center py-2">
-                            <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-
+            }
         </div>
     </div>
 </section>
@@ -426,6 +168,24 @@
     </div>
 </div>
 <!-- Feature Intro End -->
+
+<script>
+    function ShowAll(id) {
+        $.ajax({
+            type: "GET",
+            url: "/Home/ShowAll",
+            data: { TypeID: id },
+            success: function (response) {
+                $("#shopnow").html(response);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+    }
+
+
+</script>
 
 @section Scripts{
     <script src="~/Assets/Main/js/index.js"></script>

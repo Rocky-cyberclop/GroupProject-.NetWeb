@@ -1,0 +1,58 @@
+﻿@model GroupProject.Models.ChangePass
+
+@{
+    ViewBag.Title = "ChangePass";
+    Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    <div class="card card-outline-secondary">
+        <div class="card-header">
+            <h3 class="mb-0">Change Password</h3>
+        </div>
+        <div class="card-body">
+            <form class="form" role="form" autocomplete="off">
+                <div class="form-group">
+                    <label for="inputPasswordOld">Current Password</label>
+                    <input type="password" name="CurrentPassword" class="form-control" id="inputPasswordOld" required>
+                    <span class="form-text small text-muted">
+                        Enter the current password.
+                    </span>
+                    @*<div class="text-danger">@Html.ValidationMessageFor(m => m.CurrentPassword)</div>*@
+                    <div class="text-danger">
+                        @Html.ValidationMessage("CurrentPassword")
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPasswordNew">New Password</label>
+                    <input type="password" name="NewPassword" class="form-control" id="inputPasswordNew" required>
+                    <span class="form-text small text-muted">
+                        Enter the new password.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="inputPasswordNewVerify">Confirm Password</label>
+                    <input type="password" name="ConfirmPassword" class="form-control" id="inputPasswordNewVerify" required>
+                    <span class="form-text small text-muted">
+                        To confirm, type the new password again.
+                    </span>
+                    <div class="text-danger">@Html.ValidationMessageFor(m => m.ConfirmPassword)</div>
+                    <div class="text-danger">
+                        @Html.ValidationMessage("ConfirmPass")
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg float-md-left">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>

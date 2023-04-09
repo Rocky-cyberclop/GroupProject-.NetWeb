@@ -118,10 +118,10 @@
         var labelChart = ["Jan", "Feb", "Mar", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
         // Area Chart Example
-
+        var myLineChart;
         function ResetChart(dataSet = {}, label = []) {
             var ctx = document.getElementById("myAreaChart");
-            var myLineChart = new Chart(ctx, {
+            myLineChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: label,
@@ -142,17 +142,20 @@
             });
         }
 
+        ResetChart(dataSet, labelChart);
+
 
         $(".btn-get-data").click(() => {
             var start = $(".start-date")[0].value;
             var end = $(".end-date")[0].value;
             $.ajax({
-                url: 'GetData',
+                url: 'Statistic/GetData',
                 type: 'get',
                 data: { start: start , end: end },
                 success: function (res) {
                     labelChart = res.label;
                     dataSet.data = res.earnings;
+                    myLineChart.destroy();
                     ResetChart(dataSet, labelChart);
                 }
             }, 1000)

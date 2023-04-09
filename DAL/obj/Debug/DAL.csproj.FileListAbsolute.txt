@@ -46,3 +46,15 @@ E:\NetNhom5\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 E:\NetNhom5\DAL\obj\Debug\DAL.csproj.CopyComplete
 E:\NetNhom5\DAL\obj\Debug\DAL.dll
 E:\NetNhom5\DAL\obj\Debug\DAL.pdb
+D:\HK2 2022-2023\TN230\GroupProject\DAL\bin\Debug\DAL.dll.config
+D:\HK2 2022-2023\TN230\GroupProject\DAL\bin\Debug\DAL.dll
+D:\HK2 2022-2023\TN230\GroupProject\DAL\bin\Debug\DAL.pdb
+D:\HK2 2022-2023\TN230\GroupProject\DAL\bin\Debug\EntityFramework.dll
+D:\HK2 2022-2023\TN230\GroupProject\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\HK2 2022-2023\TN230\GroupProject\DAL\bin\Debug\EntityFramework.xml
+D:\HK2 2022-2023\TN230\GroupProject\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\HK2 2022-2023\TN230\GroupProject\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\HK2 2022-2023\TN230\GroupProject\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\HK2 2022-2023\TN230\GroupProject\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\HK2 2022-2023\TN230\GroupProject\DAL\obj\Debug\DAL.dll
+D:\HK2 2022-2023\TN230\GroupProject\DAL\obj\Debug\DAL.pdb

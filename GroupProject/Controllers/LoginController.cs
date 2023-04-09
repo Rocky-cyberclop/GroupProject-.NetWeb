@@ -10,7 +10,8 @@ namespace GroupProject.Controllers
     public class LoginController : Controller
     {
         /*HaoDatabase db = new HaoDatabase();*/
-        TrangDatabase db = new TrangDatabase();
+        // TrangDatabase db = new TrangDatabase();
+        ThanhDatabase db = new ThanhDatabase();
         // GET: Login
         public ActionResult Index()
         {

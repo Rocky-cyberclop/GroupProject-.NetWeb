@@ -2391,6 +2391,9 @@
     <Content Include="Views\Profile\ChangePass.cshtml" />
     <Content Include="Views\Profile\getListHD.cshtml" />
     <Content Include="Views\Profile\Details.cshtml" />
+    <Content Include="Views\Cart\CartNull.cshtml" />
+    <Content Include="Views\Cart\Bill.cshtml" />
+    <Content Include="Views\Cart\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

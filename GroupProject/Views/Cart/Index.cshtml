@@ -1,12 +1,16 @@
-﻿
+﻿@model IEnumerable<DAL.FrameWork.GioHang>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
 }
 
+
 @section Styles{
     <link rel="stylesheet" href="~/Assets/Main/css/cart.css">
+
 }
+
 
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section cart-banner">
@@ -26,133 +30,191 @@
 </section>
 <!-- Breadcrumb Section End -->
 <!-- Shoping Cart Section Begin -->
-<section class="shoping-cart spad">
+
+
+@if (Model.Count() > 0)
+{
+    double tongtien = 0;
+    double shippingprice = 30000;
+
+
+    <section class="shoping-cart spad">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="shoping__product">Sản Phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>
+                                        Số tiền
+                                        <!-- <span title="Sau khi áp dụng khuyến mãi" style="color:Highlight; font-size: 15px"><i class="fa fa-question-circle"></i>  </span>-->
+                                    </th>
+
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                var thanhtien = item.SoLuong * item.GiaBan;
+                                double thanhtien1 = (double)thanhtien;
+                                if (item.SoLuong > item.SanPham.KhuyenMais.SingleOrDefault().SoLuong - 1)
+                                {
+                                    thanhtien1 = (double)thanhtien - (double)thanhtien * (double)item.SanPham.KhuyenMais.SingleOrDefault().TiLe;
+                                }
+
+                                tongtien = (double)tongtien + (double)thanhtien1;
+
+                                <tbody>
+                                    <tr>
+                                        <td class="shoping__cart__item" style="width">
+                                            @{
+                                                var src = "/Assets/Products/Images/" + item.SanPham.HinhAnhs.FirstOrDefault().Hinh;
+                                                <img src="@src" width="45px" />
+                                            }
+                                            <h5> @Html.DisplayFor(modelItem => item.SanPham.Ten)</h5>
+                                            <p style="font-size: 15px; font-style: italic; color:forestgreen; font-family: Arial"> Mua số lượng từ @item.SanPham.KhuyenMais.FirstOrDefault().SoLuong sẽ được giảm giá</p>
+
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            @((item.SanPham.Gia).ToString("N0")) đ
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <button class="minus is-form" type="button" onclick="Minus('@item.MaSP')" style="border:none; height: 29px">
+                                                -
+                                            </button>
+
+                                            <input class=" @item.MaSP" value="@item.SoLuong" style="width:60px; height: 29px; text-align:center">
+
+                                            <button class="plus is-form" type="button" onclick="Add('@item.MaSP')" style="border:none; height: 29px">
+                                                +
+                                            </button>
+
+                                        </td>
+                                        <td class="shoping__cart__total">
+                                            @if (@item.SoLuong >= item.SanPham.KhuyenMais.First().SoLuong)
+                                            {
+                                                <del style="font-weight:200">@((item.SanPham.Gia * item.SoLuong).ToString("N0"))</del>
+
+                                            }
+
+
+
+                                            @thanhtien1.ToString("N0") đ
+                                        </td>
+
+
+                                        <td class="shoping__cart__close">
+                                            @using (Html.BeginForm("Delete", "Cart", new { id = item.MaSP }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <input type="submit" value="Xóa" style="color: red; text-decoration: underline" class="btn btn-default" />
+
+                                            }
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                </div>
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-6">
+                        <div class="shoping__checkout">
+                            <h5 style="font-size: 30px; color: #5D13E7;">Cart Total</h5>
+                            <ul>
+                                <li>Tổng thanh toán (@Model.Count() sản phẩm)  :<span>@tongtien.ToString("N0") đ</span></li>
+                                @{
+                                    var total = tongtien + shippingprice;
+                                }
+                                <li>
+                                    Phí giao hàng
+                                    <a href="#" title="Phí giao hàng mặc định" style="color: black;"><i class="fa fa-question-circle"></i> <span>30,000 đ</span> </a>
+                                </li>
+
+                                <li>Tạm tính<span> @total.ToString("N0") đ</span></li>
+
+                            </ul>
+
+                            <div class="shopping-submit">
+                                <a href="#" class="primary-btn btn" style="background-color: #3cdb8b;" onclick="window.open('/Cart/Bill','_self')">Mua hàng</a>
+                            </div>
+                            <div class="shoping__delete mt-2">
+                                <a href="#" class="primary-btn btn" style="background-color: darkgrey;" data-toggle="modal" data-target="#delete-modal"
+                                   onclick="DeleteShowConfirm()">Xóa toàn bộ giỏ hàng</a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    break;
+                }
+
+
+            </div>
+        </div>
+    </section>
+
+}
+
+
+@if (Model.Count() == 0)
+{
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="shoping__cart__table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="shoping__product">Products</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="shoping__cart__item">
-                                    <img src="~/Assets/Main/img/cart/cart-1.jpg" alt="">
-                                    <h5>Fresh Garden Vegetable</h5>
-                                    <div class="item-note">
-                                        <span>*Note:.....</span>
-                                    </div>
-                                </td>
-                                <td class="shoping__cart__price">
-                                    $55.00
-                                </td>
-                                <td class="shoping__cart__quantity">
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="2">
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="shoping__cart__total">
-                                    $110.00
-                                </td>
-                                <td class="shoping__cart__item__close">
-                                    <span class="icon_close"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="shoping__cart__item">
-                                    <img src="~/Assets/Main/img/cart/cart-2.jpg" alt="">
-                                    <h5>Fresh Apples</h5>
-                                    <div class="item-note">
-                                        <span></span>
-                                    </div>
-                                </td>
-                                <td class="shoping__cart__price">
-                                    $19.00
-                                </td>
-                                <td class="shoping__cart__quantity">
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="shoping__cart__total">
-                                    $19.00
-                                </td>
-                                <td class="shoping__cart__item__close">
-                                    <span class="icon_close"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="shoping__cart__item">
-                                    <img src="~/Assets/Main/img/cart/cart-3.jpg" alt="">
-                                    <h5>Organic Guava</h5>
-                                    <div class="item-note">
-                                        <span></span>
-                                    </div>
-                                </td>
-                                <td class="shoping__cart__price">
-                                    $26.00
-                                </td>
-                                <td class="shoping__cart__quantity">
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="shoping__cart__total">
-                                    $26.00
-                                </td>
-                                <td class="shoping__cart__item__close">
-                                    <span class="icon_close"></span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-lg-6">
+            <div class="col-lg-12" style="text-align:center">
+                <br />
+                <h3>Oh giỏ hàng của bạn đang trống </h3>
+                <br />
+                <h4>
+                    Hãy quay về <a style="color:blue; text-decoration:underline;cursor:pointer" onclick="window.open('/Home','_self')">
+                        Trang Chủ
+                    </a> và tiếp tục mua sắm nhé !
+                </h4>
 
             </div>
-            <div class="col-lg-6">
-                <div class="shoping__checkout">
-                    <h5 style="font-size: 30px; color: #5D13E7;">Cart Total</h5>
-                    <ul>
-                        <li>Subtotal <span>$454.98</span></li>
-                        <li>
-                            Shipping charges
-                            <a href="#" title="Calculation by price" style="color: black;"><i class="fa fa-question-circle"></i> <span>$4.00</span> </a>
-                            <!--gắn href trang thông tin vận chuyển-->
-                        </li>
-
-                        <li>Total <span>$454.98</span></li>
-                    </ul>
-                    <div class="shopping-submit">
-                        <a href="#" class="primary-btn btn" style="background-color: #3cdb8b;">PROCEED TO CHECKOUT</a>
-                    </div>
-                    <div class="shoping__delete mt-2">
-                        <a href="#" class="primary-btn btn" style="background-color: darkgrey;">DELETE THE ENTIRE CART</a>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
     </div>
-</section>
+
+}
+
+<div class="modal fade" tabindex="-1" role="dialog" id="delete-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body delete-name">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("DeleteAll", "Cart", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input name="id" class="delete-id" type="hidden" />
+                    <input type="submit" value="Xóa giỏ hàng" class="btn btn-primary delete-now" />
+                }
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Shoping Cart Section End -->
 
@@ -165,4 +227,47 @@
     <script src="~/Assets/Main/js/mixitup.min.js"></script>
     <script src="~/Assets/Main/js/owl.carousel.min.js"></script>
     <script src="~/Assets/Main/js/main.js"></script>
+    <script type="text/javascript">
+        @*$(function () {
+            $(".js-update-item-cart").click(function (event) {
+                event.preventDefault();
+                let $this = $(this);
+                let id = $this.attr('data-id');
+                console.log(id);
+            })
+        })*@
+
+        function Add(id) {
+
+            $.ajax({
+                url: 'Cart/PlusQuantity',
+                type: 'get',
+                data: { /*user: 'KH006' ,*/masp: id },
+                success: function (res) {
+                    $("." + id).val(res.quantity);
+                }
+            })
+            location.reload();
+        }
+        function Minus(id) {
+            $.ajax({
+                url: 'Cart/MinusQuantity',
+                type: 'get',
+                data: { masp: id },
+                success: function (res) {
+                    $("." + id).val(res.quantity);
+                }
+
+            })
+            location.reload();
+        }
+    </script>
+    <script src="~/Assets/Main/js/Cart/Cart.js"></script>
+    <script>
+        var DeleteShowConfirm = function () {
+            $("#delete-modal").modal('show')
+            $(".delete-name > p").text("Bạncó chắc chắn xóa giỏ hàng?")
+            $(".delete-id").val(id)
+        }
+    </script>
 }

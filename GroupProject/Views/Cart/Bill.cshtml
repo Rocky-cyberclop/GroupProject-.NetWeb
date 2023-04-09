@@ -1,0 +1,200 @@
+﻿
+@model IEnumerable<DAL.FrameWork.GioHang>
+
+@{
+    ViewBag.Title = "Bill";
+    Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
+}
+
+
+
+@if (Model.Count() > 0)
+{
+    double tongtien = 0;
+    double tongtiencokm = 0;
+    double shippingprice = 30000;
+    double thanhtienmoi = 0;
+    double discount = 0;
+    <section class="shoping-cart spad">
+        <div class="container">
+            <table class="table">
+                <tr>
+                    <h4 style="font-weight:bold">Thông tin khách hàng</h4>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <span>  <h5>Tên khách hàng: </h5> @item.KhachHang.Ten</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>   <h5>Số điện thoại: </h5>@item.KhachHang.DienThoai</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>  <h5>Địa chỉ: </h5> @item.KhachHang.DiaChi</span>
+                        </td>
+
+                    </tr>
+
+                    if (Model.Count() > 0)
+                    {
+                        break;
+                    }
+                }
+
+            </table>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="shoping__product">Thông tin danh sách sản phẩm </th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <th style="text-align:left">Sản Phẩm</th>
+
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>
+                                    Thành tiền
+                                </th>
+
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                var thanhtien = item.SoLuong * item.GiaBan;
+                                thanhtienmoi = (double)thanhtien;
+                                if (item.SoLuong > item.SanPham.KhuyenMais.SingleOrDefault().SoLuong - 1)
+                                {
+                                    thanhtienmoi = (double)thanhtien - (double)thanhtien * (double)item.SanPham.KhuyenMais.SingleOrDefault().TiLe;
+                                }
+
+                                tongtien = (double)tongtien + (double)thanhtien;
+                                tongtiencokm = (double)tongtiencokm + (double)thanhtienmoi;
+                                discount = tongtien - tongtiencokm;
+                                <tbody>
+
+                                    <tr>
+                                        <td class="shoping__cart__item">
+                                            @{
+                                                var src = "/Assets/Products/Images/" + item.SanPham.HinhAnhs.FirstOrDefault().Hinh;
+                                                <img src="@src" width="45px" />
+                                            }
+                                            <h5> @Html.DisplayFor(modelItem => item.SanPham.Ten)</h5>
+
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            @((item.SanPham.Gia).ToString("N0")) đ
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            @item.SoLuong
+                                        </td>
+                                        <td>
+                                            @((item.SanPham.Gia * item.SoLuong).ToString("N0"))
+
+                                    </tr>
+                                </tbody>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-9">
+                    <div class="shoping__checkout" style="background-color:snow">
+                        <h5 style="font-size: 30px; color:tomato">Chi tiết thanh toán</h5>
+                        <ul>
+                            <li>Tổng tiền hàng <span style="color:red">@tongtien.ToString("N0") đ</span></li>
+                            <li>
+                                Phí vận chuyển
+                                <a href="#" title="Phí ship mặc định" style="color: black;"><span style="color:red">30,000 đ</span> </a>
+
+                            </li>
+                            @{
+                                var total = tongtiencokm + shippingprice;
+
+                            }
+                            <li>Khuyến mãi<span style="color:red">@discount.ToString("N0") đ</span></li>
+                            <li>Tổng tiền <span style="color:red"> @total.ToString("N0") đ</span></li>
+                        </ul>
+
+                        <!-- <div class="shopping-submit">
+                            <a href="#" class="primary-btn btn" style="background-color: orangered;  color:white" onclick="thanhtoan()">Thanh toán </a>
+                        </div>
+                        -->
+
+                        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <button class="primary-btn btn col-12" style="background-color:orangered" type="submit">Đặt hàng</button>
+                        }
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+}
+
+<!-- Shoping Cart Section End -->
+
+@section Scripts{
+    <script src="~/Assets/Main/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Main/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Main/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Main/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Main/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Main/js/mixitup.min.js"></script>
+    <script src="~/Assets/Main/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Main/js/main.js"></script>
+    <script type="text/javascript">
+        @*$(function () {
+            $(".js-update-item-cart").click(function (event) {
+                event.preventDefault();
+                let $this = $(this);
+                let id = $this.attr('data-id');
+                console.log(id);
+            })
+        })*@
+
+        function Add(id) {
+
+            $.ajax({
+                url: 'Cart/PlusQuantity',
+                type: 'get',
+                data: { /*user: 'KH006' ,*/masp: id },
+                success: function (res) {
+                    $("." + id).val(res.quantity);
+                }
+            })
+            location.reload();
+        }
+        function Minus(id) {
+            $.ajax({
+                url: 'Cart/MinusQuantity',
+                type: 'get',
+                data: { masp: id },
+                success: function (res) {
+                    $("." + id).val(res.quantity);
+                }
+
+            })
+            location.reload();
+        }
+
+    </script>
+
+}

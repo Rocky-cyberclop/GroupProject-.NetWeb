@@ -34,3 +34,15 @@ E:\HK2\Web NET\HauTran\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 E:\HK2\Web NET\HauTran\DAL\obj\Debug\DAL.csproj.CopyComplete
 E:\HK2\Web NET\HauTran\DAL\obj\Debug\DAL.dll
 E:\HK2\Web NET\HauTran\DAL\obj\Debug\DAL.pdb
+E:\NetNhom5\DAL\bin\Debug\DAL.dll.config
+E:\NetNhom5\DAL\bin\Debug\DAL.dll
+E:\NetNhom5\DAL\bin\Debug\DAL.pdb
+E:\NetNhom5\DAL\bin\Debug\EntityFramework.dll
+E:\NetNhom5\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\NetNhom5\DAL\bin\Debug\EntityFramework.xml
+E:\NetNhom5\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\NetNhom5\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\NetNhom5\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\NetNhom5\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\NetNhom5\DAL\obj\Debug\DAL.dll
+E:\NetNhom5\DAL\obj\Debug\DAL.pdb

@@ -9,7 +9,7 @@ namespace GroupProject.Controllers
 {
     public class HomeController : Controller
     {
-        NganDatabase db = new NganDatabase();
+        TrangDatabase db = new TrangDatabase();
         public ActionResult Index()
         {
             //var sp = db.SanPhams.First();

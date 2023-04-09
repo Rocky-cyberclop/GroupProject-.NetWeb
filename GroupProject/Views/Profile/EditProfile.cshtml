@@ -1,0 +1,131 @@
+﻿@model DAL.FrameWork.KhachHang
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
+}
+
+@*<h2>EditProfile</h2>*@
+@section StyleNotOverride{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/Assets/Main/css/styleprofile.css" type="text/css">
+}
+
+<div class="container bootstrap snippet">
+    <div class="row">
+        <div class="col-sm-3">
+            <!--left col-->
+
+            <div class="text-center">
+                <img src="https://png.pngtree.com/png-clipart/20190904/original/pngtree-hand-drawn-flat-wind-user-avatar-icon-png-image_4492039.jpg" class="avatar img-circle img-thumbnail" alt="avatar">
+                <input type="file" class="text-center center-block file-upload">
+            </div><br>
+
+            <ul class="list-group">
+                <li class="list-group-item text-dark">Hồ sơ  <i class="fas fa-file-alt"></i></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fas fa-user"></i> @Html.ActionLink("Tài khoản của tôi", "Index")</strong></span></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fas fa-receipt"></i> @Html.ActionLink("Lịch sử mua hàng", "getListHD")</strong></span></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fas fa-lock"></i> @Html.ActionLink("Đổi mật khẩu", "ChangePass")</strong></span></li>
+            </ul>
+
+        </div><!--/col-3-->
+        <div class="col-sm-9">
+            <p><h2>Hồ sơ của tôi</h2></p>
+            <p><h5>Quản lý thông tin về hồ sơ để bảo mật tài khoản</h5></p>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.MaKH)
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">
+                                    Họ và tên
+                                </label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">
+                                    Ngày Sinh
+                                </label>
+                                <div class="col-md-10">
+                                    @*@Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+
+                                    @{
+                                        DateTime bday = (DateTime)Model.NgaySinh;
+                                        string y = bday.Year.ToString();
+                                        int month = bday.Month;
+                                        string m = month + "";
+                                        if (month < 10)
+                                        {
+                                            m = "0" + month;
+                                        }
+                                        int day = bday.Day;
+                                        string d = day + "";
+                                        if (day < 10)
+                                        {
+                                            d = "0" + day;
+                                        }
+                                        string birthday = y + "-" + m + "-" + d;
+                                    }
+                                    <input type="date" name="NgaySinh" value="@birthday" class="form-control" />
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">
+                                    Địa Chỉ
+                                </label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">
+                                    Điện thoại
+                                </label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Lưu</button>
+                                    <button class="btn btn-lg btn-success text-white" type="button">
+                                        @Html.ActionLink("Quay lại", "Index")
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <hr>
+                </div><!--/tab-pane-->
+            </div><!--/tab-content-->
+        </div><!--/col-9-->
+    </div><!--/row-->
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

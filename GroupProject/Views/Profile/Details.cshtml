@@ -1,0 +1,102 @@
+﻿@model IEnumerable<DAL.FrameWork.ChiTietHoaDon>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
+}
+
+<div class="panel-heading" style="font-weight:bold; font-size:50px">
+    Chi tiết đơn hàng
+</div>
+
+@{
+    double total = 0;
+    double discount = 0;
+}
+<div class="card container">
+
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            //if (item.KhuyenMai != null)
+            //{
+            //    discount += (double)item.KhuyenMai; //Khuyen mai trong csdl kieu string
+            //}
+            <tr>
+                <td rowspan="3" width="250">
+                    <img src="~/Assets/Products/Images/@item.SanPham.HinhAnhs.First().Hinh" />
+                </td>
+                <td>
+                    @item.SanPham.Ten
+                </td>
+                <td rowspan="3" class="text-center align-middle">
+                    @{
+                        double value = (double)item.GiaBan * item.SoLuong;
+                        total += value;
+                    }
+                    &#8363;@value.ToString("###,###")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Đơn giá: &#8363;@item.GiaBan.Value.ToString("###,###")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Số lượng: @item.SoLuong
+                </td>
+            </tr>
+        }
+
+        <tr>
+            <td colspan="2" class="text-right">
+                Tổng tiền hàng:
+            </td>
+            <td class="text-center align-middle">
+                &#8363;@total.ToString("###,###")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-right">
+                Phí vận chuyển:
+            </td>
+            <td class="text-center align-middle">
+                &#8363;
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-right">
+                Giảm giá:
+
+            </td>
+            <td class="text-center align-middle">
+                @{
+
+                }
+                &#8363;
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-right">
+                Thành tiền:
+            </td>
+            <td class="text-center align-middle">
+                <h3 class="font-weight-bold text-success">
+                    @{
+                        double money = total - discount;
+                    }
+                    &#8363;@money.ToString("###,###")
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-right">
+                Phương thức thanh toán:
+            </td>
+            <td class="text-center align-middle">
+            </td>
+        </tr>
+
+    </table>
+</div>

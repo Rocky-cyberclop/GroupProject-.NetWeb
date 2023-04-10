@@ -26,62 +26,62 @@
                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <p>or use your telephone number for registration</p>
-            <input type="text" name="DienThoai" value="@ViewBag.PhoneReg" placeholder="Phone Number">
-            <div class="text-danger">@Html.ValidationMessageFor(m => m.DienThoai)</div>
-            <input type="text" name="Ten" value="@ViewBag.Name" placeholder="Name">
+            <p>Hoặc sử dụng số điện thoại của bạn để đăng ký</p>
+            <input type="text" name="DienThoai" value="@ViewBag.Phone" placeholder="Số điện thoại">
+            @Html.ValidationMessage("PhoneReg", new { @class = "text-danger" })
+
+            <input type="text" name="Ten" value="@ViewBag.Name" placeholder="Tên của bạn">
             <input type="date" name="NgaySinh" value="@ViewBag.Birthday" />
-            <input type="text" name="DiaChi" value="@ViewBag.Address" placeholder="Address">
-            <input type="password" name="Password" placeholder="Password">
-            <div class="text-danger">
-                @Html.ValidationMessage("PasswordReg")
-            </div>
-            <input type="password" name="MatKhau" placeholder="Confirm password">
+            @Html.ValidationMessage("Birthday", new { @class = "text-danger" })
+
+            <input type="text" name="DiaChi" value="@ViewBag.Address" placeholder="Địa chỉ">
+            <input type="password" name="Password" placeholder="Mật khẩu">
+            @Html.ValidationMessage("PasswordReg", new { @class = "text-danger" })
+
+            <input type="password" name="MatKhau" placeholder="Xác nhận mật khẩu">
             <div class="text-danger">@Html.ValidationMessageFor(m => m.MatKhau)</div>
-            <div class="text-danger">
-                @Html.ValidationMessage("ConfirmPassword")
-            </div>
+            @Html.ValidationMessage("ConfirmPassword", new { @class = "text-danger" })
+
             <div class="form-check">
                 <input class="form-check-input l-1" type="checkbox" name="checkTerms" id="flexCheckDefault" />
-                <label class="form-check-label" for="flexCheckDefault">I agree all statements in  <a href="#" class="term">Terms</a></label>
+                <label class="form-check-label" for="flexCheckDefault">Tôi đồng ý với các <a href="#" class="term">Điều khoản</a></label>
             </div>
-            <div class="text-danger">
-                @Html.ValidationMessage("Terms")
-            </div>
+            @Html.ValidationMessage("Terms", new { @class = "text-danger" })
 
-            <button type="submit">Sign Up</button>
+            <button type="submit">Đăng ký</button>
         }
     </div>
     <div class="sign-in">
         @using (Html.BeginForm("Login", "Login", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
-            <h1>Sign in</h1>
+            <h1>Đăng nhập</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <p>or use your account</p>
-            <input type="text" name="Phone" value="@ViewBag.Phone" placeholder="Phone Number">
-            <div class="text-danger">@Html.ValidationMessage("Phone")</div>
-            <input type="password" name="Password" placeholder="Password">
-            <div class="text-danger">@Html.ValidationMessage("ErrorPassword")</div>
-            <a href="#">Forget your Password?</a>
-            <button type="submit">Sign In</button>
+            <p>Hoặc sử dụng tài khoản của bạn</p>
+            <input type="text" name="Phone" value="@ViewBag.Phone" placeholder="Số điện thoại">
+            @Html.ValidationMessage("Phone", new { @class = "text-danger" })
+            <input type="password" name="Password" placeholder="Mật khẩu">
+            @Html.ValidationMessage("ErrorPassword", new { @class = "text-danger" })
+            <a href="#">Quên mật khẩu?</a>
+            <button type="submit">Đăng nhập</button>
         }
     </div>
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-left">
-                <h1>Wellcome Back!</h1>
-                <p>To keep connected with us please login with your personal info</p>
-                <button id="signIn">Sign In</button>
+                <h1>Chào mừng trở lại!</h1>
+                <p>Để giữ kết nối với chúng tôi, vui lòng đăng nhập bằng tài khoản cá nhân</p>
+                <button id="signIn">Đăng nhập</button>
+
             </div>
             <div class="overlay-right">
-                <h1>Hello, Friend</h1>
-                <p>Enter your personal details and start journey with us</p>
-                <button id="signUp">Sign Up</button>
+                <h1>Chào mừng bạn</h1>
+                <p>Nhập chi tiết cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
+                <button id="signUp">Đăng ký</button>
             </div>
         </div>
     </div>

@@ -26,5 +26,10 @@ namespace GroupProject.Controllers
         {
             return this.UserName;
         }
+
+        public string GetName()
+        {
+            return this.Ten;
+        }
     }
 }

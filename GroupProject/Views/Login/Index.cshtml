@@ -1,18 +1,8 @@
 ﻿@model DAL.FrameWork.KhachHang
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/LoginLayout/_LoginLayout.cshtml";
-}
-
-@section Styles{
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-
-    <link rel="stylesheet" href="~/Assets/Main/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <link rel="stylesheet" href="~/Assets/Main/css/stylelogin.css" type="text/css">
 }
 
 <div class="container" id="main">
@@ -20,15 +10,18 @@
         @using (Html.BeginForm("Register", "Login", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
-            <h1>Create Account</h1>
+            <h1>Đăng ký tài khoản</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <p>Hoặc sử dụng số điện thoại của bạn để đăng ký</p>
+            <p>hoặc sử dụng số điện thoại của bạn để đăng ký</p>
             <input type="text" name="DienThoai" value="@ViewBag.Phone" placeholder="Số điện thoại">
             @Html.ValidationMessage("PhoneReg", new { @class = "text-danger" })
+
+            <input type="text" name="Email" value="@ViewBag.Email" placeholder="Email">
+            @Html.ValidationMessage("EmailReg", new { @class = "text-danger" })
 
             <input type="text" name="Ten" value="@ViewBag.Name" placeholder="Tên của bạn">
             <input type="date" name="NgaySinh" value="@ViewBag.Birthday" />
@@ -62,11 +55,13 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <p>Hoặc sử dụng tài khoản của bạn</p>
-            <input type="text" name="Phone" value="@ViewBag.Phone" placeholder="Số điện thoại">
-            @Html.ValidationMessage("Phone", new { @class = "text-danger" })
+            <input type="text" name="Email" value="@ViewBag.Email" placeholder="Email/Số điện thoại">
+            @Html.ValidationMessage("Email", new { @class = "text-danger" })
+            
             <input type="password" name="Password" placeholder="Mật khẩu">
             @Html.ValidationMessage("ErrorPassword", new { @class = "text-danger" })
-            <a href="#">Quên mật khẩu?</a>
+
+            @Html.ActionLink("Quên mật khẩu", "ForgetPassword", "", new { @class = "text-decoration-none"})
             <button type="submit">Đăng nhập</button>
         }
     </div>

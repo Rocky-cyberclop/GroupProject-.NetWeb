@@ -5,14 +5,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DAL.FrameWork;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity;
 
 namespace GroupProject.Controllers
 {
     public class LoginController : Controller
     {
-        HaoDatabase db = new HaoDatabase();
+        //HaoDatabase db = new HaoDatabase();
         // TrangDatabase db = new TrangDatabase();
         /*ThanhDatabase db = new ThanhDatabase();*/
+        NhatDatabase db = new NhatDatabase();
         // GET: Login
         public ActionResult Index()
         {
@@ -20,22 +23,27 @@ namespace GroupProject.Controllers
         }
 
         [HttpPost, ActionName("Login")]
-        public ActionResult Login(string Phone, string Password)
+        public ActionResult Login(string Email, string Password)
         {
-            if(Phone == "")
+            if(Email == "")
             {
-                ModelState.AddModelError("Phone", "Tên đăng nhập không được để trống.");
+                ModelState.AddModelError("Email", "Tên đăng nhập không được để trống.");
                 return View("Index");
             }
             if(Password == "")
             {
                 ModelState.AddModelError("ErrorPassword", "Mật khẩu không được để trống.");
-                ViewBag.Phone = Phone;
+                ViewBag.Phone = Email;
                 return View("Index");
             }
 
-            var staff = db.NhanViens.SingleOrDefault(s => s.MaNV == Phone && s.MatKhau == Password);
-            var user = db.KhachHangs.SingleOrDefault(s => s.DienThoai == Phone && s.MatKhau == Password);
+            var user = db.KhachHangs.SingleOrDefault(s => s.DienThoai == Email && s.MatKhau == Password);
+            if(user == null)
+            {
+                user = db.KhachHangs.SingleOrDefault(s => s.Email == Email && s.MatKhau == Password);
+            }
+
+            var staff = db.NhanViens.SingleOrDefault(s => s.MaNV == Email && s.MatKhau == Password);
             if (staff != null)
             {
                 SessionHelper.SetSession(new StaffSession(staff.MaNV, staff.Ten, staff.Quyen));
@@ -49,12 +57,13 @@ namespace GroupProject.Controllers
             else
             {
                 ModelState.AddModelError("ErrorPassword", "Tên đăng nhập hoặc mật khẩu không chính xác.");
-                ViewBag.Phone = Phone;
+                ViewBag.Name = Email;
             }
             return View("Index");
         }
 
         [HttpPost, ActionName("Register")]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Register(KhachHang model, string Password, string checkTerms)
         {
@@ -81,22 +90,43 @@ namespace GroupProject.Controllers
             ViewBag.Name = model.Ten;
             ViewBag.Address = model.DiaChi;
 
-            //kt so dien thoai
-            var checkPhone = db.KhachHangs.SingleOrDefault(s => s.DienThoai == model.DienThoai);
-            string pattern = "[0-9]{10,10}";
-            if (model.DienThoai == null)
+            //kt email
+            var checkEmail = db.KhachHangs.SingleOrDefault(s => s.Email == model.Email);
+            string pattern = "[A-Za-z0-9._-]*@+[A-Za-z0-9]+(\\.[A-Za-z0-9])";
+            
+            if(model.Email == null)
             {
-                ModelState.AddModelError("PhoneReg", "Số điện thoại không được để trống.");
+                ModelState.AddModelError("EmailReg", "Email không được để trống");
                 return View("Index");
             }
-            if (checkPhone != null)
+            if (!Regex.IsMatch(model.Email, pattern))
             {
-                ModelState.AddModelError("PhoneReg", "Số điện thoại đã được đăng ký.");
+                ModelState.AddModelError("EmailReg", "Email không hợp lệ");
+                return View("Index");
+            }
+            if (checkEmail != null)
+            {
+                ModelState.AddModelError("EmailReg", "Email đã được đăng ký.");
+                return View("Index");
+            }
+
+            ViewBag.Email = model.Email;
+            //kt so dien thoai
+            var checkPhone = db.KhachHangs.SingleOrDefault(s => s.DienThoai == model.DienThoai);
+            pattern = "[0-9]{10,10}";
+            if (model.DienThoai == null)
+            {
+                ModelState.AddModelError("PhoneReg", "Số điện thoại không được để trống");
                 return View("Index");
             }
             if (!Regex.IsMatch(model.DienThoai, pattern))
             {
-                ModelState.AddModelError("PhoneReg", "Số điện thoại không đúng định dạng.");
+                ModelState.AddModelError("PhoneReg", "Số điện thoại không đúng định dạng");
+                return View("Index");
+            }
+            if (checkPhone != null)
+            {
+                ModelState.AddModelError("PhoneReg", "Số điện thoại đã được đăng ký");
                 return View("Index");
             }
 
@@ -104,19 +134,19 @@ namespace GroupProject.Controllers
             //kt ngay sinh
             if (model.NgaySinh > DateTime.Today)
             {
-                ModelState.AddModelError("Birthday", "Ngày sinh phải nhỏ hơn hôm nay.");
+                ModelState.AddModelError("Birthday", "Ngày sinh phải nhỏ hơn hôm nay");
                 return View("Index");
             }
 
             //kt mat khau
             if (Password.Length < 3 || Password.Length > 50)
             {
-                ModelState.AddModelError("PasswordReg", "Mật khẩu từ 3 đến 50 ký tự.");
+                ModelState.AddModelError("PasswordReg", "Mật khẩu từ 3 đến 50 ký tự");
                 return View("Index");
             }
             if (model.MatKhau == null)
             {
-                ModelState.AddModelError("ConfirmPassword", "Mật khẩu xác nhận không được để trống.");
+                ModelState.AddModelError("ConfirmPassword", "Mật khẩu xác nhận không được để trống");
                 return View("Index");
             }
             if (checkTerms != null)
@@ -138,13 +168,13 @@ namespace GroupProject.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("ConfirmPassword", "Mật khẩu xác nhận không chính xác.");
+                    ModelState.AddModelError("ConfirmPassword", "Mật khẩu xác nhận không chính xác");
                     return View("Index");
                 }
             }
             else
             {
-                ModelState.AddModelError("Terms", "Bạn phải đồng ý với các điều khoản.");
+                ModelState.AddModelError("Terms", "Bạn phải đồng ý với các điều khoản");
                 return View("Index");
             }
         }
@@ -155,6 +185,99 @@ namespace GroupProject.Controllers
             Session.Remove("UserSession");
             Session.Remove("StaffSession");
             return View("Index");
+        }
+
+        public ActionResult ForgetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmEmail(string Email)
+        {
+            var user = db.KhachHangs.SingleOrDefault(s => s.Email == Email);
+            string subject = "Xác nhận mật khẩu";
+            string body = "Chào bạn,\nBạn vừa yêu cầu mật khẩu mới.\nMã xác nhận của bạn là: " + MailUtils.getCode();
+            if(user != null)
+            {
+                string email = user.Email;
+                var massage = MailUtils.SendMail("minhnhat0123401@gmail.com", email, subject, body, "zidqamoidsxdnsza");
+                if (massage)
+                {
+                    Session["Guest"] = user.MaKH;
+                    ModelState.AddModelError("msSuccess", "Đã gửi mã xác minh đến địa chỉ email của bạn");
+                    return View();
+                }
+                else
+                {
+                    ModelState.AddModelError("msFail", "Có lỗi xảy ra. Vui lòng liên hệ hotline để được hỗ trợ!");
+                    return View("ForgetPassword");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("msFail", "Email không chính xác");
+                return View("ForgetPassword");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult RenewPassword(int Code)
+        {
+            if (Code != MailUtils.getCode())
+            {
+                ModelState.AddModelError("CodeError", "Mã xác nhận không chính xác");
+                ModelState.AddModelError("Resend", "Gửi lại mã");
+                return View("ConfirmEmail");
+            }
+            else
+            {
+                MailUtils.reCode();
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePassword(string Password, string MatKhau)
+        {
+            if (Password.Length < 3 || Password.Length > 50)
+            {
+                ModelState.AddModelError("PasswordError", "Mật khẩu từ 3 đến 50 ký tự");
+                return View("RenewPassword");
+            }
+            if (MatKhau == "")
+            {
+                ModelState.AddModelError("ConfirmPassword", "Mật khẩu xác nhận không được để trống");
+                return View("RenewPassword");
+            }
+            var user = db.KhachHangs.Find(Session["Guest"]);
+            if (Password == MatKhau)
+            {
+                if(TryUpdateModel(user, "", new string[] { "MatKhau" }))
+                {
+                    try
+                    {
+                        db.Entry(user).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    catch (RetryLimitExceededException)
+                    {
+                        ModelState.AddModelError("", "Error Save Data");
+                        return View("RenewPassword");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Error Save Data");
+                    return View("RenewPassword");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("ConfirmPassword", "Mật khẩu xác nhận không chính xác");
+                return View("RenewPassword");
+            }
         }
     }
 }

@@ -1,21 +1,23 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Đăng nhập</title>
 
-    
-    @RenderSection("Styles", false)
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Assets/Main/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="~/Assets/Main/css/stylelogin.css" type="text/css">
+    <link rel="stylesheet" href="~/Assets/Main/js/jquery-3.3.1.min.js" type="text/javascript">
 </head>
 <body>
     @RenderPage("_LoginHeader.cshtml")
     @RenderBody()
-    
+
     @RenderSection("Scripts", false)
 </body>
 </html>
+
+

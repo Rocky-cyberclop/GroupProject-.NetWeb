@@ -171,6 +171,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MailUtils.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SessionHelper.cs" />
     <Compile Include="Controllers\SingleProductController.cs" />
@@ -2394,6 +2395,10 @@
     <Content Include="Views\Cart\CartNull.cshtml" />
     <Content Include="Views\Cart\Bill.cshtml" />
     <Content Include="Views\Cart\Result.cshtml" />
+    <Content Include="Views\Login\ForgetPassword.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Login\ConfirmEmail.cshtml" />
+    <Content Include="Views\Login\RenewPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

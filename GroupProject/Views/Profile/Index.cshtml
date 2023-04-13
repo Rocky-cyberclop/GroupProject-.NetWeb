@@ -27,7 +27,7 @@
                 <!-- <div class="col-sm-10 text-center"><h6>User name</h6></div> -->
                 <!-- <h6>Upload a different photo</h6> -->
                 @*<input type="file" class="text-center center-block file-upload">*@
-            </div></hr><br>
+            </div><br>
 
 
             <div class="panel panel-default">
@@ -37,9 +37,9 @@
 
             <ul class="list-group">
                 <li class="list-group-item text-dark">Hồ sơ  <i class="fas fa-file-alt"></i></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fas fa-user"></i>@Html.ActionLink("Tài khoản của tôi", "Index")</strong></span></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fas fa-receipt"></i>@Html.ActionLink("Lịch sử mua hàng", "getListHD")</strong></span></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fas fa-lock"></i>@Html.ActionLink("Đổi mật khẩu", "ChangePass")</strong></span></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fas fa-user"></i> @Html.ActionLink("Tài khoản của tôi", "Index")</strong></span></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fas fa-receipt"></i> @Html.ActionLink("Lịch sử mua hàng", "getListHD")</strong></span></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong><i class="fas fa-lock"></i> @Html.ActionLink("Đổi mật khẩu", "ChangePass")</strong></span></li>
             </ul>
 
 
@@ -58,27 +58,31 @@
 
                             <div class="col-xs-6">
                                 <label for="first_name"><h4>Họ và tên</h4></label>
-                                <input type="text" class="form-control" value="@ViewBag.Ten" name="full_name" id="full_name" placeholder="full name" title="enter your full name if any." readonly>
+                                <input type="text" class="form-control" value="@ViewBag.Ten" name="full_name" id="full_name" placeholder="Họ và tên" title="Họ tên" readonly>
                             </div>
                         </div>
                         <div class="form-group">
-
                             <div class="col-xs-6">
                                 <label for="last_name"><h4>Ngày sinh</h4></label>
-                                <input type="datetime" class="form-control" value="@ViewBag.NgaySinh" name="birthday_date" id="birthday_date" placeholder="birthday date" title="enter your birthday date if any." readonly>
+                                <input type="datetime" class="form-control" value="@ViewBag.NgaySinh" name="birthday_date" id="birthday_date" placeholder="Ngày sinh" title="Ngày sinh" readonly>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="mobile"><h4>Địa chỉ</h4></label>
-                                <input type="text" class="form-control" value="@ViewBag.DiaChi" name="address" id="address" placeholder="enter address" title="enter your address if any." readonly>
+                                <input type="text" class="form-control" value="@ViewBag.DiaChi" name="address" id="address" placeholder="Địa chỉ" title="Địa chỉ" readonly>
                             </div>
                         </div>
                         <div class="form-group">
-
                             <div class="col-xs-6">
                                 <label for="phone"><h4>Số điện thoại</h4></label>
-                                <input type="text" class="form-control" value="@ViewBag.DienThoai" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any." readonly>
+                                <input type="text" class="form-control" value="@ViewBag.DienThoai" name="phone" id="phone" placeholder="Số điện thoại" title="Số điện thoại" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="phone"><h4>Email</h4></label>
+                                <input type="text" class="form-control" value="@ViewBag.Email" name="email" id="email" placeholder="Email" title="Email" readonly>
                             </div>
                         </div>
 
@@ -100,5 +104,5 @@
 
         </div><!--/col-9-->
     </div><!--/row-->
-
+</div>
 

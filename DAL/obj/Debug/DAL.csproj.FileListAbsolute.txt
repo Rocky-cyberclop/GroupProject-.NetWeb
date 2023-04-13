@@ -70,3 +70,15 @@ D:\GroupProject\GroupProject\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\GroupProject\GroupProject\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\GroupProject\GroupProject\DAL\obj\Debug\DAL.dll
 D:\GroupProject\GroupProject\DAL\obj\Debug\DAL.pdb
+D:\GroupProject\DAL\bin\Debug\DAL.dll.config
+D:\GroupProject\DAL\bin\Debug\DAL.dll
+D:\GroupProject\DAL\bin\Debug\DAL.pdb
+D:\GroupProject\DAL\bin\Debug\EntityFramework.dll
+D:\GroupProject\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\GroupProject\DAL\bin\Debug\EntityFramework.xml
+D:\GroupProject\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\GroupProject\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\GroupProject\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\GroupProject\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\GroupProject\DAL\obj\Debug\DAL.dll
+D:\GroupProject\DAL\obj\Debug\DAL.pdb

@@ -5,57 +5,60 @@
     Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
 }
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading" style="font-weight:bold; font-size:50px">
-                Lịch sử mua hàng
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <table class="table">
-                        <tr>
-                            <th>
-                                Ngày đặt
-                            </th>
-                            <th>
-                                Trạng thái
-                            </th>
-                            <th>
-                                Tổng tiền
-                            </th>
-                            <th>
-                                Nhân viên xử lý
-                            </th>
-                            <th></th>
-                        </tr>
-
-                        @foreach (var item in Model)
-                        {
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="font-weight:bold; font-size:50px">
+                    Lịch sử mua hàng
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <table class="table">
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NgayDat)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TrangThai)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TongTien)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NhanVien.Ten)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Xem chi tiết", "Details", new { id = item.MaHD })
-                                </td>
+                                <th>
+                                    Ngày đặt
+                                </th>
+                                <th>
+                                    Trạng thái
+                                </th>
+                                <th>
+                                    Tổng tiền
+                                </th>
+                                <th>
+                                    Nhân viên xử lý
+                                </th>
+                                <th></th>
                             </tr>
-                        }
 
-                    </table>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NgayDat)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TrangThai)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TongTien)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NhanVien.Ten)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Xem chi tiết", "Details", new { id = item.MaHD })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 

@@ -25,14 +25,14 @@ namespace DAL.FrameWork
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual DbSet<GioHang> GioHangs { get; set; }
         public virtual DbSet<HinhAnh> HinhAnhs { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<Loai> Loais { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-        public virtual DbSet<GioHang> GioHangs { get; set; }
         public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
     }
 }

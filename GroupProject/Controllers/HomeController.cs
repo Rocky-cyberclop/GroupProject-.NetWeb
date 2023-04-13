@@ -9,9 +9,11 @@ namespace GroupProject.Controllers
 {
     public class HomeController : Controller
     {
-        HaoDatabase db = new HaoDatabase();
+        //HaoDatabase db = new HaoDatabase();
         //ThanhDatabase db = new ThanhDatabase();
         //TrangDatabase db = new TrangDatabase();
+        NhatDatabase db = new NhatDatabase();
+
         public ActionResult Index()
         {
             //var sp = db.SanPhams.First();
@@ -49,6 +51,11 @@ namespace GroupProject.Controllers
             NganDatabase db = new NganDatabase(); //Dùng đúng Entity trên máy
             var listStaff = from ts in db.NhanViens select ts; //Truy vấn tất cả dữ liệu trong bảng
             return View(listStaff); //Hiển thị
+        }
+
+        public ActionResult Error()
+        {
+            return View();
         }
     }
 }

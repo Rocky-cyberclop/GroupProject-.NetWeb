@@ -14,8 +14,9 @@ namespace GroupProject.Controllers
 {
     public class ProfileController : Controller
     {
-        HaoDatabase db = new HaoDatabase();
+        //HaoDatabase db = new HaoDatabase();
         /*TrangDatabase db = new TrangDatabase();*/
+        NhatDatabase db = new NhatDatabase();
 
         // GET: Profile
         public readonly bool et = true;
@@ -27,26 +28,30 @@ namespace GroupProject.Controllers
                 var user = db.KhachHangs.SingleOrDefault(s => s.MaKH == MaKH);
                 ViewBag.Ten = user.Ten;
 
-                DateTime bday = (DateTime)user.NgaySinh;
-                string y = bday.Year.ToString();
-                int month = bday.Month;
-                string m = month + "";
-                if (month < 10)
+                if(user.NgaySinh != null)
                 {
-                    m = "0" + month;
-                }
-                int day = bday.Day;
-                string d = day + "";
-                if (day < 10)
-                {
-                    d = "0" + day;
-                }
-                string birthday = y + "-" + m + "-" + d;
+                    DateTime bday = (DateTime)user.NgaySinh;
+                    string y = bday.Year.ToString();
+                    int month = bday.Month;
+                    string m = month + "";
+                    if (month < 10)
+                    {
+                        m = "0" + month;
+                    }
+                    int day = bday.Day;
+                    string d = day + "";
+                    if (day < 10)
+                    {
+                        d = "0" + day;
+                    }
+                    string birthday = y + "-" + m + "-" + d;
 
-                ViewBag.NgaySinh = birthday;
+                    ViewBag.NgaySinh = birthday;
+                }
+                
                 ViewBag.Diachi = user.DiaChi;
                 ViewBag.DienThoai = user.DienThoai;
-
+                ViewBag.Email = user.Email;
             }
             else
             {
@@ -77,7 +82,7 @@ namespace GroupProject.Controllers
         public ActionResult EditProfileSave(string MaKH)
         {
             var KHud = db.KhachHangs.Find(MaKH);
-            if (TryUpdateModel(KHud, "", new string[] { "Ten", "NgaySinh", "DiaChi", "DienThoai" }))
+            if (TryUpdateModel(KHud, "", new string[] { "Ten", "NgaySinh", "DiaChi", "DienThoai", "Email" }))
             {
                 try
                 {
@@ -166,7 +171,7 @@ namespace GroupProject.Controllers
                 }
                 if (!flag)
                 {
-                    return HttpNotFound();
+                    return RedirectToAction("Error","Home");
                 }
                 return View(model);
             }

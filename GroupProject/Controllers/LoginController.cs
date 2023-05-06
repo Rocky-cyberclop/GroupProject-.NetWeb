@@ -15,7 +15,9 @@ namespace GroupProject.Controllers
         //HaoDatabase db = new HaoDatabase();
         // TrangDatabase db = new TrangDatabase();
         /*ThanhDatabase db = new ThanhDatabase();*/
-        NhatDatabase db = new NhatDatabase();
+        //NhatDatabase db = new NhatDatabase();
+        NganDatabase db = new NganDatabase();
+
         // GET: Login
         public ActionResult Index()
         {

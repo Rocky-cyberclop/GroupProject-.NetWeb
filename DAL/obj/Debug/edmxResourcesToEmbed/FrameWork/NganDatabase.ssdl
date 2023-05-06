@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="RAUCUQUAModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'RAUCUQUA.dbo.ChiTietHoaDon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ChiTietHoaDon">
     <Key>
       <PropertyRef Name="MaHD" />
       <PropertyRef Name="MaSP" />
-      <PropertyRef Name="SoLuong" />
     </Key>
     <Property Name="MaHD" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="MaSP" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -14,13 +11,10 @@ warning 6002: The table/view 'RAUCUQUA.dbo.ChiTietHoaDon' does not have a primar
     <Property Name="GiaBan" Type="bigint" />
     <Property Name="KhuyenMai" Type="nvarchar" MaxLength="10" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'RAUCUQUA.dbo.GioHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="GioHang">
     <Key>
       <PropertyRef Name="MaKH" />
       <PropertyRef Name="MaSP" />
-      <PropertyRef Name="SoLuong" />
     </Key>
     <Property Name="MaKH" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="MaSP" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -43,7 +37,7 @@ warning 6002: The table/view 'RAUCUQUA.dbo.GioHang' does not have a primary key 
     <Property Name="MaKH" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="NgayDat" Type="datetime" Nullable="false" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="TongTien" Type="bigint" />
+    <Property Name="TongTien" Type="bigint" Nullable="false" />
     <Property Name="MaNV" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="KhachHang">
@@ -54,6 +48,7 @@ warning 6002: The table/view 'RAUCUQUA.dbo.GioHang' does not have a primary key 
     <Property Name="Ten" Type="nvarchar" MaxLength="50" />
     <Property Name="NgaySinh" Type="datetime" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DienThoai" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="MatKhau" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
@@ -112,7 +107,7 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK__ChiTietHoa__MaHD__48CFD27E">
+  <Association Name="FK__ChiTietHoa__MaHD__49C3F6B7">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
     <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -124,7 +119,7 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietHoa__MaSP__49C3F6B7">
+  <Association Name="FK__ChiTietHoa__MaSP__4AB81AF0">
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
     <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -172,7 +167,7 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HoaDon__MaKH__45F365D3">
+  <Association Name="FK__HoaDon__MaKH__46E78A0C">
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -184,7 +179,7 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HoaDon__MaNV__46E78A0C">
+  <Association Name="FK__HoaDon__MaNV__47DBAE45">
     <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -209,6 +204,8 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="RAUCUQUAModel2StoreContainer">
+    <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GioHang" EntityType="Self.GioHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HinhAnh" EntityType="Self.HinhAnh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
@@ -216,23 +213,6 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
     <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [ChiTietHoaDon].[MaHD] AS [MaHD], 
-    [ChiTietHoaDon].[MaSP] AS [MaSP], 
-    [ChiTietHoaDon].[SoLuong] AS [SoLuong], 
-    [ChiTietHoaDon].[GiaBan] AS [GiaBan], 
-    [ChiTietHoaDon].[KhuyenMai] AS [KhuyenMai]
-    FROM [dbo].[ChiTietHoaDon] AS [ChiTietHoaDon]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="GioHang" EntityType="Self.GioHang" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [GioHang].[MaKH] AS [MaKH], 
-    [GioHang].[MaSP] AS [MaSP], 
-    [GioHang].[SoLuong] AS [SoLuong], 
-    [GioHang].[GiaBan] AS [GiaBan]
-    FROM [dbo].[GioHang] AS [GioHang]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="KhuyenMai" EntityType="Self.KhuyenMai" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [KhuyenMai].[MaSP] AS [MaSP], 
@@ -240,11 +220,11 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
     [KhuyenMai].[TiLe] AS [TiLe]
     FROM [dbo].[KhuyenMai] AS [KhuyenMai]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__ChiTietHoa__MaHD__48CFD27E" Association="Self.FK__ChiTietHoa__MaHD__48CFD27E">
+    <AssociationSet Name="FK__ChiTietHoa__MaHD__49C3F6B7" Association="Self.FK__ChiTietHoa__MaHD__49C3F6B7">
       <End Role="HoaDon" EntitySet="HoaDon" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietHoa__MaSP__49C3F6B7" Association="Self.FK__ChiTietHoa__MaSP__49C3F6B7">
+    <AssociationSet Name="FK__ChiTietHoa__MaSP__4AB81AF0" Association="Self.FK__ChiTietHoa__MaSP__4AB81AF0">
       <End Role="SanPham" EntitySet="SanPham" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
     </AssociationSet>
@@ -260,11 +240,11 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
       <End Role="SanPham" EntitySet="SanPham" />
       <End Role="HinhAnh" EntitySet="HinhAnh" />
     </AssociationSet>
-    <AssociationSet Name="FK__HoaDon__MaKH__45F365D3" Association="Self.FK__HoaDon__MaKH__45F365D3">
+    <AssociationSet Name="FK__HoaDon__MaKH__46E78A0C" Association="Self.FK__HoaDon__MaKH__46E78A0C">
       <End Role="KhachHang" EntitySet="KhachHang" />
       <End Role="HoaDon" EntitySet="HoaDon" />
     </AssociationSet>
-    <AssociationSet Name="FK__HoaDon__MaNV__46E78A0C" Association="Self.FK__HoaDon__MaNV__46E78A0C">
+    <AssociationSet Name="FK__HoaDon__MaNV__47DBAE45" Association="Self.FK__HoaDon__MaNV__47DBAE45">
       <End Role="NhanVien" EntitySet="NhanVien" />
       <End Role="HoaDon" EntitySet="HoaDon" />
     </AssociationSet>

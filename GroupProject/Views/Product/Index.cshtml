@@ -1,0 +1,163 @@
+﻿@model PagedList.IPagedList<DAL.FrameWork.SanPham>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/Assets/Main/css/index.css">
+    <link rel="stylesheet" href="~/Assets/Main/css/product.css" />
+}
+
+<section id="shopnow">
+    <div class="container">
+        <div class="row featured-row">
+            <div class="col-lg-12 pt-4">
+                <div class="section-title">
+                    <h2>DANH MỤC SẢN PHẨM</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories Section Begin -->
+        <section class="categories" id="categories">
+            <div class="row">
+                <div class="categories__slider owl-carousel featured__controls">
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-id="" data-setbg="/Assets/Main/img/categories/cate_1.png">
+                            <h5><a href="@Url.Action("Index","Product", new { cate = "all" })">TẤT CẢ</a></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-id="r" data-setbg="/Assets/Main/img/categories/cate_2.png">
+                            <h5><a href="@Url.Action("Index","Product", new { cate = "rau" })">RAU</a></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-id="c" data-setbg="/Assets/Main/img/categories/cate_3.png">
+                            <h5><a href="@Url.Action("Index","Product", new { cate = "cu" })">CỦ</a></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-id="q" data-setbg="/Assets/Main/img/categories/cate_4.png">
+                            <h5><a href="@Url.Action("Index","Product", new { cate = "qua" })">QUẢ</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Categories Section End -->
+
+        <div class="breadcrumb bg-transparent border">
+            <div class="col-lg-11">
+                <ul>
+                    @{ string title = null;
+                        if (ViewBag.Type == "all")
+                        {
+                            title = "Tất cả";
+                        }
+                        else if (ViewBag.Type == "rau")
+                        {
+                            title = "Rau";
+                        }
+                        else if (ViewBag.Type == "cu")
+                        {
+                            title = "Củ";
+                        }
+                        else if (ViewBag.Type == "qua")
+                        {
+                            title = "Quả";
+                        }
+
+                        <li><a href="/">Trang chủ</a></li>
+                        <li> / </li>
+                        <li>  @title</li>
+                        <li> / </li>
+                        var st = "Nổi bật";
+                        if (ViewBag.Sort == "asc")
+                        {
+                            st = "Giá tăng dần";
+                        }
+                        else if (ViewBag.Sort == "desc")
+                        {
+                            st = "Giá giảm dần";
+                        }
+                        <li>  @st </li>
+                    }
+
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn btn-light border dropdown-toggle">Sắp xếp</button>
+                <div class="dropdown-content">
+                    <a href="@Url.Action("Index","Product", new { cate = ViewBag.Type, sort = "no" })">Nổi bật</a>
+                    <a href="@Url.Action("Index","Product", new { cate = ViewBag.Type, sort = "asc" })">Giá tăng dần</a>
+                    <a href="@Url.Action("Index","Product", new { cate = ViewBag.Type, sort = "desc" })">Giá giảm dần</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Featured Section Begin -->
+
+        <div class="row featured__filter">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 mix @item.MaSP.Substring(0, 1)">
+                    <div class="featured__item border ">
+
+                        @{
+                            var bg = "/Assets/Products/Images/" + item.HinhAnhs.FirstOrDefault().Hinh;
+                            <div class="featured__item__pic set-bg" data-setbg="@bg" style="background-image: url(@bg)">
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+
+                                </ul>
+                            </div>
+                        }
+                        <div class="featured__item__text">
+                            <h6><a href="#">@item.Ten</a></h6>
+                            <h5>@item.Gia.ToString("#,##0")&#8363;</h5>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class=" pt-3 w-50 text-center border-end py-2 border-right">
+                                <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
+                            </small>
+                            <small class="pt-3 pt-3 w-50 text-center py-2">
+                                <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+
+        </div>
+
+        <div class="blog__pagination" style="margin-left:10px;">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, cate = ViewBag.Type, sort = ViewBag.Sort }))
+        </div>
+    </div>
+
+
+    <!-- Featured Section End -->
+
+</section>
+
+
+
+@section Scripts{
+    <script src="~/Assets/Main/js/index.js"></script>
+    <script src="~/Assets/Main/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Main/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Main/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Main/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Main/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Main/js/mixitup.min.js"></script>
+    <script src="~/Assets/Main/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Main/js/main.js"></script>
+}

@@ -26,7 +26,6 @@ namespace GroupProject.Controllers
         [HttpGet]
         public ActionResult GetStaff()
         {
-            NganDatabase db = new NganDatabase(); //Dùng đúng Entity trên máy
             var listStaff = from ts in db.NhanViens select ts; //Truy vấn tất cả dữ liệu trong bảng
             return View(listStaff); //Hiển thị
         }

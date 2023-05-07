@@ -32,17 +32,17 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-id="r" data-setbg="/Assets/Main/img/categories/cate_2.png">
-                            <h5><a href="@Url.Action("Index","Product", new { cate = "rau" })">RAU</a></h5>
+                            <h5><a href="@Url.Action("Index","Product", new { cate = "R" })">RAU</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-id="c" data-setbg="/Assets/Main/img/categories/cate_3.png">
-                            <h5><a href="@Url.Action("Index","Product", new { cate = "cu" })">CỦ</a></h5>
+                            <h5><a href="@Url.Action("Index","Product", new { cate = "C" })">CỦ</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-id="q" data-setbg="/Assets/Main/img/categories/cate_4.png">
-                            <h5><a href="@Url.Action("Index","Product", new { cate = "qua" })">QUẢ</a></h5>
+                            <h5><a href="@Url.Action("Index","Product", new { cate = "Q" })">QUẢ</a></h5>
                         </div>
                     </div>
                 </div>
@@ -58,15 +58,15 @@
                         {
                             title = "Tất cả";
                         }
-                        else if (ViewBag.Type == "rau")
+                        else if (ViewBag.Type == "R")
                         {
                             title = "Rau";
                         }
-                        else if (ViewBag.Type == "cu")
+                        else if (ViewBag.Type == "C")
                         {
                             title = "Củ";
                         }
-                        else if (ViewBag.Type == "qua")
+                        else if (ViewBag.Type == "Q")
                         {
                             title = "Quả";
                         }
@@ -107,31 +107,22 @@
             @foreach (var item in Model)
             {
                 <div class="col-lg-3 col-md-4 col-sm-6 mix @item.MaSP.Substring(0, 1)">
-                    <div class="featured__item border ">
+                    <a href="@Url.Action("Detail","Product", new { id = item.MaSP })">
+                        <div class="featured__item border ">
 
-                        @{
-                            var bg = "/Assets/Products/Images/" + item.HinhAnhs.FirstOrDefault().Hinh;
-                            <div class="featured__item__pic set-bg" data-setbg="@bg" style="background-image: url(@bg)">
-                                <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-
-                                </ul>
+                            @{
+                                var bg = "/Assets/Products/Images/" + item.HinhAnhs.FirstOrDefault().Hinh;
+                                <div class="featured__item__pic set-bg" data-setbg="@bg" style="background-image: url(@bg)"></div>
+                            }
+                            <div class="featured__item__text">
+                                <h6>@item.Ten</h6>
+                                <h5>@item.Gia.ToString("#,##0")&#8363;</h5>
                             </div>
-                        }
-                        <div class="featured__item__text">
-                            <h6><a href="#">@item.Ten</a></h6>
-                            <h5>@item.Gia.ToString("#,##0")&#8363;</h5>
+                            @*<div class="text-center">
+                                    <a class="primary-btn text__body" style="font-size:16px" href="#"><i class="fa fa-shopping-bag "></i>Chọn mua</a>
+                                </div>*@
                         </div>
-                        <div class="d-flex border-top">
-                            <small class=" pt-3 w-50 text-center border-end py-2 border-right">
-                                <a class="text__body" href=""><i class="fa fa-eye "></i>Xem chi tiết</a>
-                            </small>
-                            <small class="pt-3 pt-3 w-50 text-center py-2">
-                                <a class="text__body" href=""><i class="fa fa-shopping-bag "></i>Chọn mua</a>
-                            </small>
-                        </div>
-                    </div>
-
+                    </a>
                 </div>
             }
 

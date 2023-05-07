@@ -1,0 +1,253 @@
+﻿@model GroupProject.Models.SingleProductModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/Assets/Main/css/index.css">
+    <link rel="stylesheet" href="~/Assets/Main/css/product.css">
+}
+
+<style>
+    .product__details__text ul {
+        border-top: 1px solid #ebebeb;
+        padding-top: 0px;
+        margin-top: 0px;
+    }
+
+    .details {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+</style>
+
+<div class="container">
+    <div class="breadcrumb bg-transparent border">
+        <div class="col-lg-11">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li> / </li>
+                <li><a href="@Url.Action("Index","Product", new { cate = Model.CateId })">@Model.CateName</a></li>
+                <li> / </li>
+                <li>@Model.Product.Ten</li>
+            </ul>
+        </div>
+    </div>
+
+    @if (Model.Product.HinhAnhs.Count() == 0)
+    {
+        <h2>Hello</h2>
+    }
+    @if (Model.Product.HinhAnhs.Count() > 0)
+    {
+        <section class="details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="product__details__pic">
+                            <div class="product__details__pic__item border">
+                                <img class="product__details__pic__item--large"
+                                     src="/Assets/Products/Images/@Model.Product.HinhAnhs.FirstOrDefault().Hinh" alt="">
+                            </div>
+
+                            <div class="product__details__pic__slider owl-carousel">
+                                @foreach (var item in Model.Product.HinhAnhs)
+                                {
+                                    <img class="border" data-imgbigurl="/Assets/Products/Images/@item.Hinh"
+                                         src="/Assets/Products/Images/@item.Hinh" alt="">
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="product__details__text">
+                            <h3>@Model.Product.Ten</h3>
+                            <div class="product__details__price">@Model.Product.Gia.ToString("#,##0")&#8363;</div>
+                            <p>
+                                Thơm ngon mời bạn ăn nha.
+                            </p>
+                            <div class="row">
+
+
+                                <div class="product__details__quantity" style="padding:10px">
+                                    <div class="buttons_added">
+                                        <input class="minus is-form" type="button" value="-">
+                                        <input id="quantity_SP" aria-label="quantity" class="input-qty" max="@ViewBag.slHienTai" min="1" name="" type="button" value="@ViewBag.slCoTheThem" style="width:60px;  text-align:center">
+                                        <input class="plus is-form" type="button" value="+">
+                                    </div>
+                                </div>
+
+                                @if (@ViewBag.slCoTheThem == 0)
+                                {
+                                    <p style="color:orangered">Bạn đã có @Model.Product.GioHangs.First().SoLuong sản phẩm trong giỏ hàng. Không thể thêm được vì vượt quá giới hạn mua hàng.</p>
+                                }
+
+
+                                @if (Model.Product.SoLuong == 0)
+                                {
+                                    <a href="#" class="primary-btn" style="background-color:gray">Hết hàng</a>
+                                }
+
+                                @if (Model.Product.SoLuong > 0)
+                                {
+
+                                    <button class="primary-btn btn" type="submit" onclick="Add('@Model.Product.MaSP')">Thêm vào giỏ hàng</button>
+
+
+                                }
+
+                                <ul>
+
+                                    @if (Model.Product.SoLuong == 0)
+                                    {
+                                        <li>
+                                            <b>Tình trạng:</b>
+                                            <span style="color: red">Hết hàng</span>
+                                        </li>
+                                    }
+                                    @if (Model.Product.KhongBan == true)
+                                    {
+                                        <li>
+                                            <b>Tình trạng:</b>
+                                            <span style="color: red">Ngừng bán</span>
+                                        </li>
+                                    }
+                                    @if (Model.Product.SoLuong > 0)
+                                    {
+
+                                        <li><b>Tình trạng:</b> <span>Còn hàng</span></li>
+                                        <li><b>Vận chuyển:</b> <span>Giao trong 1-2 ngày. <samp>Nội thành Cần Thơ.</samp></span></li>
+                                    }
+                                    <li>
+                                        <b>Share:</b>
+                                        <div class="share">
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
+                                            <a href="#"><i class="fa fa-twitter"></i></a>
+                                            <a href="#"><i class="fa fa-instagram"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__text">
+                                    <h3>Thông tin sản phẩm</h3>
+                                    <ul>
+                                        <li>
+                                            <b>Tên: </b>
+                                            <span>@Model.Product.Ten</span>
+                                        </li>
+                                        <li>
+                                            <b>Xuất xứ: </b>
+                                            <span>@Model.Product.XuatXu</span>
+                                        </li>
+
+                                        <li>
+                                            <b>Đơn vị tính: </b>
+                                            <span>@Model.Product.DonVi</span>
+                                        </li>
+                                        <li>
+                                            <b>Mô tả: </b>
+                                            <span>@Model.Product.MoTa</span>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+
+    <section class="related-product">
+        <div class="container">
+            <div class="row featured-row">
+                <div class="col-lg-12 pt-4">
+                    <div class="section-title related__product__title section-title">
+                        <h2>Các sản phẩm liên quan</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row featured__filter categories__slider owl-carousel">
+                @foreach (var item in Model.RelativeProducts)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="product__item border">
+                            <a href="@Url.Action("Detail","Product", new { id=item.MaSP })">
+                                <div class="product__item__pic set-bg" data-setbg="/Assets/Products/Images/@item.HinhAnhs.FirstOrDefault().Hinh"></div>
+                                <div class="product__item__text">
+                                    <h6>@item.Ten</h6>
+                                    <h5>@item.Gia.ToString("#,##0")&#8363;</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+@section Scripts{
+    <script src="~/Assets/Main/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assets/Main/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Main/js/jquery.nice-select.min.js"></script>
+    <script src="~/Assets/Main/js/jquery-ui.min.js"></script>
+    <script src="~/Assets/Main/js/jquery.slicknav.js"></script>
+    <script src="~/Assets/Main/js/mixitup.min.js"></script>
+    <script src="~/Assets/Main/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/Main/js/main.js"></script>
+    <script>
+        //<![CDATA[
+        $('input.input-qty').each(function () {
+            var $this = $(this),
+                qty = $this.parent().find('.is-form'),
+                min = Number($this.attr('min')),
+                max = Number($this.attr('max'))
+            if (min == 0) {
+                var d = 0
+            } else d = min
+            $(qty).on('click', function () {
+                if ($(this).hasClass('minus')) {
+                    if (d > min) d += -1
+                } else if ($(this).hasClass('plus')) {
+                    var x = Number($this.val());
+                    if (x == max) d = x;
+                    else if (x < max) d += 1
+
+                }
+                $this.attr('value', d).val(d)
+            })
+        })
+        //]]></script>
+    <script>
+        function Add(id) {
+            var sl = document.getElementById("quantity_SP").value;
+            $.ajax({
+                type: "POST",
+                url: "/Cart/Add",
+                data: { masp: id, soluong: sl },
+                success: function (res) {
+                    $("." + id).val(res.quantity);
+                }
+
+            });
+            location.reload();
+        };
+    </script>
+
+}

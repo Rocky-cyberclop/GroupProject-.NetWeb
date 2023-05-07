@@ -29,6 +29,8 @@ namespace GroupProject.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+
+
             string MaKH = userss.getUserName();
             var listCart = from ts in db.GioHangs where ts.MaKH == MaKH select ts;
             return View(listCart);
@@ -197,11 +199,40 @@ namespace GroupProject.Controllers
 
         }
 
+
+        [HttpPost, ActionName("Add")]
+        public JsonResult Add(string masp, int soluong)
+        {
+            UserSession userss = SessionHelper.GetUserSession();
+            string user = userss.getUserName();
+            SanPham sp = db.SanPhams.Where(ps => ps.MaSP == masp).FirstOrDefault();
+            var cart = db.GioHangs.Where(cs => cs.MaKH == user && cs.MaSP == masp).SingleOrDefault();
+            if (cart != null)
+                cart.SoLuong = cart.SoLuong + soluong;
+
+            if (cart == null)
+            {
+                GioHang gh = new GioHang();
+                gh.MaKH = user;
+                gh.MaSP = masp;
+                gh.SoLuong = soluong;
+                gh.GiaBan = sp.Gia;
+                db.GioHangs.Add(gh);
+            }
+
+            db.SaveChanges();
+
+            return Json(new { quantity = cart.SoLuong, cart = masp }, JsonRequestBehavior.AllowGet);
+
+        }
+
         // dat hang thanh cong
         public ActionResult Result()
         {
             return View();
         }
+
+
 
     }
 }

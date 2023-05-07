@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using GroupProject.Models;
 
 namespace GroupProject.Controllers
 {
@@ -24,7 +25,7 @@ namespace GroupProject.Controllers
             }
             else
             {
-                listProduct = db.SanPhams.Where(p => p.MaSP.Substring(0, 1) == cate.Substring(0, 1)).ToList();
+                listProduct = db.SanPhams.Where(p => p.MaSP.Substring(0, 1) == cate).ToList();
             }
             if (sort == "asc")
             {
@@ -35,6 +36,31 @@ namespace GroupProject.Controllers
                 listProduct = listProduct.OrderByDescending(p => p.Gia).ToList();
             }
             return View(listProduct.ToPagedList(page, 8));
+        }
+
+        public ActionResult Detail(string id)
+        {
+            UserSession user = SessionHelper.GetUserSession();
+            if (Session["UserSession"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            string MaKH = user.getUserName();
+            SingleProductModel spmProduct = new SingleProductModel();
+            spmProduct.Product = db.SanPhams.Where(ps => ps.MaSP == id).FirstOrDefault();
+            spmProduct.CateId = id.Substring(0, 1);
+            spmProduct.CateName = db.Loais.Find(spmProduct.CateId).TenLoai;
+            spmProduct.RelativeProducts = db.SanPhams.Where(s => s.MaSP.Substring(0, 1) == spmProduct.CateId).OrderBy(p => Guid.NewGuid()).Take(6).ToList();
+
+            GioHang gh = db.GioHangs.Where(ps => ps.MaKH == MaKH).FirstOrDefault();
+            ViewBag.slHienTai = spmProduct.Product.SoLuong;
+            if (gh != null)
+                ViewBag.slHienTai = spmProduct.Product.SoLuong - gh.SoLuong;
+            ViewBag.slCoTheThem = 1;
+            if (ViewBag.slHienTai == 0)
+                ViewBag.slCoTheThem = 0;
+
+            return View(spmProduct);
         }
 
     }

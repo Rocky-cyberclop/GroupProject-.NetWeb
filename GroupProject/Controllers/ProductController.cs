@@ -11,7 +11,8 @@ namespace GroupProject.Controllers
 {
     public class ProductController : Controller
     {
-        NganDatabase db = new NganDatabase();
+       // NganDatabase db = new NganDatabase();
+       ThanhDatabase db = new ThanhDatabase();
         // GET: Product
         public ActionResult Index(string cate = "all", string sort = "no", int page = 1)
         {
@@ -53,11 +54,13 @@ namespace GroupProject.Controllers
             spmProduct.RelativeProducts = db.SanPhams.Where(s => s.MaSP.Substring(0, 1) == spmProduct.CateId).OrderBy(p => Guid.NewGuid()).Take(6).ToList();
 
             GioHang gh = db.GioHangs.Where(ps => ps.MaKH == MaKH).FirstOrDefault();
+            GioHang cart = db.GioHangs.Where(cs => cs.MaKH == MaKH && cs.MaSP == id).SingleOrDefault();
+
             ViewBag.slHienTai = spmProduct.Product.SoLuong;
-            if (gh != null)
-                ViewBag.slHienTai = spmProduct.Product.SoLuong - gh.SoLuong;
+            if (cart != null )
+                ViewBag.slHienTai = spmProduct.Product.SoLuong - cart.SoLuong;
             ViewBag.slCoTheThem = 1;
-            if (ViewBag.slHienTai == 0)
+            if (ViewBag.slHienTai == 0 )
                 ViewBag.slCoTheThem = 0;
 
             return View(spmProduct);

@@ -54,10 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrameWork\ChiTietHoaDon.cs">
-      <DependentUpon>NganDatabase.tt</DependentUpon>
+      <DependentUpon>ThanhDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\GioHang.cs">
-      <DependentUpon>NganDatabase.tt</DependentUpon>
+      <DependentUpon>ThanhDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HaoDatabase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -75,19 +75,19 @@
       <DependentUpon>HaoDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HinhAnh.cs">
-      <DependentUpon>NganDatabase.tt</DependentUpon>
+      <DependentUpon>ThanhDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\HoaDon.cs">
-      <DependentUpon>NganDatabase.tt</DependentUpon>
+      <DependentUpon>ThanhDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\KhachHang.cs">
-      <DependentUpon>NganDatabase.tt</DependentUpon>
+      <DependentUpon>ThanhDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\KhuyenMai.cs">
-      <DependentUpon>NganDatabase.tt</DependentUpon>
+      <DependentUpon>ThanhDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\Loai.cs">
-      <DependentUpon>NganDatabase.tt</DependentUpon>
+      <DependentUpon>ThanhDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\NganDatabase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -105,7 +105,7 @@
       <DependentUpon>NganDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\NhanVien.cs">
-      <DependentUpon>NganDatabase.tt</DependentUpon>
+      <DependentUpon>ThanhDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\NhatDatabase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -123,7 +123,7 @@
       <DependentUpon>NhatDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\SanPham.cs">
-      <DependentUpon>NganDatabase.tt</DependentUpon>
+      <DependentUpon>ThanhDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FrameWork\sysdiagram.cs">
       <DependentUpon>NganDatabase.tt</DependentUpon>
@@ -173,10 +173,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TrangDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <EntityDeploy Include="FrameWork\ThanhDatabase.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ThanhDatabase.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <EntityDeploy Include="FrameWork\NhatDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NhatDatabase.Designer.cs</LastGenOutput>
@@ -191,6 +187,10 @@
     <None Include="FrameWork\NhatDatabase.edmx.diagram">
       <DependentUpon>NhatDatabase.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="FrameWork\ThanhDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ThanhDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="FrameWork\ThanhDatabase.edmx.diagram">
       <DependentUpon>ThanhDatabase.edmx</DependentUpon>
     </None>

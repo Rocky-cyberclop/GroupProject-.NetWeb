@@ -37,7 +37,7 @@
     <Property Name="MaKH" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="NgayDat" Type="datetime" Nullable="false" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="TongTien" Type="bigint" />
+    <Property Name="TongTien" Type="bigint" Nullable="false" />
     <Property Name="MaNV" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="KhachHang">
@@ -48,6 +48,7 @@
     <Property Name="Ten" Type="nvarchar" MaxLength="50" />
     <Property Name="NgaySinh" Type="datetime" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DienThoai" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="MatKhau" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>

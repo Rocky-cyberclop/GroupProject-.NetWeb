@@ -15,8 +15,8 @@ namespace GroupProject.Controllers
     public class CartController : Controller
     {
         //HaoDatabase db = new HaoDatabase();
-        //ThanhDatabase db = new ThanhDatabase(); //Dùng đúng Entity trên máy  
-        NganDatabase db = new NganDatabase();
+        ThanhDatabase db = new ThanhDatabase(); //Dùng đúng Entity trên máy  
+
 
         // GET: Cart
 
@@ -29,8 +29,6 @@ namespace GroupProject.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-
-
             string MaKH = userss.getUserName();
             var listCart = from ts in db.GioHangs where ts.MaKH == MaKH select ts;
             return View(listCart);
@@ -59,16 +57,14 @@ namespace GroupProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(string id)
         {
+            UserSession userss = SessionHelper.GetUserSession();
+            string MaKH = userss.getUserName();
             GioHang gh = db.GioHangs.Where(ps => ps.MaSP == id).FirstOrDefault();
             // var path = Path.Combine(Server.MapPath("~/Content/Image"), book.CoverPage);
 
-            if (gh == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }
             db.GioHangs.Remove(gh);
             db.SaveChanges();
+            var listCart = from ts in db.GioHangs where ts.MaKH == MaKH select ts;
             return RedirectToAction("Index");
         }
 
@@ -99,7 +95,10 @@ namespace GroupProject.Controllers
             UserSession userss = SessionHelper.GetUserSession();
             string user = userss.getUserName();
             var cart = db.GioHangs.Where(cs => cs.MaKH == user && cs.MaSP == masp).SingleOrDefault();
-            cart.SoLuong++;
+            var slSP = db.SanPhams.Find(masp);
+            if (cart.SoLuong < slSP.SoLuong)
+                cart.SoLuong++;
+
             db.SaveChanges();
 
             return Json(new { quantity = cart.SoLuong, cart = masp }, JsonRequestBehavior.AllowGet);
@@ -113,7 +112,9 @@ namespace GroupProject.Controllers
             UserSession userss = SessionHelper.GetUserSession();
             string user = userss.getUserName();
             var cart = db.GioHangs.Where(s => s.MaKH == user && s.MaSP == masp).SingleOrDefault();
-            cart.SoLuong--;
+            if (cart.SoLuong > 1)
+                cart.SoLuong--;
+
             db.SaveChanges();
             return Json(new { quantity = cart.SoLuong, cart = masp }, JsonRequestBehavior.AllowGet);
         }
@@ -169,15 +170,18 @@ namespace GroupProject.Controllers
                 tongtien = (long)(tongtien + thanhtien);
 
             }
+
             foreach (var item in listCart)
             {
                 ChiTietHoaDon ct = new ChiTietHoaDon();
+
                 ct.MaHD = model.MaHD;
                 ct.MaSP = item.MaSP;
+                SanPham sp = db.SanPhams.Where(ms => ms.MaSP == item.MaSP).FirstOrDefault();
+                var quantity = sp.SoLuong - item.SoLuong;
+                sp.SoLuong = quantity;
                 ct.SoLuong = item.SoLuong;
                 ct.GiaBan = item.GiaBan;
-
-
                 if (item.SoLuong >= item.SanPham.KhuyenMais.First().SoLuong)
                 {
                     ct.KhuyenMai = (item.SanPham.KhuyenMais.First().TiLe).ToString();
@@ -186,6 +190,7 @@ namespace GroupProject.Controllers
 
                 model.TongTien = tongtien + 30000;
                 db.HoaDons.Add(model);
+
             }
 
 
@@ -194,12 +199,20 @@ namespace GroupProject.Controllers
             foreach (var i in gh)
                 db.GioHangs.Remove(i);
 
+
+
             db.SaveChanges();
             return View("Result");
 
         }
 
+        // dat hang thanh cong
+        public ActionResult Result()
+        {
+            return View();
+        }
 
+        //add
         [HttpPost, ActionName("Add")]
         public JsonResult Add(string masp, int soluong)
         {
@@ -225,14 +238,5 @@ namespace GroupProject.Controllers
             return Json(new { quantity = cart.SoLuong, cart = masp }, JsonRequestBehavior.AllowGet);
 
         }
-
-        // dat hang thanh cong
-        public ActionResult Result()
-        {
-            return View();
-        }
-
-
-
     }
 }

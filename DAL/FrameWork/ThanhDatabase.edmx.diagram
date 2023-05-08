@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="347c52a43c78493fba082a73554b4726" Name="Diagram1">
+      <Diagram DiagramId="0b7fe84e5a1041cabb11ae5bd20a1cb5" Name="Diagram1">
         <EntityTypeShape EntityType="RAUCUQUAModel4.ChiTietHoaDon" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RAUCUQUAModel4.GioHang" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RAUCUQUAModel4.HinhAnh" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RAUCUQUAModel4.HoaDon" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="RAUCUQUAModel4.KhachHang" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RAUCUQUAModel4.KhachHang" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="RAUCUQUAModel4.Loai" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RAUCUQUAModel4.NhanVien" Width="1.5" PointX="1.5" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="RAUCUQUAModel4.SanPham" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />

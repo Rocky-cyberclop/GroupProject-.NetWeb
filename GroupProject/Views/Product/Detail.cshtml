@@ -80,10 +80,7 @@
                                     </div>
                                 </div>
 
-                                @if (@ViewBag.slCoTheThem == 0)
-                                {
-                                    <p style="color:orangered">Bạn đã có @Model.Product.GioHangs.First().SoLuong sản phẩm trong giỏ hàng. Không thể thêm được vì vượt quá giới hạn mua hàng.</p>
-                                }
+
 
 
                                 @if (Model.Product.SoLuong == 0)
@@ -97,6 +94,10 @@
                                     <button class="primary-btn btn" type="submit" onclick="Add('@Model.Product.MaSP')">Thêm vào giỏ hàng</button>
 
 
+                                }
+                                @if (@ViewBag.slCoTheThem == 0 && Model.Product.SoLuong>0)
+                                {
+                                    <p style="color:orangered">Bạn đã có @Model.Product.GioHangs.FirstOrDefault().SoLuong sản phẩm trong giỏ hàng. Bạn không thể thêm được nữa vì vượt quá số lượng trong kho.</p>
                                 }
 
                                 <ul>
@@ -234,6 +235,7 @@
             })
         })
         //]]></script>
+
     <script>
         function Add(id) {
             var sl = document.getElementById("quantity_SP").value;

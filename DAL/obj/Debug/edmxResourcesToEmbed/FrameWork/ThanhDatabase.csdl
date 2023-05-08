@@ -42,7 +42,7 @@
     <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="NgayDat" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TongTien" Type="Int64" />
+    <Property Name="TongTien" Type="Int64" Nullable="false" />
     <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHoa__MaHD__239E4DCF" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
     <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__20C1E124" FromRole="HoaDon" ToRole="KhachHang" />
@@ -56,6 +56,7 @@
     <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NgaySinh" Type="DateTime" Precision="3" />
     <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DienThoai" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="GioHangs" Relationship="Self.FK__GioHang__MaKH__1BFD2C07" FromRole="KhachHang" ToRole="GioHang" />

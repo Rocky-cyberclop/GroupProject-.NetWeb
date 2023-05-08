@@ -181,7 +181,6 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SessionHelper.cs" />
-    <Compile Include="Controllers\SingleProductController.cs" />
     <Compile Include="Controllers\StaffSession.cs" />
     <Compile Include="Controllers\UserSession.cs" />
     <Compile Include="Global.asax.cs">
@@ -2396,7 +2395,6 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
-    <Content Include="Views\SingleProduct\Index.cshtml" />
     <Content Include="Views\Profile\EditProfile.cshtml" />
     <Content Include="Views\Profile\ChangePass.cshtml" />
     <Content Include="Views\Profile\getListHD.cshtml" />

@@ -11,8 +11,9 @@ namespace GroupProject.Controllers
 {
     public class ProductController : Controller
     {
+        HaoDatabase db = new HaoDatabase();
        // NganDatabase db = new NganDatabase();
-       ThanhDatabase db = new ThanhDatabase();
+       //ThanhDatabase db = new ThanhDatabase();
         // GET: Product
         public ActionResult Index(string cate = "all", string sort = "no", int page = 1)
         {
@@ -64,6 +65,21 @@ namespace GroupProject.Controllers
                 ViewBag.slCoTheThem = 0;
 
             return View(spmProduct);
+        }
+
+        [HttpGet, ActionName("FindProduct")]
+        public JsonResult FindProduct(string search)
+        {
+            List<SanPham> ls = db.SanPhams.Where(p => p.Ten.Contains(search)).Take(5).ToList();
+            List<FindingModel> fd = new List<FindingModel>();
+            foreach(var item in ls)
+            {
+                FindingModel findingModel = new FindingModel();
+                findingModel.Id = item.MaSP;
+                findingModel.Value = item.Ten;
+                fd.Add(findingModel);
+            }
+            return Json(new { data = fd }, JsonRequestBehavior.AllowGet);
         }
 
     }

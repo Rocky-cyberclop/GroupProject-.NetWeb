@@ -53,6 +53,7 @@
           <Property Name="Ten" Type="nvarchar" MaxLength="50" />
           <Property Name="NgaySinh" Type="datetime" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DienThoai" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -307,6 +308,7 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
           <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgaySinh" Type="DateTime" Precision="3" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DienThoai" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="GioHangs" Relationship="Self.FK__GioHang__MaKH__1BFD2C07" FromRole="KhachHang" ToRole="GioHang" />
@@ -554,6 +556,7 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
               </MappingFragment>

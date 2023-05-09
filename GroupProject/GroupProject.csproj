@@ -187,6 +187,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChangePass.cs" />
+    <Compile Include="Models\FindingModel.cs" />
     <Compile Include="Models\SingleProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -1886,6 +1887,7 @@
     <Content Include="Assets\Main\css\style.css" />
     <Content Include="Assets\Main\css\stylelogin.css" />
     <Content Include="Assets\Main\css\styleprofile.css" />
+    <Content Include="Assets\Main\css\styleSearchBar.css" />
     <Content Include="Assets\Main\fonts\ElegantIcons.svg" />
     <Content Include="Assets\Main\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\Main\img\cart\bannercart.jpg" />

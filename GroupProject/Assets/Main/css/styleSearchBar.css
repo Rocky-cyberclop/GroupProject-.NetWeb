@@ -1,0 +1,24 @@
+﻿.search-result {
+    display: block;
+    position: absolute;
+    width: 100%;
+    list-style: none;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ebebeb;
+}
+
+    .search-result > li {
+        padding: 5px 20px 5px;
+    }
+
+        .search-result > li a {
+            color: black;
+            width: 100%;
+            display: block;
+        }
+
+        .search-result > li:hover {
+            background-color: #ebebeb;
+            cursor: pointer;
+        }

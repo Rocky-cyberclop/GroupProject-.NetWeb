@@ -1071,3 +1071,11 @@ D:\HK2 2022-2023\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCom
 D:\HK2 2022-2023\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CopyComplete
 D:\HK2 2022-2023\GroupProject\GroupProject\obj\Debug\GroupProject.dll
 D:\HK2 2022-2023\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
+D:\GroupProject\GroupProject\GroupProject\bin\PagedList.dll
+D:\GroupProject\GroupProject\GroupProject\bin\PagedList.Mvc.dll
+D:\GroupProject\GroupProject\GroupProject\bin\PagedList.xml
+D:\GroupProject\GroupProject\GroupProject\bin\PagedList.Mvc.xml
+D:\For store\dotNetWeb\GroupProject\GroupProject\GroupProject\bin\PagedList.dll
+D:\For store\dotNetWeb\GroupProject\GroupProject\GroupProject\bin\PagedList.Mvc.dll
+D:\For store\dotNetWeb\GroupProject\GroupProject\GroupProject\bin\PagedList.xml
+D:\For store\dotNetWeb\GroupProject\GroupProject\GroupProject\bin\PagedList.Mvc.xml

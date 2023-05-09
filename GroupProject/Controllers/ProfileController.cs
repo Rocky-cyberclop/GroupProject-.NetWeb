@@ -14,10 +14,10 @@ namespace GroupProject.Controllers
 {
     public class ProfileController : Controller
     {
-        //HaoDatabase db = new HaoDatabase();
+        HaoDatabase db = new HaoDatabase();
         /*TrangDatabase db = new TrangDatabase();*/
         //NhatDatabase db = new NhatDatabase();
-        NganDatabase db = new NganDatabase();
+        //NganDatabase db = new NganDatabase();
 
         // GET: Profile
         public readonly bool et = true;

@@ -9,8 +9,8 @@ namespace GroupProject.Controllers
 {
     public class HomeController : Controller
     {
-        //HaoDatabase db = new HaoDatabase();
-        ThanhDatabase db = new ThanhDatabase();
+        HaoDatabase db = new HaoDatabase();
+        //ThanhDatabase db = new ThanhDatabase();
         //TrangDatabase db = new TrangDatabase();
         //NhatDatabase db = new NhatDatabase();
        // NganDatabase db = new NganDatabase();

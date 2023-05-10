@@ -22,6 +22,7 @@ namespace GroupProject.Areas.Admin.Controllers
         public ActionResult StaffsList()
         {
             var listStaff = from ts in db.NhanViens where ts.Nghi==false select ts;
+            ViewBag.right = SessionHelper.GetStaffSession().GetRight();
             return View(listStaff);
         }
 

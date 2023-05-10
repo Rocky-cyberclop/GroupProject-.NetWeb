@@ -8,9 +8,11 @@
 
     <h2>Nhân viên @ViewBag.id</h2>
 
-    <p>
-        <a class="btn btn-primary" href="@Url.Action("AddStaff","Management")">Thêm nhân viên</a>
-    </p>
+    @if (ViewBag.right=="Admin") { 
+        <p>
+            <a class="btn btn-primary" href="@Url.Action("AddStaff","Management")">Thêm nhân viên</a>
+        </p>
+    }
     <table class="table">
         <tr>
             <th>

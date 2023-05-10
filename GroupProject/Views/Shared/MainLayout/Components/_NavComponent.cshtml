@@ -1,9 +1,21 @@
-﻿<ul>
+﻿<script>
+    function confirmLogout() {
+        var rs = confirm("Bạn chắc chắn muốn đăng xuất?");
+        if (rs) {
+            $.ajax({
+                url: "Login/Logout"
+            })
+            window.location.reload();
+        }           
+    }
+</script>
+
+<ul>
     @{
         if (Session["UserSession"] != null)
         {
             <li><a href="@Url.Action("Index","Profile")" title="Profile"><i class="fa fa-user"></i></a></li>
-            <li><a href="@Url.Action("Logout","Login")" title="Logout"><i class="fa fa-power-off"></i></a></li>
+            <li><a href="" onclick="confirmLogout()"><i class="fa fa-power-off"></i></a></li>
         }
         else
         {

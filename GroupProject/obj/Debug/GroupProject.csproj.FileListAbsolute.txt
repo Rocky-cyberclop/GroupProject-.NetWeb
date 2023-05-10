@@ -1079,3 +1079,7 @@ D:\For store\dotNetWeb\GroupProject\GroupProject\GroupProject\bin\PagedList.dll
 D:\For store\dotNetWeb\GroupProject\GroupProject\GroupProject\bin\PagedList.Mvc.dll
 D:\For store\dotNetWeb\GroupProject\GroupProject\GroupProject\bin\PagedList.xml
 D:\For store\dotNetWeb\GroupProject\GroupProject\GroupProject\bin\PagedList.Mvc.xml
+D:\GroupProject\GroupProject\bin\PagedList.dll
+D:\GroupProject\GroupProject\bin\PagedList.Mvc.dll
+D:\GroupProject\GroupProject\bin\PagedList.xml
+D:\GroupProject\GroupProject\bin\PagedList.Mvc.xml

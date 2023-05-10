@@ -14,9 +14,9 @@ namespace GroupProject.Controllers
 {
     public class ProfileController : Controller
     {
-        HaoDatabase db = new HaoDatabase();
+        //HaoDatabase db = new HaoDatabase();
         /*TrangDatabase db = new TrangDatabase();*/
-        //NhatDatabase db = new NhatDatabase();
+        NhatDatabase db = new NhatDatabase();
         //NganDatabase db = new NganDatabase();
 
         // GET: Profile

@@ -15,8 +15,7 @@ namespace GroupProject.Controllers
     public class CartController : Controller
     {
         HaoDatabase db = new HaoDatabase();
-        //ThanhDatabase db = new ThanhDatabase(); //Dùng đúng Entity trên máy  
-
+        //ThanhDatabase db = new ThanhDatabase(); //Dùng đúng Entity trên máy
 
         // GET: Cart
 

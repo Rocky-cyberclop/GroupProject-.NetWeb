@@ -43,7 +43,6 @@ namespace DAL.FrameWork
         [Required(ErrorMessage = "Mật khẩu xác nhận không được để trống")]
         public string MatKhau { get; set; }
 
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GioHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

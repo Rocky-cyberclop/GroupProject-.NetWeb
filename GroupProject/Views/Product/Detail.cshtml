@@ -22,7 +22,7 @@
         padding-bottom: 50px;
     }
 </style>
-<span id="message" class="d-none">@TempData["Message"]</span>
+<span id="successMessage" class="d-none">@TempData["successMessage"]</span>
 <div class="container">
     <div class="breadcrumb bg-transparent border">
         <div class="col-lg-11">
@@ -239,11 +239,11 @@
 
     <script>
         $(document).ready(function () {
-            var message = $("#message").text();
+            var message = $("#successMessage").text();
             if (message !== "") {
-                toastr.success(message);
+                toastr.success(message, "", { tapToDismiss: true, timeOut: 1000 });
             }
-            
+
         })
     </script>
 

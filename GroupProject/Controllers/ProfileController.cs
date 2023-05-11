@@ -16,8 +16,8 @@ namespace GroupProject.Controllers
     {
         //HaoDatabase db = new HaoDatabase();
         /*TrangDatabase db = new TrangDatabase();*/
-        NhatDatabase db = new NhatDatabase();
-        //NganDatabase db = new NganDatabase();
+        //NhatDatabase db = new NhatDatabase();
+        NganDatabase db = new NganDatabase();
 
         // GET: Profile
         public readonly bool et = true;
@@ -89,6 +89,7 @@ namespace GroupProject.Controllers
                 {
                     db.Entry(KHud).State = EntityState.Modified;
                     db.SaveChanges();
+                    TempData["successMessage"] = "Chỉnh sửa thành công!";
                 }
                 catch (RetryLimitExceededException)
                 {
@@ -138,6 +139,7 @@ namespace GroupProject.Controllers
                     return View("ChangePass");
                 }
             }
+            TempData["successMessage"] = "Đổi mật khẩu thành công!";
             return RedirectToAction("Index");
         }
 

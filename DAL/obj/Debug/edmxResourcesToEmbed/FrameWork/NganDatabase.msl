@@ -70,8 +70,8 @@
           <ScalarProperty Name="MaNV" ColumnName="MaNV" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Quyen" ColumnName="Quyen" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
           <ScalarProperty Name="Nghi" ColumnName="Nghi" />

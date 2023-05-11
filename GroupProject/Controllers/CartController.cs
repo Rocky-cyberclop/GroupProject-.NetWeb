@@ -16,7 +16,8 @@ namespace GroupProject.Controllers
     {
         //HaoDatabase db = new HaoDatabase();
         //ThanhDatabase db = new ThanhDatabase(); //Dùng đúng Entity trên máy
-        NhatDatabase db = new NhatDatabase();
+        //NhatDatabase db = new NhatDatabase();
+        NganDatabase db = new NganDatabase();
         // GET: Cart
         UserSession userss = SessionHelper.GetUserSession();
 
@@ -252,7 +253,7 @@ namespace GroupProject.Controllers
             listCartItem = db.GioHangs.Where(s => s.MaKH == user).ToList();
             Session["ShoppingCart"] = listCartItem;
 
-            TempData["Message"] = "Thêm sản phẩm thành công";
+            TempData["successMessage"] = "Thêm sản phẩm thành công";
             return Json(new { quantity = cart.SoLuong, cart = masp }, JsonRequestBehavior.AllowGet);
 
         }

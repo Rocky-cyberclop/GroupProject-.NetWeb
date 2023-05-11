@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/Assets/Main/css/index.css">
 }
 
-
+<span id="successMessage" class="d-none">@TempData["successMessage"]</span>
 
 <div class="slideshow-container">
     <div class="mySlides1">
@@ -165,4 +165,12 @@
     <script src="~/Assets/Main/js/mixitup.min.js"></script>
     <script src="~/Assets/Main/js/owl.carousel.min.js"></script>
     <script src="~/Assets/Main/js/main.js"></script>
+    <script>
+        $(function () {
+            var message = $("#successMessage").text();
+            if (message !== "") {
+                toastr.success(message, "", { tapToDismiss: true, timeOut: 1000 });
+            }
+        });
+    </script>
 }

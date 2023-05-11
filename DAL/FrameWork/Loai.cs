@@ -11,14 +11,17 @@ namespace DAL.FrameWork
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Loai
     {
+        [DisplayName("Mã loại")]
         [Required(ErrorMessage = "Mã loại không được để trống")]
         [RegularExpression("^[A-Z]$", ErrorMessage = "Mã loại chỉ cần 1 ký tự chữ cái in hoa đại diện duy nhất")]
         public string MaLoai { get; set; }
         [Required(ErrorMessage = "Tên loại không được để trống")]
+        [DisplayName("Tên loại")]
         public string TenLoai { get; set; }
         public string GhiChu { get; set; }
     }

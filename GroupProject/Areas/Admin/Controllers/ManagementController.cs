@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 using System.Web.WebPages.Html;
 using DAL.FrameWork;
@@ -48,47 +49,47 @@ namespace GroupProject.Areas.Admin.Controllers
             if (model.Ten == "")
             {
                 deathFlag = true;
-                ViewBag.tenError = "Tên không được để trống\n";
+                ModelState.AddModelError("tenError", "Tên không được để trống ");
             }
             if (model.DiaChi == "")
             {
                 deathFlag = true;
-                ViewBag.diachiError = "Địa chỉ không được để trống\n";
+                ModelState.AddModelError("diachiError", "Địa chỉ không được để trống ");
 
             }
             if (model.Email == "")
             {
                 deathFlag = true;
-                ViewBag.emailError = "Email không được để trống\n";
+                ModelState.AddModelError("emailError", "Email không được để trống ");
 
             }
-            if (Regex.IsMatch(model.Email, "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"))
+            if (Regex.IsMatch(model.Email, "@^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$"))
             {
                 deathFlag = true;
-                ViewBag.emailErrorRegex = "Email không đúng định dạng\n";
+                ModelState.AddModelError("emailErrorRegex", "Email không đúng định dạng ");
 
             }
             if (model.DienThoai == "")
             {
                 deathFlag = true;
-                ViewBag.dienthoaiError = "Điện thoại không được để trống\n";
+                ModelState.AddModelError("dienthoaiError", "Điện thoại không được để trống ");
 
             }
-            if (Regex.IsMatch(model.DienThoai, @"^(03|05|07|08|09)+([0-9]{8})$"))
+            if (Regex.IsMatch(model.DienThoai, "@^(03|05|07|08|09)+([0-9]{8})$"))
             {
                 deathFlag = true;
-                ViewBag.dienthoaiErrorRegex = "Điện thoại không đúng định dạng\n";
+                ModelState.AddModelError("dienthoaiErrorRegex", "Điện thoại không đúng định dạng ");
 
             }
             if (model.Quyen == "")
             {
                 deathFlag = true;
-                ViewBag.quyenError = "Quyền không được để trống\n";
+                ModelState.AddModelError("quyenError", "Quyền không được để trống ");
 
             }
             if (deathFlag)
             {
-                return RedirectToAction("AddStaff");
+                return View("AddStaff");
             }
             db.NhanViens.Add(model);
             db.SaveChanges();
@@ -168,6 +169,19 @@ namespace GroupProject.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateProduct(SanPham model)
         {
+            if (Request.Files[0].ContentLength == 0)
+            {
+                ModelState.AddModelError("hinhanhError1", "Hãy thêm 1 hình đại diện");
+                if (Request.Files[1].ContentLength == 0)
+                {
+                    ModelState.AddModelError("hinhanhError2", "Hãy thêm ít nhất 1 hình phụ");
+                }
+                var listType = from ls in db.Loais select ls;
+                List<Loai> listTypeList = listType.ToList();
+                SelectList lsType = new SelectList(listTypeList, "MaLoai", "TenLoai");
+                ViewBag.lsType = lsType;
+                return View("CreateProduct");
+            }
             var type = Request["type"].ToString();
             var product = db.SanPhams.Where(ps=>ps.MaSP.StartsWith(type));
             model.MaSP = type + (product.Count() + 1).ToString();
@@ -176,6 +190,7 @@ namespace GroupProject.Areas.Admin.Controllers
             db.SaveChanges();
             var randomName = DateTime.Now.ToBinary().ToString();
             var name = "";
+            
             for (var i = 0; i < Request.Files.Count; i++)
             {
                 if (Request.Files[i].FileName.Contains(".png") || Request.Files[i].FileName.Contains(".jpg"))

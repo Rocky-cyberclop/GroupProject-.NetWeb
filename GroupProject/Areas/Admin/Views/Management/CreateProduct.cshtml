@@ -20,7 +20,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Chọn loại</label>
             <div class="col-md-10">
-                @Html.DropDownList("type", ViewBag.lsType as SelectList, "Loại", new { @class="form-control" } )
+                @Html.DropDownList("type", ViewBag.lsType as SelectList, new { @class="form-control" } )
             </div>
         </div>
 
@@ -78,10 +78,12 @@
                 <div class="col-5">
                     <label for="ava">Chọn hình đại diện</label>
                     <input type="file" name="ava" id="ava" />
+                    @Html.ValidationMessage("hinhanhError1", new { @class = "text-danger" })
                 </div>
                 <div class="col-5">
                     <label for="remain">Kéo các hình phụ vào đây</label>
-                    <input type="file" name="remain" id="remain" multiple="multiple"/>
+                    <input type="file" name="remain" id="remain" multiple="multiple" />
+                    @Html.ValidationMessage("hinhanhError2", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

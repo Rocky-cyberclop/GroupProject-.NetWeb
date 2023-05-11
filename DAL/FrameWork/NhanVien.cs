@@ -11,6 +11,7 @@ namespace DAL.FrameWork
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public partial class NhanVien
@@ -21,18 +22,23 @@ namespace DAL.FrameWork
             this.HoaDons = new HashSet<HoaDon>();
         }
     
+        [DisplayName("Mã nhân viên")]
         public string MaNV { get; set; }
         [Required(ErrorMessage = "Tên không được để trống")]
+        [DisplayName("Tên nhân viên")]
         public string Ten { get; set; }
         [Required(ErrorMessage = "Địa chỉ không được để trống")]
+        [DisplayName("Địa chỉ")]
         public string DiaChi { get; set; }
         [Required(ErrorMessage = "Email không được để trống")]
         [RegularExpression("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", ErrorMessage = "Không đúng định dạng email")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Số điện thoại không được để trống")]
         [RegularExpression(@"^(03|05|07|08|09)+([0-9]{8})$", ErrorMessage = "Không đúng định dạng điện thoại")]
+        [DisplayName("Số điện thoại")]
         public string DienThoai { get; set; }
         [Required(ErrorMessage = "Quyền không được để trống")]
+        [DisplayName("Quyền")]
         public string Quyen { get; set; }
         public string MatKhau { get; set; }
         public bool Nghi { get; set; }

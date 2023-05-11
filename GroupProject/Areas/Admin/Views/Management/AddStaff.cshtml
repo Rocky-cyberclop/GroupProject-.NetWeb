@@ -16,13 +16,14 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="text-danger">
-        @ViewBag.tenError
-        @ViewBag.diachiError
-        @ViewBag.emailError
-        @ViewBag.emailRegexError
-        @ViewBag.dienthoaiError
-        @ViewBag.dienthoaiRegexError
-        @ViewBag.quyenError
+        @Html.ValidationMessage("tenError", new { @class = "text-danger" })
+        @Html.ValidationMessage("diachiError", new { @class = "text-danger" })
+        @Html.ValidationMessage("emailError", new { @class = "text-danger" })
+        @Html.ValidationMessage("emailErrorRegex", new { @class = "text-danger" })
+        @Html.ValidationMessage("dienthoaiError", new { @class = "text-danger" })
+        @Html.ValidationMessage("dienthoaiErrorRegex", new { @class = "text-danger" })
+        @Html.ValidationMessage("quyenError", new { @class = "text-danger" })
+
     </div>
         <div class="form-group">
             @Html.LabelFor(model => model.MaNV, htmlAttributes: new { @class = "control-label col-md-2" })

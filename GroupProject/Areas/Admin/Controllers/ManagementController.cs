@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages.Html;
 using DAL.FrameWork;
 using GroupProject.Controllers;
 
@@ -42,7 +44,52 @@ namespace GroupProject.Areas.Admin.Controllers
             var listStaff = from ts in db.NhanViens select ts;
             model.MaNV = "NV0" + (listStaff.Count() + 1).ToString();
             model.MatKhau = "NV0" + (listStaff.Count() + 1).ToString();
+            var deathFlag = false;
+            if (model.Ten == "")
+            {
+                deathFlag = true;
+                ViewBag.tenError = "Tên không được để trống\n";
+            }
+            if (model.DiaChi == "")
+            {
+                deathFlag = true;
+                ViewBag.diachiError = "Địa chỉ không được để trống\n";
 
+            }
+            if (model.Email == "")
+            {
+                deathFlag = true;
+                ViewBag.emailError = "Email không được để trống\n";
+
+            }
+            if (Regex.IsMatch(model.Email, "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"))
+            {
+                deathFlag = true;
+                ViewBag.emailErrorRegex = "Email không đúng định dạng\n";
+
+            }
+            if (model.DienThoai == "")
+            {
+                deathFlag = true;
+                ViewBag.dienthoaiError = "Điện thoại không được để trống\n";
+
+            }
+            if (Regex.IsMatch(model.DienThoai, @"^(03|05|07|08|09)+([0-9]{8})$"))
+            {
+                deathFlag = true;
+                ViewBag.dienthoaiErrorRegex = "Điện thoại không đúng định dạng\n";
+
+            }
+            if (model.Quyen == "")
+            {
+                deathFlag = true;
+                ViewBag.quyenError = "Quyền không được để trống\n";
+
+            }
+            if (deathFlag)
+            {
+                return RedirectToAction("AddStaff");
+            }
             db.NhanViens.Add(model);
             db.SaveChanges();
 
@@ -89,6 +136,11 @@ namespace GroupProject.Areas.Admin.Controllers
         [HttpPost, ActionName("AddType")]
         public ActionResult AddType(Loai model)
         {
+            if (db.Loais.Where(t => t.MaLoai == model.MaLoai).FirstOrDefault()!=null)
+            {
+                ModelState.AddModelError("Type", "Mã loại này đã tồn tại");
+                return View("AddType");
+            }
             db.Loais.Add(model);
             db.SaveChanges();
             return RedirectToAction("Products");

@@ -12,6 +12,8 @@
 {
     @Html.AntiForgeryToken()
     
+    
+    @Html.ValidationMessage("Type", new { @class = "text-danger" })
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })

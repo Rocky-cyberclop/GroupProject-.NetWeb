@@ -22,11 +22,17 @@ namespace DAL.FrameWork
         }
     
         public string MaNV { get; set; }
-        [Required(ErrorMessage = "Không được để tên trống")]
+        [Required(ErrorMessage = "Tên không được để trống")]
         public string Ten { get; set; }
+        [Required(ErrorMessage = "Địa chỉ không được để trống")]
         public string DiaChi { get; set; }
+        [Required(ErrorMessage = "Email không được để trống")]
+        [RegularExpression("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", ErrorMessage = "Không đúng định dạng email")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Số điện thoại không được để trống")]
+        [RegularExpression(@"^(03|05|07|08|09)+([0-9]{8})$", ErrorMessage = "Không đúng định dạng điện thoại")]
         public string DienThoai { get; set; }
+        [Required(ErrorMessage = "Quyền không được để trống")]
         public string Quyen { get; set; }
         public string MatKhau { get; set; }
         public bool Nghi { get; set; }

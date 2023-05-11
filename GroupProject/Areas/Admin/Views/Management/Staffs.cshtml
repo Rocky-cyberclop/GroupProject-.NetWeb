@@ -33,9 +33,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Quyen)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MatKhau)
-            </th>
+            
             <th></th>
         </tr>
 
@@ -60,9 +58,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Quyen)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MatKhau)
-                </td>
+                
                 <td>
                     @Html.ActionLink("Sửa", "EditStaff", new {  id=item.MaNV  }) |
                     <a href="#" class="" data-toggle="modal" data-target="#delete-modal"

@@ -10,13 +10,16 @@
     <link rel="stylesheet" href="~/Assets/Main/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="stylesheet" href="~/Assets/Main/css/stylelogin.css" type="text/css">
+    <link rel="icon" href="~/Assets/Main/img/logo-vuong.png" />
     <link rel="stylesheet" href="~/Assets/Main/js/jquery-3.3.1.min.js" type="text/javascript">
+    <link href="~/Content/toastr.css" rel="stylesheet" />
 </head>
 <body>
     @RenderPage("_LoginHeader.cshtml")
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/toastr.js"></script>
     @RenderSection("Scripts", false)
 </body>
 </html>

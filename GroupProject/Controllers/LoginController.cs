@@ -15,8 +15,8 @@ namespace GroupProject.Controllers
         //HaoDatabase db = new HaoDatabase();
         // TrangDatabase db = new TrangDatabase();
         //ThanhDatabase db = new ThanhDatabase();
-        //NhatDatabase db = new NhatDatabase();
-        NganDatabase db = new NganDatabase();
+        NhatDatabase db = new NhatDatabase();
+        //NganDatabase db = new NganDatabase();
 
         // GET: Login
         public ActionResult Index()
@@ -35,7 +35,7 @@ namespace GroupProject.Controllers
             if(Password == "")
             {
                 ModelState.AddModelError("PasswordLogin", "Mật khẩu không được để trống.");
-                ViewBag.Email = Email;
+                ViewBag.EmailLogin = Email;
                 return View("Index");
             }
 
@@ -59,7 +59,7 @@ namespace GroupProject.Controllers
             else
             {
                 ModelState.AddModelError("PasswordLogin", "Tên đăng nhập hoặc mật khẩu không chính xác.");
-                ViewBag.Email = Email;
+                ViewBag.EmailLogin = Email;
             }
             return View("Index");
         }
@@ -129,28 +129,36 @@ namespace GroupProject.Controllers
             {
                 if (Password == model.MatKhau)
                 {
-                    int countUser = db.KhachHangs.Count() + 1;
-                    if (countUser < 100)
+                    if (ModelState.IsValid)
                     {
-                        model.MaKH = "KH0" + countUser.ToString();
-                    }
-                    else
-                    {
-                        model.MaKH = "KH" + countUser.ToString();
-                    }
-                    //db.KhachHangs.Add(model);
-                    //db.SaveChanges();
+                        int countUser = db.KhachHangs.Count() + 1;
+                        if (countUser < 100)
+                        {
+                            model.MaKH = "KH0" + countUser.ToString();
+                        }
+                        else
+                        {
+                            model.MaKH = "KH" + countUser.ToString();
+                        }
+                        //db.KhachHangs.Add(model);
+                        //db.SaveChanges();
 
-                    userRegister = model;
-                    var massage = MailUtils.SendMail("minhnhat0123401@gmail.com", model.Email, "zidqamoidsxdnsza", false);
-                    if (massage)
-                    {
-                        ModelState.AddModelError("CodeError", "Đã gửi mã xác minh đến địa chỉ email của bạn.");
-                        return View();
+                        userRegister = model;
+                        var massage = MailUtils.SendMail("minhnhat0123401@gmail.com", model.Email, "zidqamoidsxdnsza", false);
+                        if (massage)
+                        {
+                            ModelState.AddModelError("CodeError", "Đã gửi mã xác minh đến địa chỉ email của bạn.");
+                            return View();
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("msFail", "Có lỗi xảy ra. Vui lòng liên hệ hotline để được hỗ trợ!");
+                            return View("Index");
+                        }
                     }
                     else
                     {
-                        ModelState.AddModelError("msFail", "Có lỗi xảy ra. Vui lòng liên hệ hotline để được hỗ trợ!");
+                        ModelState.AddModelError("", "Đăng ký không thành công, vui lòng kiểm tra lại");
                         return View("Index");
                     }
                 }
@@ -184,7 +192,7 @@ namespace GroupProject.Controllers
             {
                 db.KhachHangs.Add(userRegister);
                 db.SaveChanges();
-                Response.Write("<script>alert('Tạo tài khoản thành công');</script>");
+                TempData["LoginMessage"] = "Đăng ký thành công!";
                 return View("Index");
             }
             
@@ -194,6 +202,7 @@ namespace GroupProject.Controllers
         {
             Session.Remove("UserSession");
             Session.Remove("StaffSession");
+            TempData["LoginMessage"] = "Đăng xuất thành công";
             return RedirectToAction("Index");
         }
 

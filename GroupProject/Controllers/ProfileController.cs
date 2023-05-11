@@ -16,8 +16,8 @@ namespace GroupProject.Controllers
     {
         //HaoDatabase db = new HaoDatabase();
         /*TrangDatabase db = new TrangDatabase();*/
-        //NhatDatabase db = new NhatDatabase();
-        NganDatabase db = new NganDatabase();
+        NhatDatabase db = new NhatDatabase();
+        //NganDatabase db = new NganDatabase();
 
         // GET: Profile
         public readonly bool et = true;

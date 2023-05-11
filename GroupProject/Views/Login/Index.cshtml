@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/LoginLayout/_LoginLayout.cshtml";
 }
 
+
 @section Scripts{
     <script type="text/javascript">
         const signUpButton = document.getElementById('signUp');
@@ -17,9 +18,24 @@
         signInButton.addEventListener('click', () => {
             main.classList.remove("right-panel-active");
         });
+        $(function () {
+            var message = $("#message").text();
+            if (message !== "") {
+                toastr.success(message);
+            }
+        });
+        $(function () {
+            var message = $("#warningMessage").text();
+            if (message !== "") {
+                toastr.warning(message);
+            }
+        });
     </script>
-}
 
+
+}
+<span id="message" class="d-none">@TempData["LoginMessage"]</span>
+<span id="warningMessage" class="d-none">@TempData["warningMessage"]</span>
 <div class="container" id="main">
     <div class="sign-up">
         @using (Html.BeginForm("Register", "Login", FormMethod.Post))
@@ -40,11 +56,14 @@
             @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
 
             <input type="text" name="Ten" value="@ViewBag.Name" placeholder="Họ và tên">
+            @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
 
             <input type="date" name="NgaySinh" value="@ViewBag.Birthday" />
             @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
 
             <input type="text" name="DiaChi" value="@ViewBag.Address" placeholder="Địa chỉ">
+            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+
             <input type="password" name="Password" placeholder="Mật khẩu">
             @Html.ValidationMessage("Password", new { @class = "text-danger" })
 
@@ -71,7 +90,7 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <p>hoặc sử dụng tài khoản của bạn</p>
-            <input type="text" name="Email" value="@ViewBag.Email" placeholder="Email/Số điện thoại">
+            <input type="text" name="Email" value="@ViewBag.EmailLogin" placeholder="Email/Số điện thoại">
             @Html.ValidationMessage("EmailLogin", new { @class = "text-danger" })
 
             <input type="password" name="Password" placeholder="Mật khẩu">

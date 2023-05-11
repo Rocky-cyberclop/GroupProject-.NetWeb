@@ -12,7 +12,7 @@ namespace GroupProject.Controllers
     public class ProductController : Controller
     {
         //HaoDatabase db = new HaoDatabase();
-        NganDatabase db = new NganDatabase();
+        NhatDatabase db = new NhatDatabase();
         //ThanhDatabase db = new ThanhDatabase();
         // GET: Product
         public ActionResult Index(string cate = "all", string sort = "no", int page = 1)
@@ -45,6 +45,7 @@ namespace GroupProject.Controllers
             UserSession user = SessionHelper.GetUserSession();
             if (Session["UserSession"] == null)
             {
+                TempData["warningMessage"] = "Vui lòng đăng nhập!";
                 return RedirectToAction("Index", "Login");
             }
             string MaKH = user.getUserName();

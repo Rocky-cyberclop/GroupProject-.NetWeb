@@ -14,16 +14,14 @@ namespace GroupProject.Controllers
 {
     public class CartController : Controller
     {
-        HaoDatabase db = new HaoDatabase();
+        //HaoDatabase db = new HaoDatabase();
         //ThanhDatabase db = new ThanhDatabase(); //Dùng đúng Entity trên máy
-
+        NganDatabase db = new NganDatabase();
         // GET: Cart
+        UserSession userss = SessionHelper.GetUserSession();
 
         public ActionResult Index()
         {
-
-            UserSession userss = SessionHelper.GetUserSession();
-
             if (Session["UserSession"] == null)
             {
                 return RedirectToAction("Index", "Login");
@@ -32,17 +30,15 @@ namespace GroupProject.Controllers
             var listCart = from ts in db.GioHangs where ts.MaKH == MaKH select ts;
             return View(listCart);
         }
-        /********************************************************/
 
         //gio hang rong
         public ActionResult CartNull()
         {
-            UserSession userss = SessionHelper.GetUserSession();
-            string MaKH = userss.getUserName();
-            if (MaKH == null)
+            if (Session["UserSession"] == null)
             {
-                return View("Login");
+                return RedirectToAction("Index", "Login");
             }
+            string MaKH = userss.getUserName();            
             var listCart = from ts in db.GioHangs where ts.MaKH == MaKH select ts;
             return View(listCart);
 
@@ -56,14 +52,19 @@ namespace GroupProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(string id)
         {
-            UserSession userss = SessionHelper.GetUserSession();
             string MaKH = userss.getUserName();
             GioHang gh = db.GioHangs.Where(ps => ps.MaSP == id).FirstOrDefault();
             // var path = Path.Combine(Server.MapPath("~/Content/Image"), book.CoverPage);
 
             db.GioHangs.Remove(gh);
             db.SaveChanges();
-            var listCart = from ts in db.GioHangs where ts.MaKH == MaKH select ts;
+
+            //cap nhat session cart
+            string user = userss.getUserName();
+            List<GioHang> listCartItem;
+            listCartItem = db.GioHangs.Where(s => s.MaKH == user).ToList();
+            Session["ShoppingCart"] = listCartItem;
+
             return RedirectToAction("Index");
         }
 
@@ -73,13 +74,17 @@ namespace GroupProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteAll()
         {
-            UserSession userss = SessionHelper.GetUserSession();
             string MaKH = userss.getUserName();
             var gh = db.GioHangs.Where(ps => ps.MaKH == MaKH).ToList();
             foreach (var i in gh)
                 db.GioHangs.Remove(i);
 
             db.SaveChanges();
+            //cap nhat session cart
+            string user = userss.getUserName();
+            List<GioHang> listCartItem;
+            listCartItem = db.GioHangs.Where(s => s.MaKH == user).ToList();
+            Session["ShoppingCart"] = listCartItem;
 
             return RedirectToAction("CartNull");
         }
@@ -91,7 +96,6 @@ namespace GroupProject.Controllers
         [HttpGet, ActionName("PlusQuantity")]
         public JsonResult PlusQuantity(/*string user,*/ string masp)
         {
-            UserSession userss = SessionHelper.GetUserSession();
             string user = userss.getUserName();
             var cart = db.GioHangs.Where(cs => cs.MaKH == user && cs.MaSP == masp).SingleOrDefault();
             var slSP = db.SanPhams.Find(masp);
@@ -99,6 +103,10 @@ namespace GroupProject.Controllers
                 cart.SoLuong++;
 
             db.SaveChanges();
+            //cap nhat session cart
+            List<GioHang> listCartItem;
+            listCartItem = db.GioHangs.Where(s => s.MaKH == user).ToList();
+            Session["ShoppingCart"] = listCartItem;
 
             return Json(new { quantity = cart.SoLuong, cart = masp }, JsonRequestBehavior.AllowGet);
 
@@ -108,13 +116,17 @@ namespace GroupProject.Controllers
         [HttpGet, ActionName("MinusQuantity")]
         public JsonResult MinusQuantity(string masp)
         {
-            UserSession userss = SessionHelper.GetUserSession();
             string user = userss.getUserName();
             var cart = db.GioHangs.Where(s => s.MaKH == user && s.MaSP == masp).SingleOrDefault();
             if (cart.SoLuong > 1)
                 cart.SoLuong--;
 
             db.SaveChanges();
+            //cap nhat session cart
+            List<GioHang> listCartItem;
+            listCartItem = db.GioHangs.Where(s => s.MaKH == user).ToList();
+            Session["ShoppingCart"] = listCartItem;
+
             return Json(new { quantity = cart.SoLuong, cart = masp }, JsonRequestBehavior.AllowGet);
         }
 
@@ -123,11 +135,9 @@ namespace GroupProject.Controllers
         /// xuat hoa don 
         public ActionResult Bill()
         {
-            UserSession userss = SessionHelper.GetUserSession();
-
             if (Session["UserSession"] == null)
             {
-                return View("CartNull");
+                return RedirectToAction("Index", "Login");
             }
             string MaKH = userss.getUserName();
             var listCart = from ts in db.GioHangs where ts.MaKH == MaKH select ts;
@@ -146,7 +156,6 @@ namespace GroupProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Checkout(HoaDon model)
         {
-            UserSession userss = SessionHelper.GetUserSession();
             string user = userss.getUserName();
 
             var listBill = from ts in db.HoaDons select ts;
@@ -191,16 +200,16 @@ namespace GroupProject.Controllers
                 db.HoaDons.Add(model);
 
             }
-
-
             //xoa trong csdl
             var gh = db.GioHangs.Where(ps => ps.MaKH == user).ToList();
             foreach (var i in gh)
                 db.GioHangs.Remove(i);
-
-
-
             db.SaveChanges();
+            //cap nhat session cart
+            List<GioHang> listCartItem;
+            listCartItem = db.GioHangs.Where(s => s.MaKH == user).ToList();
+            Session["ShoppingCart"] = listCartItem;
+
             return View("Result");
 
         }
@@ -208,6 +217,10 @@ namespace GroupProject.Controllers
         // dat hang thanh cong
         public ActionResult Result()
         {
+            if (Session["UserSession"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -215,7 +228,6 @@ namespace GroupProject.Controllers
         [HttpPost, ActionName("Add")]
         public JsonResult Add(string masp, int soluong)
         {
-            UserSession userss = SessionHelper.GetUserSession();
             string user = userss.getUserName();
             SanPham sp = db.SanPhams.Where(ps => ps.MaSP == masp).FirstOrDefault();
             var cart = db.GioHangs.Where(cs => cs.MaKH == user && cs.MaSP == masp).SingleOrDefault();
@@ -230,9 +242,15 @@ namespace GroupProject.Controllers
                 gh.SoLuong = soluong;
                 gh.GiaBan = sp.Gia;
                 db.GioHangs.Add(gh);
+                cart = gh;
             }
 
             db.SaveChanges();
+
+            //cap nhat session cart
+            List<GioHang> listCartItem;
+            listCartItem = db.GioHangs.Where(s => s.MaKH == user).ToList();
+            Session["ShoppingCart"] = listCartItem;
 
             return Json(new { quantity = cart.SoLuong, cart = masp }, JsonRequestBehavior.AllowGet);
 

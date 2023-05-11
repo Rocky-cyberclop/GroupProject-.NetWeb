@@ -16,8 +16,8 @@ namespace GroupProject.Controllers
     {
         //HaoDatabase db = new HaoDatabase();
         /*TrangDatabase db = new TrangDatabase();*/
-        NhatDatabase db = new NhatDatabase();
-        //NganDatabase db = new NganDatabase();
+        //NhatDatabase db = new NhatDatabase();
+        NganDatabase db = new NganDatabase();
 
         // GET: Profile
         public readonly bool et = true;
@@ -174,6 +174,7 @@ namespace GroupProject.Controllers
                 {
                     return RedirectToAction("Error","Home");
                 }
+                ViewBag.TongTien = db.HoaDons.Where(hd => hd.MaHD == id).FirstOrDefault().TongTien;
                 return View(model);
             }
             else

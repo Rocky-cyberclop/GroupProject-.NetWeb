@@ -34,12 +34,12 @@
                         double value = (double)item.GiaBan * item.SoLuong;
                         total += value;
                     }
-                    &#8363;@value.ToString("###,###")
+                    @value.ToString("###,###")&#8363;
                 </td>
             </tr>
             <tr>
                 <td>
-                    Đơn giá: &#8363;@item.GiaBan.Value.ToString("###,###")
+                    Đơn giá: @item.GiaBan.Value.ToString("###,###")&#8363;
                 </td>
             </tr>
             <tr>
@@ -54,15 +54,15 @@
                 Tổng tiền hàng:
             </td>
             <td class="text-center align-middle">
-                &#8363;@total.ToString("###,###")
+                @total.ToString("###,###")&#8363;
             </td>
         </tr>
         <tr>
             <td colspan="2" class="text-right">
-                Phí vận chuyển:
+                Phí vận chuyển: 
             </td>
             <td class="text-center align-middle">
-                &#8363;
+                30,000&#8363;
             </td>
         </tr>
         <tr>
@@ -71,10 +71,10 @@
 
             </td>
             <td class="text-center align-middle">
-                @{
-
+                @{ 
+                    discount = total + 30000 - ViewBag.TongTien;
                 }
-                &#8363;
+                @discount.ToString("###,###") &#8363;
             </td>
         </tr>
         <tr>
@@ -83,10 +83,7 @@
             </td>
             <td class="text-center align-middle">
                 <h3 class="font-weight-bold text-success">
-                    @{
-                        double money = total - discount;
-                    }
-                    &#8363;@money.ToString("###,###")
+                    @ViewBag.TongTien.ToString("###,###")&#8363;
                 </h3>
             </td>
         </tr>

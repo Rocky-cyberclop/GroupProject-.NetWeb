@@ -1,4 +1,6 @@
-﻿<script>
+﻿@using DAL.FrameWork
+
+<script>
     function confirmLogout() {
         var rs = confirm("Bạn chắc chắn muốn đăng xuất?");
         if (rs) {
@@ -6,9 +8,30 @@
                 url: "Login/Logout"
             })
             window.location.reload();
-        }           
+        }
     }
 </script>
+
+@{
+    if (Session["ShoppingCart"] != null)
+    {
+        int cartcount = 0;
+        double total = 0;
+        List<GioHang> ls = (List<GioHang>)Session["ShoppingCart"];
+        foreach (GioHang item in ls)
+        {
+            cartcount += item.SoLuong;
+            double Gia = item.GiaBan.Value;
+            if (item.SoLuong > item.SanPham.KhuyenMais.SingleOrDefault().SoLuong - 1)
+            {
+                Gia = Gia - Gia * item.SanPham.KhuyenMais.SingleOrDefault().TiLe;
+            }
+            total += item.SoLuong * Gia;
+        }
+        ViewBag.count = cartcount;
+        ViewBag.total = total;
+    }
+}
 
 <ul>
     @{
@@ -16,12 +39,22 @@
         {
             <li><a href="@Url.Action("Index","Profile")" title="Profile"><i class="fa fa-user"></i></a></li>
             <li><a href="" onclick="confirmLogout()"><i class="fa fa-power-off"></i></a></li>
+            <li><a href="@Url.Action("Index","Cart")" title="My cart"><i class="fa fa-shopping-bag"></i><span>@ViewBag.count</span></a></li>
         }
         else
         {
             <li><a href="@Url.Action("Index","Login")" title="Login"><i class="fa fa-user"></i></a></li>
+            <li><a href="@Url.Action("Index","Login")" title="My cart"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
         }
     }
-    <li><a href="#" title="My favorite"><i class="fa fa-heart"></i><span>0</span></a></li>
-    <li><a href="@Url.Action("Index","Cart")" title="My cart"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
 </ul>
+@{
+    if (Session["UserSession"] != null)
+    {
+        <div class="header__cart__price">Total: <span>@ViewBag.total.ToString("#,##0")&#8363;</span></div>
+    }
+    else
+    {
+        <div class="header__cart__price">Total: <span>0&#8363;</span></div>
+    }
+}

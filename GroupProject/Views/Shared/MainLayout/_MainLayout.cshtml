@@ -22,17 +22,21 @@
     <link rel="stylesheet" href="~/Assets/Main/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/Assets/Main/css/style.css" type="text/css">
     <link rel="stylesheet" href="~/Assets/Main/css/styleSearchBar.css" type="text/css">
+    <link rel="icon" href="~/Assets/Main/img/logo-vuong.png" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
     @RenderSection("Styles", false)
 </head>
 <body>
     @RenderPage("_MainHeader.cshtml")
 
     <div id="main">
-        @RenderBody()
 
+        @RenderBody()
+        
     </div>
 
     @RenderPage("_MainFooter.cshtml")
+    <script src="~/Scripts/toastr.js"></script>
     @RenderSection("Scripts", false)
 
 </body>

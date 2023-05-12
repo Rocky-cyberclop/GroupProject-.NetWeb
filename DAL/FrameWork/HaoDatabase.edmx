@@ -82,8 +82,8 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
           </Key>
           <Property Name="MaNV" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DienThoai" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Quyen" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -328,8 +328,8 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
           </Key>
           <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DienThoai" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Quyen" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
@@ -576,8 +576,8 @@ warning 6002: The table/view 'RAUCUQUA.dbo.KhuyenMai' does not have a primary ke
               <MappingFragment StoreEntitySet="NhanVien">
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
                 <ScalarProperty Name="Quyen" ColumnName="Quyen" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />

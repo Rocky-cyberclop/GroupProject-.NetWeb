@@ -69,8 +69,8 @@
         <MappingFragment StoreEntitySet="NhanVien">
           <ScalarProperty Name="MaNV" ColumnName="MaNV" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
-          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
           <ScalarProperty Name="Quyen" ColumnName="Quyen" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />

@@ -45,51 +45,54 @@ namespace GroupProject.Areas.Admin.Controllers
             var listStaff = from ts in db.NhanViens select ts;
             model.MaNV = "NV0" + (listStaff.Count() + 1).ToString();
             model.MatKhau = "NV0" + (listStaff.Count() + 1).ToString();
-            var deathFlag = false;
-            if (model.Ten == "")
+            if (model.Ten == null)
             {
-                deathFlag = true;
+                
                 ModelState.AddModelError("tenError", "Tên không được để trống ");
-            }
-            if (model.DiaChi == "")
-            {
-                deathFlag = true;
-                ModelState.AddModelError("diachiError", "Địa chỉ không được để trống ");
+                return View("AddStaff");
 
             }
-            if (model.Email == "")
+            if (model.DiaChi == null)
             {
-                deathFlag = true;
+                
+                ModelState.AddModelError("diachiError", "Địa chỉ không được để trống ");
+                return View("AddStaff");
+
+            }
+            if (model.Email == null)
+            {
+                
                 ModelState.AddModelError("emailError", "Email không được để trống ");
+                return View("AddStaff");
 
             }
             if (Regex.IsMatch(model.Email, "@^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$"))
             {
-                deathFlag = true;
+                
                 ModelState.AddModelError("emailErrorRegex", "Email không đúng định dạng ");
+                return View("AddStaff");
 
             }
-            if (model.DienThoai == "")
+            if (model.DienThoai == null)
             {
-                deathFlag = true;
+                
                 ModelState.AddModelError("dienthoaiError", "Điện thoại không được để trống ");
+                return View("AddStaff");
 
             }
             if (Regex.IsMatch(model.DienThoai, "@^(03|05|07|08|09)+([0-9]{8})$"))
             {
-                deathFlag = true;
+                
                 ModelState.AddModelError("dienthoaiErrorRegex", "Điện thoại không đúng định dạng ");
-
-            }
-            if (model.Quyen == "")
-            {
-                deathFlag = true;
-                ModelState.AddModelError("quyenError", "Quyền không được để trống ");
-
-            }
-            if (deathFlag)
-            {
                 return View("AddStaff");
+
+            }
+            if (model.Quyen == null)
+            {
+                
+                ModelState.AddModelError("quyenError", "Quyền không được để trống ");
+                return View("AddStaff");
+
             }
             db.NhanViens.Add(model);
             db.SaveChanges();
@@ -172,10 +175,15 @@ namespace GroupProject.Areas.Admin.Controllers
             if (Request.Files[0].ContentLength == 0)
             {
                 ModelState.AddModelError("hinhanhError1", "Hãy thêm 1 hình đại diện");
-                if (Request.Files[1].ContentLength == 0)
-                {
-                    ModelState.AddModelError("hinhanhError2", "Hãy thêm ít nhất 1 hình phụ");
-                }
+                var listType = from ls in db.Loais select ls;
+                List<Loai> listTypeList = listType.ToList();
+                SelectList lsType = new SelectList(listTypeList, "MaLoai", "TenLoai");
+                ViewBag.lsType = lsType;
+                return View("CreateProduct");
+            }
+            if (Request.Files[1].ContentLength == 0)
+            {
+                ModelState.AddModelError("hinhanhError2", "Hãy thêm ít nhất 1 hình phụ");
                 var listType = from ls in db.Loais select ls;
                 List<Loai> listTypeList = listType.ToList();
                 SelectList lsType = new SelectList(listTypeList, "MaLoai", "TenLoai");
@@ -241,13 +249,13 @@ namespace GroupProject.Areas.Admin.Controllers
             SanPham product = db.SanPhams.Where(ps => ps.MaSP == id).SingleOrDefault();
             product.KhongBan = true;
 
-            while(product.HinhAnhs.Count > 0)
+            /*while(product.HinhAnhs.Count > 0)
             {
                 path = Server.MapPath("~/Assets/Products/Images/"+product.HinhAnhs.First().Hinh.ToString());
                 System.IO.File.Delete(path);
                 HinhAnh pic = product.HinhAnhs.First();
                 db.HinhAnhs.Remove(pic);
-            }
+            }*/
             db.SaveChanges();
             return RedirectToAction("Products");
         }

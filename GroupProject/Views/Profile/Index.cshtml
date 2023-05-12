@@ -11,7 +11,7 @@
 @section Styles{
     <link rel="stylesheet" href="~/Assets/Main/css/styleprofile.css" type="text/css">
 }
-
+<span id="successMessage" class="d-none">@TempData["successMessage"]</span>
 <div class="container bootstrap snippet">
     <!-- <div class="row">
         <div class="col-sm-10"><h1>User name</h1></div>
@@ -58,19 +58,19 @@
 
                             <div class="col-xs-6">
                                 <label for="first_name"><h4>Họ và tên</h4></label>
-                                <input type="text" class="form-control" value="@ViewBag.Ten" name="full_name" id="full_name" placeholder="Họ và tên" title="Họ tên" readonly>
+                                <input type="text" class="form-control" value="@ViewBag.Ten" name="full_name" id="full_name" placeholder="--Trống--" title="Họ tên" readonly>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="last_name"><h4>Ngày sinh</h4></label>
-                                <input type="datetime" class="form-control" value="@ViewBag.NgaySinh" name="birthday_date" id="birthday_date" placeholder="Ngày sinh" title="Ngày sinh" readonly>
+                                <input type="datetime" class="form-control" value="@ViewBag.NgaySinh" name="birthday_date" id="birthday_date" placeholder="--Trống--" title="Ngày sinh" readonly>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="mobile"><h4>Địa chỉ</h4></label>
-                                <input type="text" class="form-control" value="@ViewBag.DiaChi" name="address" id="address" placeholder="Địa chỉ" title="Địa chỉ" readonly>
+                                <input type="text" class="form-control" value="@ViewBag.DiaChi" name="address" id="address" placeholder="--Trống--" title="Địa chỉ" readonly>
                             </div>
                         </div>
                         <div class="form-group">
@@ -85,7 +85,6 @@
                                 <input type="text" class="form-control" value="@ViewBag.Email" name="email" id="email" placeholder="Email" title="Email" readonly>
                             </div>
                         </div>
-
 
                         <div class="form-group">
                             <div class="col-xs-12">
@@ -106,3 +105,13 @@
     </div><!--/row-->
 </div>
 
+@section Scripts{
+    <script>
+        $(function () {
+            var message = $("#successMessage").text();
+            if (message !== "") {
+                toastr.success(message, "", { tapToDismiss: true, timeOut: 1000 });
+            }
+        });
+    </script>
+}

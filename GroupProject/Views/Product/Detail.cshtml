@@ -22,7 +22,7 @@
         padding-bottom: 50px;
     }
 </style>
-
+<span id="successMessage" class="d-none">@TempData["successMessage"]</span>
 <div class="container">
     <div class="breadcrumb bg-transparent border">
         <div class="col-lg-11">
@@ -95,7 +95,7 @@
 
 
                                 }
-                                @if (@ViewBag.slCoTheThem == 0 && Model.Product.SoLuong>0)
+                                @if (@ViewBag.slCoTheThem == 0 && Model.Product.SoLuong > 0)
                                 {
                                     <p style="color:orangered">Bạn đã có @Model.Product.GioHangs.FirstOrDefault().SoLuong sản phẩm trong giỏ hàng. Bạn không thể thêm được nữa vì vượt quá số lượng trong kho.</p>
                                 }
@@ -212,6 +212,7 @@
     <script src="~/Assets/Main/js/mixitup.min.js"></script>
     <script src="~/Assets/Main/js/owl.carousel.min.js"></script>
     <script src="~/Assets/Main/js/main.js"></script>
+
     <script>
         //<![CDATA[
         $('input.input-qty').each(function () {
@@ -237,6 +238,16 @@
         //]]></script>
 
     <script>
+        $(document).ready(function () {
+            var message = $("#successMessage").text();
+            if (message !== "") {
+                toastr.success(message, "", { tapToDismiss: true, timeOut: 1000 });
+            }
+
+        })
+    </script>
+
+    <script>
         function Add(id) {
             var sl = document.getElementById("quantity_SP").value;
             $.ajax({
@@ -248,6 +259,7 @@
                 }
 
             });
+
             location.reload();
         };
     </script>

@@ -5,96 +5,97 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Nhân viên</h2>
 
-    <h2>Nhân viên @ViewBag.id</h2>
+@if (ViewBag.right == "Admin")
+{
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("AddStaff","Management")">Thêm nhân viên</a>
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaNV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quyen)
+        </th>
 
-    @if (ViewBag.right=="Admin") { 
-        <p>
-            <a class="btn btn-primary" href="@Url.Action("AddStaff","Management")">Thêm nhân viên</a>
-        </p>
-    }
-    <table class="table">
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MaNV)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ten)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiaChi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DienThoai)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quyen)
-            </th>
-            
-            <th></th>
-        </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quyen)
+            </td>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaNV)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ten)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DiaChi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DienThoai)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quyen)
-                </td>
-                
-                <td>
-                    @Html.ActionLink("Sửa", "EditStaff", new {  id=item.MaNV  }) |
+            <td>
+                @if (ViewBag.right == "Admin")
+                {
+                    @Html.ActionLink("Sửa", "EditStaff", new { id = item.MaNV })
+                    @Html.Raw("|")
                     <a href="#" class="" data-toggle="modal" data-target="#delete-modal"
                        onclick="DeleteShowConfirm('@item.MaNV','@item.Ten')">Xóa</a>
-                </td>
-            </tr>
-        }
+                }
+            </td>
+        </tr>
+    }
 
-    </table>
-
-
-
-    <div class="modal fade" tabindex="-1" role="dialog" id="delete-modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Xác nhận</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body delete-name">
-                    <p></p>
-                </div>
-                <div class="modal-footer">
-                    @using (Html.BeginForm("DeleteStaff", "Management"))
-                    {
-                        @Html.AntiForgeryToken()
-                        <input name="id" class="delete-id" type="hidden" />
-                        <input type="submit" value="Cho nghỉ việc" class="btn btn-primary delete-now"/>
-                    }
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                </div>
+</table>
+<div class="modal fade" tabindex="-1" role="dialog" id="delete-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body delete-name">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("DeleteStaff", "Management"))
+                {
+                    @Html.AntiForgeryToken()
+                    <input name="id" class="delete-id" type="hidden" />
+                    <input type="submit" value="Cho nghỉ việc" class="btn btn-primary delete-now" />
+                }
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
             </div>
         </div>
     </div>
+</div>
 
 @section Scripts{
     <script>

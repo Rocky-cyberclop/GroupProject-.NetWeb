@@ -118,3 +118,39 @@ D:\HK2 2022-2023\GroupProject\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\HK2 2022-2023\GroupProject\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\HK2 2022-2023\GroupProject\DAL\obj\Debug\DAL.dll
 D:\HK2 2022-2023\GroupProject\DAL\obj\Debug\DAL.pdb
+E:\HK2\Web NET\BTN\pull_11\DAL\bin\Debug\DAL.dll.config
+E:\HK2\Web NET\BTN\pull_11\DAL\bin\Debug\DAL.dll
+E:\HK2\Web NET\BTN\pull_11\DAL\bin\Debug\DAL.pdb
+E:\HK2\Web NET\BTN\pull_11\DAL\bin\Debug\EntityFramework.dll
+E:\HK2\Web NET\BTN\pull_11\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\HK2\Web NET\BTN\pull_11\DAL\bin\Debug\EntityFramework.xml
+E:\HK2\Web NET\BTN\pull_11\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\HK2\Web NET\BTN\pull_11\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\HK2\Web NET\BTN\pull_11\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\HK2\Web NET\BTN\pull_11\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\HK2\Web NET\BTN\pull_11\DAL\obj\Debug\DAL.dll
+E:\HK2\Web NET\BTN\pull_11\DAL\obj\Debug\DAL.pdb
+D:\pull_11\pull_11\DAL\bin\Debug\DAL.dll.config
+D:\pull_11\pull_11\DAL\bin\Debug\DAL.dll
+D:\pull_11\pull_11\DAL\bin\Debug\DAL.pdb
+D:\pull_11\pull_11\DAL\bin\Debug\EntityFramework.dll
+D:\pull_11\pull_11\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\pull_11\pull_11\DAL\bin\Debug\EntityFramework.xml
+D:\pull_11\pull_11\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\pull_11\pull_11\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\pull_11\pull_11\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\pull_11\pull_11\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\pull_11\pull_11\DAL\obj\Debug\DAL.dll
+D:\pull_11\pull_11\DAL\obj\Debug\DAL.pdb
+E:\HK2\Web NET\BTN\project\DAL\bin\Debug\DAL.dll.config
+E:\HK2\Web NET\BTN\project\DAL\bin\Debug\DAL.dll
+E:\HK2\Web NET\BTN\project\DAL\bin\Debug\DAL.pdb
+E:\HK2\Web NET\BTN\project\DAL\bin\Debug\EntityFramework.dll
+E:\HK2\Web NET\BTN\project\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\HK2\Web NET\BTN\project\DAL\bin\Debug\EntityFramework.xml
+E:\HK2\Web NET\BTN\project\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\HK2\Web NET\BTN\project\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\HK2\Web NET\BTN\project\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\HK2\Web NET\BTN\project\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\HK2\Web NET\BTN\project\DAL\obj\Debug\DAL.dll
+E:\HK2\Web NET\BTN\project\DAL\obj\Debug\DAL.pdb

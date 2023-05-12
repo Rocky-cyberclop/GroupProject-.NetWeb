@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DAL.FrameWork.SanPham>
+
+@{
+    ViewBag.Title = "FindListProduct";
+    Layout = "~/Views/Shared/MainLayout/_MainLayout.cshtml";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/Assets/Main/css/index.css">
+}
+
+<div class="row container-fluid content">
+    <h1>@ViewBag.error</h1>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 mix @item.MaSP.Substring(0, 1)">
+                <a href="@Url.Action("Detail","Product", new { id = item.MaSP })">
+                    <div class="featured__item border ">
+                        @{
+                            var bg = "/Assets/Products/Images/" + item.HinhAnhs.FirstOrDefault().Hinh;
+                            <div class="featured__item__pic set-bg" data-setbg="@bg" style="background-image: url(@bg)"></div>
+                        }
+                        <div class="featured__item__text">
+                            <h6>@item.Ten</h6>
+                            <h5>@item.Gia.ToString("#,##0")&#8363;</h5>
+                        </div>
+
+                    </div>
+                </a>
+
+            </div>
+        }
+    }
+</div>

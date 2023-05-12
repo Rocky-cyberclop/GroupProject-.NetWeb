@@ -42,94 +42,91 @@
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.MaKH)
 
-                    <div class="form-horizontal">
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.MaKH)
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2">
-                                Họ và tên
-                            </label>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-md-2">
+                                    Email
+                                </label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly=""} })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-2">
-                                Ngày Sinh
-                            </label>
-                            <div class="col-md-10">
-                                @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-md-2">
+                                    Họ và tên
+                                </label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                                @{
-                                    string birthday = "";
-                                    if (Model.NgaySinh != null)
-                                    {
-                                        DateTime bday = (DateTime)Model.NgaySinh;
-                                        string y = bday.Year.ToString();
-                                        int month = bday.Month;
-                                        string m = month + "";
-                                        if (month < 10)
+                            <div class="form-group">
+                                <label class="control-label col-md-2">
+                                    Ngày Sinh
+                                </label>
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+
+                                    @{
+                                        string birthday = "";
+                                        if (Model.NgaySinh != null)
                                         {
-                                            m = "0" + month;
+                                            DateTime bday = (DateTime)Model.NgaySinh;
+                                            string y = bday.Year.ToString();
+                                            int month = bday.Month;
+                                            string m = month + "";
+                                            if (month < 10)
+                                            {
+                                                m = "0" + month;
+                                            }
+                                            int day = bday.Day;
+                                            string d = day + "";
+                                            if (day < 10)
+                                            {
+                                                d = "0" + day;
+                                            }
+                                            birthday = y + "-" + m + "-" + d;
                                         }
-                                        int day = bday.Day;
-                                        string d = day + "";
-                                        if (day < 10)
-                                        {
-                                            d = "0" + day;
-                                        }
-                                        birthday = y + "-" + m + "-" + d;
+
                                     }
+                                    <input type="date" name="NgaySinh" value="@birthday" class="form-control" />
+                                </div>
+                            </div>
 
-                                }
-                                <input type="date" name="NgaySinh" value="@birthday" class="form-control" />
+                            <div class="form-group">
+                                <label class="control-label col-md-2">
+                                    Địa Chỉ
+                                </label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">
+                                    Điện thoại
+                                </label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Lưu</button>
+                                    <button type="button" class="btn btn-lg btn-success text-white text-decoration-none">@Html.ActionLink("Quay lại", "Index")</button>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2">
-                                Địa Chỉ
-                            </label>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2">
-                                Điện thoại
-                            </label>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.DienThoai, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2">
-                                Email
-                            </label>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Lưu</button>
-                                <button class="btn btn-lg btn-success text-white text-decoration-none" type="button">
-                                    @Html.ActionLink("Quay lại", "Index")
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                     }
                     <hr>
                 </div><!--/tab-pane-->

@@ -24,7 +24,7 @@ namespace DAL.FrameWork
             this.HinhAnhs = new HashSet<HinhAnh>();
             this.KhuyenMais = new HashSet<KhuyenMai>();
         }
-    
+
         [DisplayName("Mã sản phẩm")]
         public string MaSP { get; set; }
         [Required(ErrorMessage = "Tên sản phẩm không được trống")]
@@ -37,11 +37,11 @@ namespace DAL.FrameWork
         [DisplayName("Đơn vị")]
         public string DonVi { get; set; }
         [Required(ErrorMessage = "Số lượng sản phẩm không được trống")]
-        [Range(1,double.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
+        [Range(1, double.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
         [DisplayName("Số lượng")]
         public int SoLuong { get; set; }
         [Required(ErrorMessage = "Giá bán sản phẩm không được trống")]
-        [Range(1, double.MaxValue, ErrorMessage = "Giá bán phải lớn hơn 0")] 
+        [Range(1, double.MaxValue, ErrorMessage = "Giá bán phải lớn hơn 0")]
         [DisplayName("Giá bán")]
         public long Gia { get; set; }
         [DisplayName("Mô tả")]

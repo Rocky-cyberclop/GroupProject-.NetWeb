@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CreateProduct</h2>
+<h2>Thêm sản phẩm</h2>
 
 
 @using (Html.BeginForm("CreateProduct", "Management", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -13,7 +13,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>SanPham</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-group" })
 

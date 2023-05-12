@@ -21,7 +21,7 @@ namespace DAL.FrameWork
         {
             this.HoaDons = new HashSet<HoaDon>();
         }
-    
+
         [DisplayName("Mã nhân viên")]
         public string MaNV { get; set; }
         [Required(ErrorMessage = "Tên không được để trống")]

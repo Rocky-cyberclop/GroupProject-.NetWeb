@@ -13,12 +13,21 @@ namespace GroupProject.Controllers
         //ThanhDatabase db = new ThanhDatabase();
         //TrangDatabase db = new TrangDatabase();
         //NhatDatabase db = new NhatDatabase();
-       // NganDatabase db = new NganDatabase();
+        //NganDatabase db = new NganDatabase();
 
         public ActionResult Index()
         {
+            //khoi tao session cart
+            UserSession userss = SessionHelper.GetUserSession();
+            if (Session["UserSession"] != null)
+            {
+                string user = userss.getUserName();
+                List<GioHang> listCartItem;
+                listCartItem = db.GioHangs.Where(s => s.MaKH == user).ToList();
+                Session["ShoppingCart"] = listCartItem;
+            }
             //lay ngau nhien 12 san pham
-            var listProduct = db.SanPhams.OrderBy(p => Guid.NewGuid()).Take(12).ToList();
+            var listProduct = db.SanPhams.Where(p=>p.KhongBan==false).OrderBy(p => Guid.NewGuid()).Take(12).ToList();
             return View(listProduct);
         }       
 

@@ -5,6 +5,44 @@
     Layout = "~/Views/Shared/LoginLayout/_LoginLayout.cshtml";
 }
 
+
+@section Scripts{
+    <script type="text/javascript">
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const main = document.getElementById('main');
+
+        signUpButton.addEventListener('click', () => {
+            main.classList.add("right-panel-active");
+        });
+        signInButton.addEventListener('click', () => {
+            main.classList.remove("right-panel-active");
+        });
+        $(function () {
+            var message = $("#successMessage").text();
+            if (message !== "") {
+                toastr.success(message, "", { tapToDismiss: true, timeOut: 1000 });
+            }
+        });
+        $(function () {
+            var message = $("#warningMessage").text();
+            if (message !== "") {
+                toastr.warning(message, "", { tapToDismiss: true, timeOut: 1000 });
+            }
+        });
+        $(function () {
+            var message = $("#errorMessage").text();
+            if (message !== "") {
+                toastr.error(message, "", { tapToDismiss: true, timeOut: 1000 });
+            }
+        });
+    </script>
+
+
+}
+<span id="successMessage" class="d-none">@TempData["successMessage"]</span>
+<span id="warningMessage" class="d-none">@TempData["warningMessage"]</span>
+<span id="errorMessage" class="d-none">@TempData["errorMessage"]</span>
 <div class="container" id="main">
     <div class="sign-up">
         @using (Html.BeginForm("Register", "Login", FormMethod.Post))
@@ -16,24 +54,28 @@
                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <p>hoặc sử dụng số điện thoại của bạn để đăng ký</p>
+            <p>hoặc sử dụng địa chỉ email của bạn</p>
+
+            <input id="Email" type="text" name="Email" value="@ViewBag.Email" placeholder="Email">
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
             <input type="text" name="DienThoai" value="@ViewBag.Phone" placeholder="Số điện thoại">
-            @Html.ValidationMessage("PhoneReg", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
 
-            <input type="text" name="Email" value="@ViewBag.Email" placeholder="Email">
-            @Html.ValidationMessage("EmailReg", new { @class = "text-danger" })
+            <input type="text" name="Ten" value="@ViewBag.Name" placeholder="Họ và tên">
+            @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
 
-            <input type="text" name="Ten" value="@ViewBag.Name" placeholder="Tên của bạn">
             <input type="date" name="NgaySinh" value="@ViewBag.Birthday" />
-            @Html.ValidationMessage("Birthday", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
 
             <input type="text" name="DiaChi" value="@ViewBag.Address" placeholder="Địa chỉ">
+            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+
             <input type="password" name="Password" placeholder="Mật khẩu">
-            @Html.ValidationMessage("PasswordReg", new { @class = "text-danger" })
+            @Html.ValidationMessage("Password", new { @class = "text-danger" })
 
             <input type="password" name="MatKhau" placeholder="Xác nhận mật khẩu">
-            <div class="text-danger">@Html.ValidationMessageFor(m => m.MatKhau)</div>
-            @Html.ValidationMessage("ConfirmPassword", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
 
             <div class="form-check">
                 <input class="form-check-input l-1" type="checkbox" name="checkTerms" id="flexCheckDefault" />
@@ -54,14 +96,14 @@
                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <p>Hoặc sử dụng tài khoản của bạn</p>
-            <input type="text" name="Email" value="@ViewBag.Email" placeholder="Email/Số điện thoại">
-            @Html.ValidationMessage("Email", new { @class = "text-danger" })
-            
-            <input type="password" name="Password" placeholder="Mật khẩu">
-            @Html.ValidationMessage("ErrorPassword", new { @class = "text-danger" })
+            <p>hoặc sử dụng tài khoản của bạn</p>
+            <input type="text" name="Email" value="@ViewBag.EmailLogin" placeholder="Email/Số điện thoại">
+            @Html.ValidationMessage("EmailLogin", new { @class = "text-danger" })
 
-            @Html.ActionLink("Quên mật khẩu", "ForgetPassword", "", new { @class = "text-decoration-none"})
+            <input type="password" name="Password" placeholder="Mật khẩu">
+            @Html.ValidationMessage("PasswordLogin", new { @class = "text-danger" })
+
+            @Html.ActionLink("Quên mật khẩu", "ForgetPassword", "", new { @class = "text-decoration-none" })
             <button type="submit">Đăng nhập</button>
         }
     </div>
@@ -81,18 +123,3 @@
         </div>
     </div>
 </div>
-
-@section Scripts{
-    <script type="text/javascript">
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const main = document.getElementById('main');
-
-        signUpButton.addEventListener('click', () => {
-            main.classList.add("right-panel-active");
-        });
-        signInButton.addEventListener('click', () => {
-            main.classList.remove("right-panel-active");
-        });
-    </script>
-}

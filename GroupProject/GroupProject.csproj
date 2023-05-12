@@ -177,12 +177,12 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\MailUtils.cs" />
+    <Compile Include="Code\MailUtils.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\SessionHelper.cs" />
-    <Compile Include="Controllers\StaffSession.cs" />
-    <Compile Include="Controllers\UserSession.cs" />
+    <Compile Include="Code\SessionHelper.cs" />
+    <Compile Include="Code\StaffSession.cs" />
+    <Compile Include="Code\UserSession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1901,7 +1901,8 @@
     <Content Include="Assets\Main\img\intro\icon-1.png" />
     <Content Include="Assets\Main\img\intro\icon-2.png" />
     <Content Include="Assets\Main\img\intro\icon-3.png" />
-    <Content Include="Assets\Main\img\logo.png" />
+    <Content Include="Assets\Main\img\logo-ngang.png" />
+    <Content Include="Assets\Main\img\logo-vuong.png" />
     <Content Include="Assets\Main\img\products\lp-3.jpg" />
     <Content Include="Assets\Main\img\products\product-1.jpg" />
     <Content Include="Assets\Main\img\products\product-10.jpg" />
@@ -2162,6 +2163,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2364,6 +2367,8 @@
     <Content Include="Areas\Admin\Views\Management\EditProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Management\Bills.cshtml" />
     <Content Include="Areas\Admin\Views\Management\DetailsBill.cshtml" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2375,6 +2380,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2410,6 +2417,8 @@
     <Content Include="Views\Login\RenewPassword.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Product\FindListProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

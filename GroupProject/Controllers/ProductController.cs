@@ -12,8 +12,9 @@ namespace GroupProject.Controllers
     public class ProductController : Controller
     {
         HaoDatabase db = new HaoDatabase();
-       // NganDatabase db = new NganDatabase();
-       //ThanhDatabase db = new ThanhDatabase();
+        //NhatDatabase db = new NhatDatabase();
+        //ThanhDatabase db = new ThanhDatabase();
+        //NganDatabase db = new NganDatabase();
         // GET: Product
         public ActionResult Index(string cate = "all", string sort = "no", int page = 1)
         {
@@ -27,7 +28,7 @@ namespace GroupProject.Controllers
             }
             else
             {
-                listProduct = db.SanPhams.Where(p => p.MaSP.Substring(0, 1) == cate).ToList();
+                listProduct = db.SanPhams.Where(p => p.MaSP.Substring(0, 1) == cate && p.KhongBan == false).ToList();
             }
             if (sort == "asc")
             {
@@ -45,6 +46,7 @@ namespace GroupProject.Controllers
             UserSession user = SessionHelper.GetUserSession();
             if (Session["UserSession"] == null)
             {
+                TempData["warningMessage"] = "Vui lòng đăng nhập!";
                 return RedirectToAction("Index", "Login");
             }
             string MaKH = user.getUserName();
@@ -70,7 +72,7 @@ namespace GroupProject.Controllers
         [HttpGet, ActionName("FindProduct")]
         public JsonResult FindProduct(string search)
         {
-            List<SanPham> ls = db.SanPhams.Where(p => p.Ten.Contains(search)).Take(5).ToList();
+            List<SanPham> ls = db.SanPhams.Where(p => p.Ten.Contains(search) && p.KhongBan == false).Take(5).ToList();
             List<FindingModel> fd = new List<FindingModel>();
             foreach(var item in ls)
             {
@@ -82,5 +84,16 @@ namespace GroupProject.Controllers
             return Json(new { data = fd }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet, ActionName("FindListProduct")]
+        public ActionResult FindListProduct(string searchValue)
+        {
+            var list = db.SanPhams.Where(p => p.Ten.Contains(searchValue) && p.KhongBan == false);
+            if (searchValue == "" || list.Count()==0)
+            {
+                ViewBag.error = "Không có sản phẩm bạn muốn tìm kiếm";
+                return View();
+            }
+            return View(list);
+        }
     }
 }

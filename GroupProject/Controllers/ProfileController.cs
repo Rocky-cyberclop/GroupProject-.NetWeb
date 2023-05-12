@@ -89,6 +89,7 @@ namespace GroupProject.Controllers
                 {
                     db.Entry(KHud).State = EntityState.Modified;
                     db.SaveChanges();
+                    TempData["successMessage"] = "Chỉnh sửa thành công!";
                 }
                 catch (RetryLimitExceededException)
                 {
@@ -138,6 +139,7 @@ namespace GroupProject.Controllers
                     return View("ChangePass");
                 }
             }
+            TempData["successMessage"] = "Đổi mật khẩu thành công!";
             return RedirectToAction("Index");
         }
 
@@ -174,6 +176,7 @@ namespace GroupProject.Controllers
                 {
                     return RedirectToAction("Error","Home");
                 }
+                ViewBag.TongTien = db.HoaDons.Where(hd => hd.MaHD == id).FirstOrDefault().TongTien;
                 return View(model);
             }
             else

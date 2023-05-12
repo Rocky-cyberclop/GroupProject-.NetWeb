@@ -10,9 +10,11 @@
         <form action="RenewPassword" method="POST">
             <h4 class="form-label">Mã xác nhận</h4>
             <input type="Text" name="Code" class="form-control" placeholder="Nhập mã xác nhận" />
-            @Html.ValidationMessage("msSuccess", new { @class = "text-danger" })
             @Html.ValidationMessage("CodeError", new { @class = "text-danger" })
-            <button type="submit" data-backdrop="#MaCode" class="btn btn-success form-control">Tiếp theo</button>
+
+            <button type="submit" class="btn btn-success form-control">Tiếp theo</button>
         </form>
     </div>
 </div>
+
+

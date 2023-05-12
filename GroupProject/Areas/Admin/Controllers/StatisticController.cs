@@ -9,7 +9,8 @@ namespace GroupProject.Areas.Admin.Controllers
 {
     public class StatisticController : Controller
     {
-        HaoDatabase db = new HaoDatabase();
+        //HaoDatabase db = new HaoDatabase();
+        NhatDatabase db = new NhatDatabase();
         // GET: Admin/Statistic
         public ActionResult Index()
         {

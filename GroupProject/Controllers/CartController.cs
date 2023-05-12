@@ -14,9 +14,9 @@ namespace GroupProject.Controllers
 {
     public class CartController : Controller
     {
-        HaoDatabase db = new HaoDatabase();
+        //HaoDatabase db = new HaoDatabase();
         //ThanhDatabase db = new ThanhDatabase(); //Dùng đúng Entity trên máy
-        //NhatDatabase db = new NhatDatabase();
+        NhatDatabase db = new NhatDatabase();
         //NganDatabase db = new NganDatabase();
         // GET: Cart
         UserSession userss = SessionHelper.GetUserSession();
@@ -54,7 +54,7 @@ namespace GroupProject.Controllers
         public ActionResult Delete(string id)
         {
             string MaKH = userss.getUserName();
-            GioHang gh = db.GioHangs.Where(ps => ps.MaSP == id).FirstOrDefault();
+            GioHang gh = db.GioHangs.Where(ps => ps.MaSP == id && ps.MaKH == MaKH).FirstOrDefault();
             // var path = Path.Combine(Server.MapPath("~/Content/Image"), book.CoverPage);
 
             db.GioHangs.Remove(gh);

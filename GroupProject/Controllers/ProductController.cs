@@ -11,8 +11,8 @@ namespace GroupProject.Controllers
 {
     public class ProductController : Controller
     {
-        HaoDatabase db = new HaoDatabase();
-        //NhatDatabase db = new NhatDatabase();
+        //HaoDatabase db = new HaoDatabase();
+        NhatDatabase db = new NhatDatabase();
         //ThanhDatabase db = new ThanhDatabase();
         //NganDatabase db = new NganDatabase();
         // GET: Product
